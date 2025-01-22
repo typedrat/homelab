@@ -15,6 +15,7 @@ spec:
                 namespace: kube-system
             interval: 1m
     values:
+        rollOutCiliumPods: true
         cni:
             exclusive: false
         ipam:
@@ -23,11 +24,16 @@ spec:
             enabled: true
         hostFirewall:
             enabled: true
+        operator:
+            replicas: 1
+            rollOutPods: true
         hubble:
             relay:
                 enabled: true
+                rollOutPods: true
             ui:
                 enabled: true
+                rollOutPods: true
             peerService:
                 clusterDomain: local.kube.thisratis.gay
         etcd:
