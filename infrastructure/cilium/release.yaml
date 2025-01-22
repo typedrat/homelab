@@ -28,7 +28,7 @@ spec:
                 clusterDomain: local.kube.thisratis.gay
         etcd:
             clusterDomain: local.kube.thisratis.gay
-        kubeProxyReplacement: strict
+        kubeProxyReplacement: true
         securityContext:
             capabilities:
                 ciliumAgent:
