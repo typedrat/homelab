@@ -1,0 +1,4 @@
+cluster:
+    clusterName: ginga-teikoku
+    network:
+        dnsDomain: local.kube.thisratis.gay
