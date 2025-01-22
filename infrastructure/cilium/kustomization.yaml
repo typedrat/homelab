@@ -6,3 +6,4 @@ resources:
     - cilium-bgp.yaml
     - cilium-peer.yaml
     - cilium-lb-pool.yaml
+    - cilium-lb-bgp-advertisement.yaml
