@@ -19,6 +19,8 @@ spec:
             exclusive: false
         ipam:
             mode: kubernetes
+        bgpControlPlane:
+            enabled: true
         hostFirewall:
             enabled: true
         hubble:
