@@ -8,6 +8,7 @@ spec:
     interval: 5m0s
     dependsOn:
         - name: istio-base
+          namespace: istio-system
     chart:
         spec:
             chart: istiod

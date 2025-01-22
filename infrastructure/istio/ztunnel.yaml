@@ -8,6 +8,7 @@ spec:
     interval: 5m0s
     dependsOn:
         - name: istio-cni
+          namespace: istio-system
     chart:
         spec:
             chart: ztunnel
