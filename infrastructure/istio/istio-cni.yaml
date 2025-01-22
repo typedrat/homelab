@@ -1,0 +1,21 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+    name: istio-cni
+    namespace: istio-system
+spec:
+    interval: 5m0s
+    dependsOn:
+        - name: istio-base
+        - name: istiod
+    chart:
+        spec:
+            chart: cni
+            reconcileStrategy: ChartVersion
+            sourceRef:
+                kind: HelmRepository
+                name: istio
+            version: 1.24.2
+    values:
+        profile: ambient

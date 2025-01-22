@@ -6,3 +6,4 @@ resources:
     - cilium.yaml
     - cluster-policies.yaml
     - pull-secrets.yaml
+    - istio.yaml

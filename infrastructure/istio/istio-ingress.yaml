@@ -1,0 +1,21 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+    name: istio-ingress
+    namespace: istio-ingress
+spec:
+    interval: 5m0s
+    dependsOn:
+        - name: istio-cni
+        - name: ztunnel
+    chart:
+        spec:
+            chart: gateway
+            reconcileStrategy: ChartVersion
+            sourceRef:
+                kind: HelmRepository
+                name: istio
+            version: 1.24.2
+    install:
+        createNamespace: true
