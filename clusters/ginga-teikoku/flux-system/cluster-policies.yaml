@@ -5,7 +5,7 @@ metadata:
     namespace: flux-system
 spec:
     interval: 10m0s
-    path: ./clusters/ginga-teikoku/infrastructure/cluster-policies
+    path: ./infrastructure/cluster-policies
     prune: true
     sourceRef:
         kind: GitRepository
