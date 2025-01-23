@@ -27,6 +27,8 @@ spec:
         operator:
             replicas: 1
             rollOutPods: true
+        envoy:
+            rollOutPods: true
         hubble:
             relay:
                 enabled: true
