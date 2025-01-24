@@ -22,7 +22,7 @@ spec:
         - name: wildcard-https
           protocol: HTTPS
           port: 443
-          hostname: *.ratsinthe.cloud
+          hostname: "*.ratsinthe.cloud"
           allowedRoutes:
               namespaces:
                   from: All
