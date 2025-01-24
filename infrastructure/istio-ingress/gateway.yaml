@@ -12,3 +12,17 @@ spec:
           allowedRoutes:
               namespaces:
                   from: All
+        - name: root-https
+          protocol: HTTPS
+          port: 443
+          hostname: ratsinthe.cloud
+          allowedRoutes:
+              namespaces:
+                  from: All
+        - name: wildcard-https
+          protocol: HTTPS
+          port: 443
+          hostname: *.ratsinthe.cloud
+          allowedRoutes:
+              namespaces:
+                  from: All
