@@ -10,4 +10,3 @@ resources:
     - istiod.yaml
     - istio-cni.yaml
     - ztunnel.yaml
-    - istio-ingress.yaml

@@ -7,3 +7,4 @@ resources:
     - cluster-policies.yaml
     - pull-secrets.yaml
     - istio.yaml
+    - istio-ingress.yaml

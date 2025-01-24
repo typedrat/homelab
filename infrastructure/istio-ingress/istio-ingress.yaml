@@ -18,6 +18,7 @@ spec:
             sourceRef:
                 kind: HelmRepository
                 name: istio
+                namespace: istio-system
             version: ">=1.24.2 <1.25"
     install:
         createNamespace: true
