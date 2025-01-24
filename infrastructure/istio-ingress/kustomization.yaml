@@ -3,5 +3,4 @@ kind: Kustomization
 namespace: istio-ingress
 resources:
     - namespace.yaml
-    - istio-ingress.yaml
     - gateway.yaml
