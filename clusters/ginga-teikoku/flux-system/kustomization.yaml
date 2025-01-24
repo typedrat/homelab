@@ -9,3 +9,4 @@ resources:
     - istio.yaml
     - istio-ingress.yaml
     - cert-manager.yaml
+    - cluster-issuers.yaml
