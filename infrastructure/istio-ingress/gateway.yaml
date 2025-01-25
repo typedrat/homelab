@@ -19,6 +19,10 @@ spec:
           allowedRoutes:
               namespaces:
                   from: All
+          tls:
+              mode: Terminate
+              certificateRefs:
+                  - name: root-ratsinthe-cloud-tls
         - name: wildcard-https
           protocol: HTTPS
           port: 443
@@ -26,3 +30,7 @@ spec:
           allowedRoutes:
               namespaces:
                   from: All
+          tls:
+              mode: Terminate
+              certificateRefs:
+                  - name: wildcard-ratsinthe-cloud-tls
