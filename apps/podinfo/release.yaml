@@ -16,12 +16,3 @@ spec:
             interval: 1m
     install:
         createNamespace: true
-    values:
-        ingress:
-            enabled: true
-            className: istio
-            hosts:
-                - host: podinfo.ratsinthe.cloud
-                  paths:
-                      - path: /
-                        pathType: Prefix
