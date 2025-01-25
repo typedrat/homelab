@@ -4,7 +4,7 @@ metadata:
     name: gateway
     namespace: istio-ingress
     annotations:
-        cert-manager.io/issuer: letsencrypt-production
+        cert-manager.io/cluster-issuer: letsencrypt-production
 spec:
     gatewayClassName: istio
     listeners:
