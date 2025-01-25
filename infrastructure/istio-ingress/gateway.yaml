@@ -3,6 +3,8 @@ kind: Gateway
 metadata:
     name: gateway
     namespace: istio-ingress
+    annotations:
+        cert-manager.io/issuer: letsencrypt-production
 spec:
     gatewayClassName: istio
     listeners:
@@ -22,7 +24,7 @@ spec:
           tls:
               mode: Terminate
               certificateRefs:
-                  - name: root-ratsinthe-cloud-tls
+                  - name: ratsinthe-cloud-tls
         - name: wildcard-https
           protocol: HTTPS
           port: 443
@@ -33,4 +35,4 @@ spec:
           tls:
               mode: Terminate
               certificateRefs:
-                  - name: wildcard-ratsinthe-cloud-tls
+                  - name: ratsinthe-cloud-tls
