@@ -5,6 +5,7 @@ metadata:
     namespace: istio-ingress
     annotations:
         cert-manager.io/cluster-issuer: letsencrypt-production
+        cert-manager.io/private-key-size: 4096
 spec:
     gatewayClassName: istio
     listeners:
