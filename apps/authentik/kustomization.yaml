@@ -9,6 +9,7 @@ resources:
     - httproute.yaml
 secretGenerator:
     - name: authentik-values
+      namespace: authentik
       files:
           - values.yaml
 configurations:
