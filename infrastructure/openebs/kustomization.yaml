@@ -5,4 +5,4 @@ resources:
     - repository.yaml
     - release.yaml
     - zfs-shell.yaml
-    - storage-classes.yaml
+    - storageclasses.yaml
