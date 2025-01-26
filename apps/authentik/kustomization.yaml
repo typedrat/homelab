@@ -7,3 +7,4 @@ resources:
     - authentik-postgres.yaml
     - dragonfly.yaml
     - httproute.yaml
+    - authentik-secret-key.yaml
