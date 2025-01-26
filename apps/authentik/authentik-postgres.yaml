@@ -10,3 +10,4 @@ spec:
             database: authentik
     storage:
         size: 8Gi
+        storageClass: host-zfs-postgres

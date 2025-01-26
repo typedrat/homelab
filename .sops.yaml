@@ -1,5 +1,5 @@
 creation_rules:
-    - path_regex: (clusters|infrastructure)/.*\.yaml
+    - path_regex: (apps|clusters|infrastructure)/.*\.yaml
       encrypted_regex: ^(data|stringData)$
       age: >-
           age1psufqpzvwl74c4uqmt7y9f3akavrdzkevgfrg3d0rcw2nj7fwe7sctsjpe,
