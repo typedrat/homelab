@@ -23,6 +23,7 @@ spec:
     dependsOn:
         - name: cnpg
         - name: dragonfly-operator
+        - name: crossplane-terraform
     sourceRef:
         kind: GitRepository
         name: flux-system
