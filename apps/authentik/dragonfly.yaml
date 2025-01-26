@@ -5,10 +5,13 @@ metadata:
     namespace: authentik
 spec:
     replicas: 1
-    persistentVolumeClaimSpec:
-        accessModes:
-            - ReadWriteOnce
-        resources:
-            requests:
-                storage: 2Gi
-        storageClassName: host-zfs-standard
+    args: ["--dbfilename=authentik-snapshot"]
+    snapshot:
+        cron: "*/5 * * * *"
+        persistentVolumeClaimSpec:
+            accessModes:
+                - ReadWriteOnce
+            resources:
+                requests:
+                    storage: 2Gi
+            storageClassName: host-zfs-standard
