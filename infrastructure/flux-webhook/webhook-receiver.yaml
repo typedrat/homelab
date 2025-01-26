@@ -9,7 +9,7 @@ spec:
           namespace: istio-ingress
           sectionName: wildcard-https
     hostnames:
-        - flux-webhook.example.com
+        - flux-webhook.ratsinthe.cloud
     rules:
         - matches:
               - path:
