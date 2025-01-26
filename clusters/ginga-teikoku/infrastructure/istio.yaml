@@ -7,8 +7,6 @@ spec:
     interval: 10m0s
     path: ./infrastructure/istio
     prune: true
-    dependsOn:
-        - name: cluster-policies
     sourceRef:
         kind: GitRepository
         name: flux-system
@@ -22,8 +20,6 @@ spec:
     interval: 10m0s
     path: ./infrastructure/istio-ingress
     prune: true
-    dependsOn:
-        - name: cluster-policies
     sourceRef:
         kind: GitRepository
         name: flux-system
