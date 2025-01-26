@@ -18,7 +18,7 @@ spec:
             error_reporting:
                 enabled: true
             postgresql:
-                host: authentik-postgres
+                host: file:///postgres-creds/host
                 user: file:///postgres-creds/username
                 password: file:///postgres-creds/password
             redis:
