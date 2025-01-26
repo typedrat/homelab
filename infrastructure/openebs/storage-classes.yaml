@@ -1,0 +1,37 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+    name: host-zfs-standard
+    namespace: openebs
+provisioner: zfs.csi.openebs.io
+allowVolumeExpansion: true
+parameters:
+    recordsize: "128k"
+    compression: "lz4"
+    dedup: "off"
+    fstype: "zfs"
+    poolname: "zfspv-pool"
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+    name: host-zfs-files
+    namespace: openebs
+provisioner: zfs.csi.openebs.io
+allowVolumeExpansion: true
+reclaimPolicy: Retain
+parameters:
+    recordsize: "1M"
+    compression: "lz4"
+    dedup: "off"
+    fstype: "zfs"
+    shared: "yes"
+    poolname: "zfspv-pool"
+---
+kind: VolumeSnapshotClass
+apiVersion: snapshot.storage.k8s.io/v1
+metadata:
+    name: host-zfs-snapshot
+    namespace: openebs
+driver: zfs.csi.openebs.io
+deletionPolicy: Delete
