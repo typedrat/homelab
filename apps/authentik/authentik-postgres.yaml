@@ -9,5 +9,5 @@ spec:
         initdb:
             database: authentik
     storage:
-        size: 1Gi
-        storageClassName: host-zfs-postgres
+        size: 8Gi
+        storageClass: host-zfs-postgres
