@@ -4,6 +4,7 @@ resources:
     - cert-manager.yaml
     - cilium.yaml
     - cnpg.yaml
+    - crossplane.yaml
     - dragonfly-operator.yaml
     - istio.yaml
     - openebs.yaml
