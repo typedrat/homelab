@@ -4,13 +4,7 @@ resources:
     - namespace.yaml
     - repository.yaml
     - release.yaml
+    - authentik-env.yaml
     - authentik-postgres.yaml
     - dragonfly.yaml
     - httproute.yaml
-secretGenerator:
-    - name: authentik-values
-      namespace: authentik
-      files:
-          - values.yaml
-configurations:
-    - kustomizeconfig.yaml

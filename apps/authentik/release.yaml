@@ -33,6 +33,6 @@ spec:
                 - name: postgres-creds
                   mountPath: /postgres-creds
                   readOnly: true
-    valuesFrom:
-        - kind: Secret
-          name: authentik-values
+            envFrom:
+                - secretRef:
+                      name: authentik-env
