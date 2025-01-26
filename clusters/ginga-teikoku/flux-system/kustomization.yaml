@@ -10,4 +10,5 @@ resources:
     - istio-ingress.yaml
     - cert-manager.yaml
     - cluster-issuers.yaml
+    - openebs.yaml
     - apps.yaml
