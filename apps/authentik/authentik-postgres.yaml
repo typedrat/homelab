@@ -1,0 +1,13 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+    name: authentik-postgres
+    namespace: authentik
+spec:
+    instances: 1
+    bootstrap:
+        initdb:
+            database: authentik
+    storage:
+        size: 1Gi
+        storageClassName: host-zfs-postgres
