@@ -15,7 +15,6 @@ spec:
             version: ">=2024.12.2 <2024.13"
     values:
         authentik:
-            secretKey: file:///secret-key/secret-key
             error_reporting:
                 enabled: true
             postgresql:
@@ -30,13 +29,10 @@ spec:
                 - name: postgres-creds
                   secret:
                       secretName: authentik-postgres-app
-                - name: secret-key
-                  secret:
-                      secretName: authentik-secret-key
             volumeMounts:
                 - name: postgres-creds
                   mountPath: /postgres-creds
                   readOnly: true
-                - name: secret-key
-                  mountPath: /secret-key
-                  readOnly: true
+    valuesFrom:
+        - kind: Secret
+          name: authentik-values

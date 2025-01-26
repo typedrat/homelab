@@ -8,3 +8,9 @@ resources:
     - dragonfly.yaml
     - httproute.yaml
     - authentik-secret-key.yaml
+secretGenerator:
+    - name: authentik-values
+      files:
+          - values.yaml
+configurations:
+    - kustomizeconfig.yaml
