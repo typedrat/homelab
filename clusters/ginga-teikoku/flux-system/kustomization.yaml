@@ -11,4 +11,5 @@ resources:
     - cert-manager.yaml
     - cluster-issuers.yaml
     - openebs.yaml
+    - cnpg.yaml
     - apps.yaml
