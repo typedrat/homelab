@@ -5,7 +5,7 @@ metadata:
     namespace: flux-system
 spec:
     parentRefs:
-        - kind: Gateway
+        - name: gateway
           namespace: istio-ingress
           sectionName: wildcard-https
     hostnames:
