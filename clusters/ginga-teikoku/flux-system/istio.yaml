@@ -12,3 +12,18 @@ spec:
     sourceRef:
         kind: GitRepository
         name: flux-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+    name: istio-ingress
+    namespace: flux-system
+spec:
+    interval: 10m0s
+    path: ./infrastructure/istio-ingress
+    prune: true
+    dependsOn:
+        - name: cluster-policies
+    sourceRef:
+        kind: GitRepository
+        name: flux-system
