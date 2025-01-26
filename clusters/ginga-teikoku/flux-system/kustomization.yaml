@@ -12,4 +12,5 @@ resources:
     - cluster-issuers.yaml
     - openebs.yaml
     - cnpg.yaml
+    - dragonfly-operator.yaml
     - apps.yaml
