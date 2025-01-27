@@ -46,7 +46,6 @@ spec:
                         value: "/config"
                   ports:
                       - containerPort: 42069
-                        hostPort: 42069
                         name: rtorrent
                   volumeMounts:
                       - name: rtorrent-sock
