@@ -4,6 +4,6 @@ namespace: istio-ingress
 resources:
     - namespace.yaml
     # Gateway API CRDs:
-    - https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.2.0/standard-install.yaml
+    - https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.2.0/experimental-install.yaml
     - gateway.yaml
     - redirect-to-https.yaml

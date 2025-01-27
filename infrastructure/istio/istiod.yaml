@@ -19,3 +19,5 @@ spec:
             version: ">=1.24.2 <1.25"
     values:
         profile: ambient
+        env:
+            PILOT_ENABLE_ALPHA_GATEWAY_API: "true"
