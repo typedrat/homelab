@@ -21,3 +21,18 @@ spec:
         profile: ambient
         env:
             PILOT_ENABLE_ALPHA_GATEWAY_API: "true"
+        global:
+            meshConfig:
+                extensionProviders:
+                    - name: "authentik"
+                      envoyExtAuthzHttp:
+                          service: "authentik-server.authentik.svc.cluster.local"
+                          port: "80"
+                          pathPrefix: "/outpost.goauthentik.io/auth/envoy"
+                          headersToDownstreamOnAllow:
+                              - cookie
+                          headersToUpstreamOnAllow:
+                              - set-cookie
+                              - x-authentik-*
+                          includeRequestHeadersInCheck:
+                              - cookie
