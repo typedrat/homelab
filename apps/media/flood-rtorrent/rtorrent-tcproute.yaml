@@ -9,8 +9,6 @@ spec:
           namespace: istio-ingress
           sectionName: bittorrent
     rules:
-        - matches:
-              - port: 42069
-          forwardTo:
+        - backendRefs:
               - name: rtorrent
                 port: 42069
