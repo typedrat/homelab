@@ -15,6 +15,14 @@ spec:
               - path:
                     type: PathPrefix
                     value: "/"
+          filters:
+              - type: RequestHeaderModifier
+                requestHeaderModifier:
+                    add:
+                        - name: X-Forwarded-Proto
+                          value: https
+                        - name: Host
+                          value: auth.ratsinthe.cloud
           backendRefs:
               - name: authentik-server
                 port: 80
