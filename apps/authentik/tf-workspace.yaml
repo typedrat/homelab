@@ -12,7 +12,7 @@ spec:
               secretKeyRef:
                   name: authentik-discord
                   namespace: authentik
-                  key: client-key
+                  key: client-id
             - name: TF_VAR_discordSecret
               secretKeyRef:
                   name: authentik-discord
