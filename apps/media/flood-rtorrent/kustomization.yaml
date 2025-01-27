@@ -2,6 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
     - deployment.yaml
+    - flood-authentik-policy.yaml
     - flood-httproute.yaml
     - flood-secret.yaml
     - flood-state.yaml
