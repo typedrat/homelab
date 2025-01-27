@@ -24,7 +24,7 @@ spec:
                   securityContext:
                       runAsUser: 911
                       runAsGroup: 911
-                      fsGroup: 420
+                      fsGroup: 911
                   args:
                       - "--auth=none"
                       - "--allowedpath=/data"
@@ -54,7 +54,7 @@ spec:
                   securityContext:
                       runAsUser: 911
                       runAsGroup: 911
-                      fsGroup: 420
+                      fsGroup: 911
                   env:
                       - name: HOME
                         value: "/config"
