@@ -103,3 +103,34 @@ spec:
                 - name: media-volume
                   persistentVolumeClaim:
                       claimName: media-volume
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: flood-service
+    namespace: media
+spec:
+    selector:
+        app: flood-rtorrent
+    ports:
+        - protocol: TCP
+          port: 3000
+          targetPort: 3000
+          name: http
+    type: ClusterIP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: rtorrent-service
+    namespace: media
+spec:
+    selector:
+        app: flood-rtorrent
+    ports:
+        - protocol: TCP
+          port: 42069
+          targetPort: 42069
+          name: rtorrent
+    type: ClusterIP

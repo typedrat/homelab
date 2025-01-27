@@ -10,5 +10,5 @@ spec:
           sectionName: bittorrent
     rules:
         - backendRefs:
-              - name: rtorrent
+              - name: rtorrent-service
                 port: 42069
