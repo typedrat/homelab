@@ -3,4 +3,5 @@ kind: Kustomization
 resources:
     - authentik.yaml
     - media/shared.yaml
+    - media/flood-rtorrent.yaml
     - podinfo.yaml
