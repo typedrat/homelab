@@ -71,6 +71,24 @@ spec:
                         subPath: .rtorrent.rc
                       - name: media-volume
                         mountPath: /data
+            initContainers:
+                - name: fix-permissions
+                  image: busybox
+                  command:
+                      - "sh"
+                      - "-c"
+                      - |
+                          chmod -R 775 /data /flood-state /rtorrent-sock /rtorrent-state &&
+                          chown -R 911:911 /data /flood-state /rtorrent-sock /rtorrent-state
+                  volumeMounts:
+                      - name: media-volume
+                        mountPath: /data
+                      - name: flood-state
+                        mountPath: /flood-state
+                      - name: rtorrent-sock
+                        mountPath: /rtorrent-sock
+                      - name: rtorrent-state
+                        mountPath: /rtorrent-state
             volumes:
                 - name: flood-state
                   persistentVolumeClaim:
