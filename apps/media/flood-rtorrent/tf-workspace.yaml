@@ -27,5 +27,6 @@ spec:
             resource "authentik_application" "name" {
                 name              = "Flood"
                 slug              = "flood"
+                meta_icon         = "https://raw.githubusercontent.com/jesec/flood/master/flood.svg"
                 protocol_provider = authentik_provider_proxy.name.id
             }
