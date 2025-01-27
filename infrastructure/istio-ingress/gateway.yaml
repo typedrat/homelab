@@ -38,3 +38,11 @@ spec:
               mode: Terminate
               certificateRefs:
                   - name: ratsinthe-cloud-tls
+        - name: bittorrent
+          protocol: TCP
+          port: 42069
+          allowedRoutes:
+              kinds:
+                  - kind: TCPRoute
+              namespaces:
+                  from: All

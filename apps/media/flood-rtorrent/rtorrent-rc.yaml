@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: rtorrent-rc
+    namespace: media
+data:
+    .rtorrent.rc: |
+        import = /etc/rtorrent/rtorrent.rc
+
+        network.port_range.set = 42069-42069
+        network.scgi.open_local = /sock/rtorrent.sock
+        directory.default.set = /data
+        system.daemon.set = true

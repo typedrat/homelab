@@ -1,0 +1,20 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+    name: flood-httproute
+    namespace: media
+spec:
+    parentRefs:
+        - name: gateway
+          namespace: istio-ingress
+          sectionName: wildcard-https
+    hostnames:
+        - flood.ratsinthe.cloud
+    rules:
+        - matches:
+              - path:
+                    type: PathPrefix
+                    value: "/"
+          backendRefs:
+              - name: flood
+                port: 3000
