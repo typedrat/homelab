@@ -1,0 +1,29 @@
+variable "discordKey" {
+  description = "The Discord OAuth2 client key for the application used by Authentik"
+  type        = string
+}
+
+variable "discordSecret" {
+  description = "The Discord OAuth2 client secret for the application used by Authentik"
+  type        = string
+}
+
+variable "guildId" {
+  description = "The Discord ID for the guild used by Authentik"
+  type        = string
+}
+
+variable "guildName" {
+  description = "The human-readable name of the guild used by Authentik"
+  type        = string
+}
+
+variable "userRoleId" {
+  description = "The Discord ID for the role representing ordinary users"
+  type        = string
+}
+
+variable "sysopRoleId" {
+  description = "The Discord ID for the role representing sysops"
+  type        = string
+}
