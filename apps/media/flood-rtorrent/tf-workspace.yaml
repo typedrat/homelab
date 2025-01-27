@@ -1,0 +1,26 @@
+apiVersion: tf.upbound.io/v1beta1
+kind: Workspace
+metadata:
+    name: flood-rtorrent
+spec:
+    providerConfigRef: authentik
+    forProvider:
+        source: Inline
+        module: |
+            data "authentik_flow" "default-authorization-flow" {
+                slug = "default-provider-authorization-implicit-consent"
+            }
+
+
+            resource "authentik_provider_proxy" "name" {
+                name               = "Flood"
+                external_host      = "https://flood.ratsinthe.cloud"
+                mode               = "forward_single"
+                authorization_flow = data.authentik_flow.default-authorization-flow.id
+            }
+
+            resource "authentik_application" "name" {
+                name              = "Flood"
+                slug              = "flood"
+                protocol_provider = authentik_provider_proxy.name.id
+            }

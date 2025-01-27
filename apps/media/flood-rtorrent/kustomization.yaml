@@ -8,3 +8,4 @@ resources:
     - rtorrent-rc.yaml
     - rtorrent-state.yaml
     - rtorrent-tcproute.yaml
+    - tf-workspace.yaml
