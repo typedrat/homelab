@@ -16,7 +16,7 @@ resource "authentik_policy_binding" "discord-enrollment-policy-binding" {
   order  = 0
 }
 
-resource "authentik_flow_stage_binding" "password_setup_binding" {
+resource "authentik_flow_stage_binding" "enrollment_flow_set_password" {
   target = data.authentik_flow.default-source-enrollment.id
   stage  = authentik_stage_prompt.password_setup.id
   order  = 10
