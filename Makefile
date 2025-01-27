@@ -7,8 +7,6 @@ ISERLOHN_PORT ?= 6443
 
 .PHONY: iserlohn-apply bootstrap cilium flux
 
-default:
-
 $(ISERLOHN_CONFIG): $(CONFIG_PATCHES) $(ISERLOHN_PATCH) $(SECRETS_YAML)
 	talosctl gen config \
 		--output $(OUTPUT) \
@@ -66,3 +64,12 @@ flux:
 		--branch=master                                                  \
 		--path=clusters/ginga-teikoku                                    \
 		--personal
+
+.DEFAULT_GOAL := help
+help:
+	@echo "You must specify a target. Available targets are:"
+	@echo "    iserlohn  - Build the node configuration file for 'iserlohn'"
+	@echo "    iserlohn-apply - Apply the node configuration to 'iserlohn'"
+	@echo "    bootstrap      - Bootstrap the Talos cluster"
+	@echo "    cilium         - Install the Cilium CNI"
+	@echo "    flux           - Install the Flux GitOps tool"
