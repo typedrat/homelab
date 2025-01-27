@@ -1,5 +1,5 @@
 from authentik.core.models import Group # type: ignore
-GUILD_API_URL = "https://discord.com/api/users/@me/guilds/${var.guildId}/member"
+GUILD_API_URL = "https://discord.com/api/users/@me/guilds/${guildId}/member"
 
 # Ensure flow is only run during OAuth logins via Discord
 if context["source"].provider_type != "discord":
@@ -27,7 +27,7 @@ if guild_member_request.status_code == 429:
 # Ensure user is a member of the guild
 if "code" in guild_member_info:
     if guild_member_info["code"] == 10004:
-        ak_message("User is not a member of the guild '${var.guildName}'")
+        ak_message("User is not a member of the guild '${guildName}'")
     else:
         ak_create_event("discord_error", source=context["source"], code=guild_member_info["code"])
         ak_message("Discord API error, try again later.")
