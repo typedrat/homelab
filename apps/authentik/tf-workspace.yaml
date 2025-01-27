@@ -28,7 +28,7 @@ spec:
             }
 
             resource "authentik_source_oauth" "discord" {
-                name                = "discord"
+                name                = "Discord"
                 slug                = "discord"
                 authentication_flow = data.authentik_flow.default-source-authentication.id
                 enrollment_flow     = data.authentik_flow.default-source-enrollment.id
