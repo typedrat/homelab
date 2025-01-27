@@ -30,6 +30,8 @@ spec:
                       - "--secret=$(SECRET_VALUE)"
                       - "--rtsocket=/sock/rtorrent.sock"
                   env:
+                      - name: HOME
+                        value: "/config"
                       - name: SECRET_VALUE
                         valueFrom:
                             secretKeyRef:
@@ -41,6 +43,8 @@ spec:
                   volumeMounts:
                       - name: rtorrent-sock
                         mountPath: /sock
+                      - name: flood-state
+                        mountPath: /config
                       - name: media-volume
                         mountPath: /data
                 - image: jesec/rtorrent:0.9.8-r16
@@ -49,6 +53,9 @@ spec:
                       runAsUser: 911
                       runAsGroup: 911
                       fsGroup: 420
+                  env:
+                      - name: HOME
+                        value: "/config"
                   ports:
                       - containerPort: 42069
                         name: rtorrent
@@ -63,6 +70,9 @@ spec:
                       - name: media-volume
                         mountPath: /data
             volumes:
+                - name: flood-state
+                  persistentVolumeClaim:
+                      claimName: flood-state
                 - name: rtorrent-sock
                   emptyDir:
                       medium: Memory
