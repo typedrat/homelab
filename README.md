@@ -20,3 +20,7 @@ $ make flux
 ```
 
 I currently can't figure out a good way to make it more automated than that without requiring a lot more work, since many of the commands involved do not provide an easy way to wait for their action to complete after they dispatch work to the cluster, so for now it is fundamentally a hands-on process where the user must watch the output from Talos' dashboard and Kubernetes itself to know when to continue.
+
+## Terraform
+
+Authentik does not have direct support for configuration via Kubernetes, so I am using its Terraform provider via [Crossplane](https://crossplane.io). For ease of reference, the source code for the Terraform modules that I am using does not reside in this branch, but in the [`terraform`](https://github.com/typedrat/homelab/tree/terraform) branch.
