@@ -20,7 +20,6 @@ spec:
             containers:
                 - image: jesec/flood:4.9.0
                   name: flood
-                  command: ["sh", "-c", "sleep 84000s"]
                   securityContext:
                       runAsUser: 911
                       runAsGroup: 911
@@ -50,7 +49,6 @@ spec:
                         mountPath: /data
                 - image: jesec/rtorrent:0.9.8-r16
                   name: rtorrent
-                  command: ["sh", "-c", "sleep 84000s"]
                   securityContext:
                       runAsUser: 911
                       runAsGroup: 911
