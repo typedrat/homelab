@@ -4,6 +4,7 @@ resources:
     - deployment.yaml
     - flood-httproute.yaml
     - flood-secret.yaml
+    - flood-state.yaml
     - rtorrent-rc.yaml
     - rtorrent-state.yaml
     - rtorrent-tcproute.yaml
