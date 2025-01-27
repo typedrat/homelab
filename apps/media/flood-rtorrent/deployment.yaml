@@ -20,6 +20,10 @@ spec:
             containers:
                 - image: jesec/flood:4.9.0
                   name: flood
+                  securityContext:
+                      runAsUser: 911
+                      runAsGroup: 911
+                      fsGroup: 420
                   args:
                       - "--auth=none"
                       - "--allowedpath=/data"
@@ -41,9 +45,10 @@ spec:
                         mountPath: /data
                 - image: jesec/rtorrent:0.9.8-r16
                   name: rtorrent
-                  env:
-                      - name: HOME
-                        value: "/config"
+                  securityContext:
+                      runAsUser: 911
+                      runAsGroup: 911
+                      fsGroup: 420
                   ports:
                       - containerPort: 42069
                         name: rtorrent
