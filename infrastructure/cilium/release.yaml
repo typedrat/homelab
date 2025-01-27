@@ -39,10 +39,8 @@ spec:
                 enabled: true
                 rollOutPods: true
             peerService:
-                clusterDomain: local.kube.thisratis.gay
-        etcd:
-            clusterDomain: local.kube.thisratis.gay
-        kubeProxyReplacement: true
+                clusterDomain: cluster.local        etcd:
+            clusterDomain: cluster.local        kubeProxyReplacement: true
         securityContext:
             capabilities:
                 ciliumAgent:
