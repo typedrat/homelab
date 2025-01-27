@@ -9,6 +9,7 @@ spec:
     prune: true
     dependsOn:
         - name: istio-ingress
+        - name: authentik
     sourceRef:
         kind: GitRepository
         name: flux-system
