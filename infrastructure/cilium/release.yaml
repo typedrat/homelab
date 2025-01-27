@@ -38,9 +38,7 @@ spec:
             ui:
                 enabled: true
                 rollOutPods: true
-            peerService:
-                clusterDomain: cluster.local        etcd:
-            clusterDomain: cluster.local        kubeProxyReplacement: true
+        kubeProxyReplacement: true
         securityContext:
             capabilities:
                 ciliumAgent:
