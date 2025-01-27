@@ -29,17 +29,3 @@ spec:
                 slug              = "flood"
                 protocol_provider = authentik_provider_proxy.name.id
             }
-
-             resource "authentik_service_connection_kubernetes" "local" {
-                name  = "Local Kubernetes Cluster"
-                local = true
-            }
-
-            resource "authentik_outpost" "proxy_outpost" {
-                name               = "Proxy Outpost"
-                protocol_providers = [ authentik_provider_proxy.name.id ]
-                config             = jsonencode({
-                authentik_host     = format("https://auth.ratsinthe.cloud")
-                })
-                service_connection = authentik_service_connection_kubernetes.local.id
-            }
