@@ -1,0 +1,50 @@
+apiVersion: tf.upbound.io/v1beta1
+kind: Workspace
+metadata:
+    name: authentik
+spec:
+    providerConfigRef:
+        name: authentik
+    forProvider:
+        source: Inline
+        env:
+            - name: TF_VAR_discordKey
+              secretKeyRef:
+                  name: authentik-discord
+                  namespace: authentik
+                  key: client-key
+            - name: TF_VAR_discordSecret
+              secretKeyRef:
+                  name: authentik-discord
+                  namespace: authentik
+                  key: client-secret
+        module: |
+            data "authentik_flow" "default-source-authentication" {
+                slug = "default-source-authentication"
+            }
+
+            data "authentik_flow" "default-source-enrollment" {
+                slug = "default-source-enrollment"
+            }
+
+            resource "authentik_source_oauth" "discord" {
+                name                = "discord"
+                slug                = "discord"
+                authentication_flow = data.authentik_flow.default-source-authentication.id
+                enrollment_flow     = data.authentik_flow.default-source-enrollment.id
+
+                provider_type   = "discord"
+                consumer_key    = var.discordKey
+                consumer_secret = var.discordSecret
+                additional_scopes = "guilds guilds.members.read"
+            }
+
+            variable "discordKey" {
+                description = "The Discord OAuth2 client key for the application used by Authentik"
+                type        = string
+            }
+
+            variable "discordSecret" {
+                description = "The Discord OAuth2 client secret for the application used by Authentik"
+                type        = string
+            }
