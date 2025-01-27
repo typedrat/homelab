@@ -7,6 +7,8 @@ ISERLOHN_PORT ?= 6443
 
 .PHONY: iserlohn-apply bootstrap cilium flux
 
+default:
+
 $(ISERLOHN_CONFIG): $(CONFIG_PATCHES) $(ISERLOHN_PATCH) $(SECRETS_YAML)
 	talosctl gen config \
 		--output $(OUTPUT) \
