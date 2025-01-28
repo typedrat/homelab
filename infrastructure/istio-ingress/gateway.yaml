@@ -7,6 +7,7 @@ metadata:
         cert-manager.io/cluster-issuer: letsencrypt-production
         cert-manager.io/private-key-size: 4096
         cert-manager.io/private-key-rotation-policy: Always
+        external-dns.alpha.kubernetes.io/target: iserlohn.thisratis.gay
 spec:
     gatewayClassName: istio
     listeners:
