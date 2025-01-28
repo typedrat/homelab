@@ -1,3 +1,12 @@
+terraform {
+  required_providers {
+    authentik = {
+      source  = "goauthentik/authentik"
+      version = "2024.12.0"
+    }
+  }
+}
+
 resource "authentik_source_oauth" "discord" {
   name                = "Discord"
   slug                = "discord"
