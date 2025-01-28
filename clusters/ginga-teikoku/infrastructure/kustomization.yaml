@@ -6,6 +6,7 @@ resources:
     - cnpg.yaml
     - crossplane.yaml
     - dragonfly-operator.yaml
+    - external-dns.yaml
     - istio.yaml
     - openebs.yaml
     - pull-secrets.yaml
