@@ -7,5 +7,5 @@ spec:
         name: authentik
     forProvider:
         source: Remote
-        # https://github.com/typedrat/homelab/tree/00e872c/flood-rtorrent
-        module: "github.com/typedrat/homelab//flood-rtorrent?ref=00e872c"
+        # https://github.com/typedrat/homelab/tree/0b8fbd3/flood-rtorrent
+        module: "github.com/typedrat/homelab//flood-rtorrent?ref=0b8fbd3"
