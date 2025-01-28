@@ -16,8 +16,14 @@ spec:
         - matches:
               - path:
                     type: PathPrefix
-                    value: "/"
+                    value: /if/flow/default-authentication-flow/
           filters:
+              - type: RequestRedirect
+                requestRedirect:
+                    path:
+                        type: ReplacePrefixMatch
+                        replacePrefixMatch: /source/oauth/login/discord/
+        - filters:
               - type: RequestHeaderModifier
                 requestHeaderModifier:
                     add:
