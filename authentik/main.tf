@@ -1,8 +1,8 @@
 resource "authentik_source_oauth" "discord" {
   name                = "Discord"
   slug                = "discord"
-  authentication_flow = data.authentik_flow.default-source-authentication.id
-  enrollment_flow     = data.authentik_flow.default-source-enrollment.id
+  authentication_flow = authentik_flow.discord_auth.id
+  enrollment_flow     = authentik_flow.discord_enrollment.id
 
   provider_type     = "discord"
   consumer_key      = var.discordKey

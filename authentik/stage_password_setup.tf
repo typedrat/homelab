@@ -1,5 +1,5 @@
 resource "authentik_stage_prompt" "password_setup" {
-  name = "Password Setup Stage"
+  name = "discord_password_setup"
   fields = [
     authentik_stage_prompt_field.password.id,
     authentik_stage_prompt_field.password_repeat.id,
@@ -10,7 +10,7 @@ resource "authentik_stage_prompt" "password_setup" {
 }
 
 resource "authentik_stage_prompt_field" "password" {
-  name        = "password_setup_password"
+  name        = "discord_password_setup_password"
   field_key   = "password"
   label       = "Password"
   type        = "password"
@@ -19,7 +19,7 @@ resource "authentik_stage_prompt_field" "password" {
 }
 
 resource "authentik_stage_prompt_field" "password_repeat" {
-  name        = "password_setup_password_repeat"
+  name        = "discord_password_setup_password_repeat"
   field_key   = "password_repeat"
   label       = "Confirm Password"
   type        = "password"
