@@ -12,7 +12,7 @@ spec:
               key: AUTHENTIK_BOOTSTRAP_TOKEN
     configuration: |
         provider "authentik" {
-            url      = "https://auth.ratsinthe.cloud"
+            url      = "https://auth.thisratis.gay"
             token    = file("${path.module}/authentik-credentials")
         }
 

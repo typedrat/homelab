@@ -20,25 +20,25 @@ spec:
         - name: root-https
           protocol: HTTPS
           port: 443
-          hostname: ratsinthe.cloud
+          hostname: thisratis.gay
           allowedRoutes:
               namespaces:
                   from: All
           tls:
               mode: Terminate
               certificateRefs:
-                  - name: ratsinthe-cloud-tls
+                  - name: thisratis-gay-tls
         - name: wildcard-https
           protocol: HTTPS
           port: 443
-          hostname: "*.ratsinthe.cloud"
+          hostname: "*.thisratis.gay"
           allowedRoutes:
               namespaces:
                   from: All
           tls:
               mode: Terminate
               certificateRefs:
-                  - name: ratsinthe-cloud-tls
+                  - name: thisratis-gay-tls
         - name: bittorrent
           protocol: TCP
           port: 42069

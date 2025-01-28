@@ -11,7 +11,7 @@ spec:
           namespace: istio-ingress
           sectionName: wildcard-https
     hostnames:
-        - auth.ratsinthe.cloud
+        - auth.thisratis.gay
     rules:
         - matches:
               - path:
@@ -30,7 +30,7 @@ spec:
                         - name: X-Forwarded-Proto
                           value: https
                         - name: Host
-                          value: auth.ratsinthe.cloud
+                          value: auth.thisratis.gay
           backendRefs:
               - name: authentik-server
                 port: 80

@@ -11,7 +11,7 @@ spec:
           namespace: istio-ingress
           sectionName: wildcard-https
     hostnames:
-        - flux-webhook.ratsinthe.cloud
+        - flux-webhook.thisratis.gay
     rules:
         - matches:
               - path:
