@@ -33,10 +33,6 @@ if "code" in guild_member_info:
         ak_message("Discord API error, try again later.")
     return False # type: ignore
 
-# Ugly hack to make sure that I'm an internal user!
-if request.user.username == "typedrat" and request.user.email == "alexis@typedr.at":
-    request.user.type = 'internal'
-
 # Get all discord_groups
 discord_groups = Group.objects.filter(attributes__discord_role_id__isnull=False)
 
