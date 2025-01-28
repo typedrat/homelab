@@ -7,7 +7,7 @@ resource "authentik_flow" "discord_auth" {
 }
 
 resource "authentik_policy_binding" "discord_auth_bind_sso_only" {
-  target = authentik_flow.discord_auth.id
+  target = authentik_flow.discord_auth.uuid
   policy = authentik_policy_expression.sso_only.id
   order  = 0
 }
@@ -17,7 +17,7 @@ resource "authentik_stage_user_login" "discord_auth_login" {
 }
 
 resource "authentik_flow_stage_binding" "discord_auth_bind_login" {
-  target = authentik_flow.discord_auth.id
+  target = authentik_flow.discord_auth.uuid
   stage  = authentik_stage_user_login.discord_auth_login.id
   order  = 0
 }

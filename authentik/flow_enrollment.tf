@@ -7,13 +7,13 @@ resource "authentik_flow" "discord_enrollment" {
 
 
 resource "authentik_policy_binding" "discord_enrollment_bind_sso_only" {
-  target = authentik_flow.discord_enrollment.id
+  target = authentik_flow.discord_enrollment.uuid
   policy = authentik_policy_expression.sso_only.id
   order  = 0
 }
 
 resource "authentik_flow_stage_binding" "discord_enrollment_bind_password_setup" {
-  target = authentik_flow.discord_enrollment.id
+  target = authentik_flow.discord_enrollment.uuid
   stage  = authentik_stage_prompt.password_setup.id
   order  = 0
 }
@@ -38,17 +38,17 @@ resource "authentik_stage_user_write" "discord_enrollment_write" {
 }
 
 resource "authentik_flow_stage_binding" "discord_enrollment_bind_write" {
-  target = authentik_flow.discord_enrollment.id
+  target = authentik_flow.discord_enrollment.uuid
   stage  = authentik_stage_user_write.discord_enrollment_write.id
   order  = 5
 }
 
 resource "authentik_stage_user_login" "discord_enrollment_login" {
-  name = "discord_auth_login"
+  name = "discord_enrollment_login"
 }
 
 resource "authentik_flow_stage_binding" "discord_enrollment_bind_login" {
-  target = authentik_flow.discord_enrollment.id
+  target = authentik_flow.discord_enrollment.uuid
   stage  = authentik_stage_user_login.discord_enrollment_login.id
   order  = 10
 }
