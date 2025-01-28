@@ -31,7 +31,7 @@ resource "authentik_policy_expression" "discord_auth" {
 }
 
 resource "authentik_policy_binding" "discord_auth_bind_policy" {
-  target = authentik_stage_user_login.discord_auth_login.id
+  target = authentik_flow_stage_binding.discord_auth_bind_login.id
   policy = authentik_policy_expression.discord_auth.id
   order  = 0
 }

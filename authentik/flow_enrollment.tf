@@ -27,7 +27,7 @@ resource "authentik_policy_expression" "discord_enrollment" {
 }
 
 resource "authentik_policy_binding" "policy_discord_enrollment_binding" {
-  target = authentik_stage_prompt.password_setup.id
+  target = authentik_flow_stage_binding.discord_enrollment_bind_password_setup.id
   policy = authentik_policy_expression.discord_enrollment.id
   order  = 0
 }
