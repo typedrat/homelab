@@ -3,7 +3,6 @@ resource "authentik_group" "discord-user" {
   attributes = jsonencode({
     discord_role_id = var.userRoleId
   })
-  users = []
 }
 
 resource "authentik_group" "discord-sysop" {
@@ -11,5 +10,5 @@ resource "authentik_group" "discord-sysop" {
   attributes = jsonencode({
     discord_role_id = var.sysopRoleId
   })
-  users = []
+  is_superuser = true
 }
