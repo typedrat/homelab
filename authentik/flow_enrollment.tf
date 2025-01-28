@@ -33,8 +33,9 @@ resource "authentik_policy_binding" "policy_discord_enrollment_binding" {
 }
 
 resource "authentik_stage_user_write" "discord_enrollment_write" {
-  name               = "discord_enrollment_write"
-  user_creation_mode = "always_create"
+  name                     = "discord_enrollment_write"
+  user_creation_mode       = "always_create"
+  create_users_as_inactive = false
 }
 
 resource "authentik_flow_stage_binding" "discord_enrollment_bind_write" {
