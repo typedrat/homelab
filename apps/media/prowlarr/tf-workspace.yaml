@@ -1,0 +1,11 @@
+apiVersion: tf.upbound.io/v1beta1
+kind: Workspace
+metadata:
+    name: prowlarr
+spec:
+    providerConfigRef:
+        name: authentik
+    forProvider:
+        source: Remote
+        # https://github.com/typedrat/homelab/tree/12719e5d/prowlarr
+        module: "github.com/typedrat/homelab//prowlarr?ref=12719e5d"
