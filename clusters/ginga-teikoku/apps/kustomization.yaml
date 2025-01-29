@@ -6,3 +6,4 @@ resources:
     - media/flood-rtorrent.yaml
     - media/radarr.yaml
     - media/sonarr.yaml
+    - media/jellyfin.yaml

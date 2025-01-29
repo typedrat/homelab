@@ -1,0 +1,28 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+    name: jellyfin
+    namespace: media
+spec:
+    interval: 1m0s
+    chart:
+        spec:
+            chart: jellyfin
+            reconcileStrategy: ChartVersion
+            sourceRef:
+                kind: HelmRepository
+                name: jellyfin
+            version: ">=2.1.0 <2.2"
+    values:
+        persistence:
+            config:
+                storageClass: host-zfs-standard
+            media:
+                enabled: false
+        volumes:
+            - name: data
+              persistentVolumeClaim:
+                  claimName: media-volume
+        volumeMounts:
+            - name: data
+              mountPath: /data
