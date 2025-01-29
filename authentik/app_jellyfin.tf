@@ -18,7 +18,7 @@ resource "authentik_provider_oauth2" "jellyfin" {
       url           = "https://jellyfin.thisratis.gay/sso/OID/redirect/authentik"
     }
   ]
-  property_mappings = data.authentik_property_mapping_provider_scope.oauth_scopes
+  property_mappings = data.authentik_property_mapping_provider_scope.oauth_scopes.ids
 }
 
 data "authentik_property_mapping_provider_scope" "oauth_scopes" {
