@@ -14,5 +14,5 @@ spec:
         - jellyfin.thisratis.gay
     rules:
         - backendRefs:
-              - name: radarr
+              - name: jellyfin
                 port: 8096
