@@ -2,3 +2,4 @@
 .decrypted~*
 /talos/talosconfig
 /talos/rendered
+.vscode/*
