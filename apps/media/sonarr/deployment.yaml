@@ -32,9 +32,6 @@ spec:
                 - name: sonarr
                   image: lscr.io/linuxserver/sonarr:latest
                   securityContext:
-                      runAsUser: 911
-                      runAsGroup: 911
-                      fsGroup: 911
                       readOnlyRootFilesystem: true
                   env:
                       - name: TZ
@@ -49,6 +46,10 @@ spec:
                         mountPath: /config
                       - name: data
                         mountPath: /data
+            securityContext:
+                runAsUser: 911
+                runAsGroup: 911
+                fsGroup: 911
             volumes:
                 - name: run
                   emptyDir:
