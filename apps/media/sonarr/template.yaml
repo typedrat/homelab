@@ -28,5 +28,5 @@ data:
         if [ ! -f /config/config.xml ]; then
             cp /template/config.xml /config/config.xml
         fi
-        dasel put -f /config/config.xml -t string -p "Config.AuthenticationMethod" "External"
-        dasel put -f /config/config.xml -t string -p "Config.ApiKey" "${API_KEY}"
+        dasel put -f /config/config.xml -t string -v "External" "Config.AuthenticationMethod"
+        dasel put -f /config/config.xml -t string -v "${API_KEY}" "Config.ApiKey"
