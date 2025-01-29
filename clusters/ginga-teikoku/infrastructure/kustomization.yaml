@@ -8,5 +8,6 @@ resources:
     - dragonfly-operator.yaml
     - external-dns.yaml
     - istio.yaml
+    - nvidia.yaml
     - openebs.yaml
     - pull-secrets.yaml
