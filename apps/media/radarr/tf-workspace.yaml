@@ -1,0 +1,11 @@
+apiVersion: tf.upbound.io/v1beta1
+kind: Workspace
+metadata:
+    name: radarr
+spec:
+    providerConfigRef:
+        name: authentik
+    forProvider:
+        source: Remote
+        # https://github.com/typedrat/homelab/tree/3c38b15/radarr
+        module: "github.com/typedrat/homelab//radarr?ref=3c38b15"
