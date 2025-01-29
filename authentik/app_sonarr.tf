@@ -1,11 +1,3 @@
-data "authentik_flow" "default-authorization-flow" {
-  slug = "default-provider-authorization-implicit-consent"
-}
-
-data "authentik_flow" "default-provider-invalidation-flow" {
-  slug = "default-provider-invalidation-flow"
-}
-
 resource "authentik_provider_proxy" "sonarr" {
   name               = "Sonarr"
   external_host      = "https://sonarr.thisratis.gay"
@@ -17,6 +9,14 @@ resource "authentik_provider_proxy" "sonarr" {
 resource "authentik_application" "sonarr" {
   name              = "Sonarr"
   slug              = "sonarr"
+  group             = "Torrents"
   meta_icon         = "https://raw.githubusercontent.com/Sonarr/Sonarr/refs/heads/develop/Logo/Sonarr.svg"
+  meta_description  = "Sonarr is an internet PVR for Usenet and Torrents."
   protocol_provider = authentik_provider_proxy.sonarr.id
+}
+
+resource "authentik_policy_binding" "sonarr_sysop" {
+  target = authentik_application.sonarr.uuid
+  group  = authentik_group.discord-sysop.id
+  order  = 0
 }

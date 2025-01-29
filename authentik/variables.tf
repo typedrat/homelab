@@ -27,3 +27,13 @@ variable "sysopRoleId" {
   description = "The Discord ID for the role representing sysops"
   type        = string
 }
+
+variable "jellyfinKey" {
+  description = "The Authentik OAuth2 client key for the application used by Jellyfin"
+  type        = string
+}
+
+variable "jellyfinSecret" {
+  description = "The Authentik OAuth2 client secret for the application used by Jellyfin"
+  type        = string
+}

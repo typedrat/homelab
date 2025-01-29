@@ -1,11 +1,3 @@
-data "authentik_flow" "default-authorization-flow" {
-  slug = "default-provider-authorization-implicit-consent"
-}
-
-data "authentik_flow" "default-provider-invalidation-flow" {
-  slug = "default-provider-invalidation-flow"
-}
-
 resource "authentik_provider_proxy" "flood" {
   name               = "Flood"
   external_host      = "https://flood.thisratis.gay"
@@ -16,7 +8,15 @@ resource "authentik_provider_proxy" "flood" {
 
 resource "authentik_application" "flood" {
   name              = "Flood"
+  group             = "Torrents"
   slug              = "flood"
   meta_icon         = "https://raw.githubusercontent.com/jesec/flood/master/flood.svg"
+  meta_description  = "A modern web UI for various torrent clients."
   protocol_provider = authentik_provider_proxy.flood.id
+}
+
+resource "authentik_policy_binding" "flood_sysop" {
+  target = authentik_application.flood.uuid
+  group  = authentik_group.discord-sysop.id
+  order  = 0
 }
