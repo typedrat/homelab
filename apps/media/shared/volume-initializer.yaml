@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: volume-initializer
+    namespace: media
+spec:
+    selector:
+        matchLabels:
+            app: volume-initializer
+    template:
+        metadata:
+            labels:
+                app: volume-initializer
+        spec:
+            # Ensure one pod per node
+            topologySpreadConstraints:
+                - maxSkew: 1
+                  topologyKey: kubernetes.io/hostname
+                  whenUnsatisfiable: DoNotSchedule
+                  labelSelector:
+                      matchLabels:
+                          app: volume-initializer
+            initContainers:
+                - name: volume-initializer
+                  image: busybox:latest
+                  command: ["/bin/sh", "/scripts/setup.sh"]
+                  volumeMounts:
+                      - name: setup-script
+                        mountPath: /scripts
+                      - name: data
+                        mountPath: /data
+            containers:
+                - name: sleep
+                  image: busybox:latest
+                  command: ["sleep", "infinity"]
+            volumes:
+                - name: setup-script
+                  configMap:
+                      name: volume-initializer-script
+                      defaultMode: 0755
+                - name: data
+                  persistentVolumeClaim:
+                      claimName: media-volume
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: volume-initializer-script
+data:
+    setup.sh: |
+        directories=(
+            "/data/tv-shows"
+            "/data/movies"
+            "/data/anime"
+            "/data/anime-movies"
+            "/data/torrents/tv-shows"
+            "/data/torrents/movies"
+            "/data/torrents/anime"
+            "/data/torrents/anime-movies"
+        )
+
+        for dir in "${directories[@]}"; do
+            mkdir -p "$dir"
+            echo "Ensured directory exists: $dir"
+        done

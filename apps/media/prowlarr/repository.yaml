@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
+metadata:
+    name: prowlarr
+    namespace: media
+spec:
+    interval: 5m0s
+    url: oci://ghcr.io/m0nsterrr/helm-charts/prowlarr
+    ref:
+        semver: ">=2.0.0 <2.1"
