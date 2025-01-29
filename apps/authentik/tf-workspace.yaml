@@ -7,8 +7,8 @@ spec:
         name: authentik
     forProvider:
         source: Remote
-        # https://github.com/typedrat/homelab/tree/801fd97/authentik
-        module: "github.com/typedrat/homelab//authentik?ref=801fd97"
+        # https://github.com/typedrat/homelab/tree/957e0b8e/authentik
+        module: "github.com/typedrat/homelab//authentik?ref=957e0b8e"
         env:
             - name: TF_VAR_discordKey
               secretKeyRef:
@@ -40,3 +40,13 @@ spec:
                   name: authentik-discord
                   namespace: authentik
                   key: sysop-role-id
+            - name: TF_VAR_jellyfinKey
+              secretKeyRef:
+                  name: authentik-jellyfin
+                  namespace: authentik
+                  key: client-id
+            - name: TF_VAR_jellyfinSecret
+              secretKeyRef:
+                  name: authentik-jellyfin
+                  namespace: authentik
+                  key: client-secret

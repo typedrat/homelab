@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: authentik-jellyfin
+    namespace: authentik
+stringData:
+    client-id: ENC[AES256_GCM,data:XyVcNBQmpUnQWPCHcyQQVcwrbQfT/5I7+r7qfZfatCcC7HN+y5ytPQ==,iv:rnH/SgbZLF9YDjMM50lUTPrmnqPLE1+ucBUYhTrPYG8=,tag:h8eyd0NCYJQS0qf0B6N/fg==,type:str]
+    client-secret: ENC[AES256_GCM,data:YqUrBEzi12CdXmy+jvJXj/KTEfZlAKVlo10I3l12sfo2DVbZ/ysn3yQriCvNnEduYxDOuQ6aBKp1sT/uEENPWcy265r2Jy4wMslyJ6E1MbB3A75uDrU1hTdk2m5+JKZj5XFRmZS31Z1XkOTI9bhAYO8sflLnvZw4WxIMoM6mu8o=,iv:KoHRgGBdUsTrt0Vaobign82wW6PlxCNX6dFSu2Ua5Mk=,tag:IGDxF6/cX6n01vpldsASbg==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1psufqpzvwl74c4uqmt7y9f3akavrdzkevgfrg3d0rcw2nj7fwe7sctsjpe
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBUSm52cjRDbXg5T0F0K0dB
+            OXhJRUJuOG9FMVh3aityTVhiUGU3azhkdndvCkYyWVZTQk1MbXdjblFMRjhmcjdL
+            anl6UC9LZElBWi9nU25zaFJxNUlWcm8KLS0tIEpWdGlvSFB6QkZuZzdRMm9pR0tX
+            N0hYdjg1S0pNMWhXZmNmekY4TXpXNHMKr5dCLGI9T2GID2jE0guIHm8SY1TKj3AH
+            S8PgKtNQkwGkRlJ2MRAMQsr3O6WExFzglbuTEl0H6GYfLbZGx4HelA==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1zjzywnjly7fm0mn22c64z5f8m45tne4ddplrrtx9q40y4kznacysvc9jxj
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBCT0JZbE1INE1PVzhhNlA2
+            M1FldnhJeDZHbHVzWHpyZTViM2lLaHpBdlI0ClNTODRyYk5yeWxzbHZvN0VsdWNm
+            U3R5ZHN3WndzTXBWQ1VQZ3BGZmpYaVkKLS0tIFJ3L0JRNS83dmlTMnZkQUtoMm5V
+            L3lsb1RNajZlY1RQbTZlalZ6VDlNK0kKgRzWB+fAy19KUXdtPVa+l/KpKV0c4ufK
+            M8gHtazITaZxK0tCfnsUwnZnjAr7k8+FcYv6HnzjrysbRO4x4INZng==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-01-29T08:19:28Z"
+    mac: ENC[AES256_GCM,data:R0ntsGnd8kQH4lonVrNw2GsSzhltJAn+pTXTChdQ1gF+h3AUsupYeDGLxKmxh/FBXvNUCXBlYjwCdYrtD+4Odt488wna2hInLHRj9yNQTJaaDrzC9ryYT/5fCYcbtd/YGRpX2Rox90QJ9V2xWte7WBi6ea0iuSmdOcPxfVb1pbE=,iv:5jh3T0qNpfCzV5UhiO6GN0yQDzNKdm3Tf3u5t3CudHA=,tag:VyvYj0ZXxYMIb0m5KR10eA==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.9.3
