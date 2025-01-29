@@ -7,8 +7,8 @@ spec:
         name: authentik
     forProvider:
         source: Remote
-        # https://github.com/typedrat/homelab/tree/57c3b0aa/authentik
-        module: "github.com/typedrat/homelab//authentik?ref=57c3b0aa"
+        # https://github.com/typedrat/homelab/tree/94399b40/authentik
+        module: "github.com/typedrat/homelab//authentik?ref=94399b40"
         env:
             - name: TF_VAR_discordKey
               secretKeyRef:
