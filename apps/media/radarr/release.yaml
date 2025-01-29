@@ -122,6 +122,10 @@ spec:
             - name: RADARR__POSTGRES__LOGDB
               value: radarr_anime_log
 
+        config:
+            persistence:
+                storageClass: host-zfs-standard
+
         volumes:
             - name: data
               persistentVolumeClaim:

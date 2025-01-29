@@ -56,6 +56,10 @@ spec:
             - name: PROWLARR__POSTGRES__LOGDB
               value: prowlarr_log
 
+        config:
+            persistence:
+                storageClass: host-zfs-standard
+
         volumes:
             - name: data
               persistentVolumeClaim:

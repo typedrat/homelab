@@ -122,6 +122,10 @@ spec:
             - name: SONARR__POSTGRES__LOGDB
               value: sonarr_anime_log
 
+        config:
+            persistence:
+                storageClass: host-zfs-standard
+
         volumes:
             - name: data
               persistentVolumeClaim:
