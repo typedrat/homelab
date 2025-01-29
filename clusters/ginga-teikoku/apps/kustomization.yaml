@@ -4,3 +4,5 @@ resources:
     - authentik.yaml
     - media/shared.yaml
     - media/flood-rtorrent.yaml
+    - media/radarr.yaml
+    - media/sonarr.yaml

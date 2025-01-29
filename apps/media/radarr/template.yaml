@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: radarr-config-template
+    namespace: media
+data:
+    config.xml: |
+        <Config>
+            <LogLevel>info</LogLevel>
+            <EnableSsl>False</EnableSsl>
+            <Port>9000</Port>
+            <SslPort>9443</SslPort>
+            <UrlBase></UrlBase>
+            <BindAddress>*</BindAddress>
+            <ApiKey></ApiKey>
+            <AuthenticationMethod>External</AuthenticationMethod>
+            <UpdateMechanism>Docker</UpdateMechanism>
+            <LaunchBrowser>True</LaunchBrowser>
+            <Branch>master</Branch>
+            <InstanceName>Radarr</InstanceName>
+            <SyslogPort>514</SyslogPort>
+            <AuthenticationRequired>Enabled</AuthenticationRequired>
+            <SslCertPath></SslCertPath>
+            <SslCertPassword></SslCertPassword>
+        </Config>
+    setup.sh: |
+        #!/bin/sh
+        if [ ! -f /config/config.xml ]; then
+            cp /template/config.xml /config/config.xml
+        fi
+        dasel put -f /config/config.xml -t string -p "Config.AuthenticationMethod" "External"
+        dasel put -f /config/config.xml -t string -p "Config.ApiKey" "${API_KEY}"

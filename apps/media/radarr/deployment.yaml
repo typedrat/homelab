@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: radarr
+    namespace: media
+spec:
+    selector:
+        matchLabels:
+            app: radarr
+    template:
+        metadata:
+            labels:
+                app: radarr
+        spec:
+            initContainers:
+                - name: config-setup
+                  image: ghcr.io/tomwright/dasel:2-alpine
+                  command: ["/bin/sh"]
+                  args: ["/template/setup.sh"]
+                  env:
+                      - name: API_KEY
+                        valueFrom:
+                            secretKeyRef:
+                            name: radarr-api-key
+                            key: api-key
+            containers:
+                - name: radarr
+                  image: lscr.io/linuxserver/radarr:latest
+                  securityContext:
+                      runAsUser: 911
+                      runAsGroup: 911
+                      fsGroup: 911
+                      readOnlyRootFilesystem: true
+                  env:
+                      - name: TZ
+                        value: "America/Los_Angeles"
+                  ports:
+                      - containerPort: 7878
+                        name: http
+                  volumeMounts:
+                      - name: run
+                        mountPath: /run
+                      - name: config
+                        mountPath: /config
+                      - name: data
+                        mountPath: /data
+            volumes:
+                - name: run
+                  emptyDir:
+                      medium: Memory
+                - name: config
+                  persistentVolumeClaim:
+                      claimName: radarr-config
+                - name: template
+                  configMap:
+                      name: radarr-config-template
+                - name: data
+                  persistentVolumeClaim:
+                      claimName: media-volume

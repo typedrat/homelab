@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: sonarr
+    namespace: media
+spec:
+    selector:
+        matchLabels:
+            app: sonarr
+    template:
+        metadata:
+            labels:
+                app: sonarr
+        spec:
+            initContainers:
+                - name: config-setup
+                  image: ghcr.io/tomwright/dasel:2-alpine
+                  command: ["/bin/sh"]
+                  args: ["/template/setup.sh"]
+                  env:
+                      - name: API_KEY
+                        valueFrom:
+                            secretKeyRef:
+                            name: sonarr-api-key
+                            key: api-key
+            containers:
+                - name: sonarr
+                  image: lscr.io/linuxserver/sonarr:latest
+                  securityContext:
+                      runAsUser: 911
+                      runAsGroup: 911
+                      fsGroup: 911
+                      readOnlyRootFilesystem: true
+                  env:
+                      - name: TZ
+                        value: "America/Los_Angeles"
+                  ports:
+                      - containerPort: 9000
+                        name: http
+                  volumeMounts:
+                      - name: run
+                        mountPath: /run
+                      - name: config
+                        mountPath: /config
+                      - name: data
+                        mountPath: /data
+            volumes:
+                - name: run
+                  emptyDir:
+                      medium: Memory
+                - name: config
+                  persistentVolumeClaim:
+                      claimName: sonarr-config
+                - name: template
+                  configMap:
+                      name: sonarr-config-template
+                - name: data
+                  persistentVolumeClaim:
+                      claimName: media-volume
