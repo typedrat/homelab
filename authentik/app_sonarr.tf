@@ -1,9 +1,10 @@
 resource "authentik_provider_proxy" "sonarr" {
-  name               = "Sonarr"
-  external_host      = "https://sonarr.thisratis.gay"
-  mode               = "forward_single"
-  authorization_flow = data.authentik_flow.default-authorization-flow.id
-  invalidation_flow  = data.authentik_flow.default-provider-invalidation-flow.id
+  name                  = "Sonarr"
+  external_host         = "https://sonarr.thisratis.gay"
+  mode                  = "forward_single"
+  access_token_validity = "days=1"
+  authorization_flow    = data.authentik_flow.default-authorization-flow.id
+  invalidation_flow     = data.authentik_flow.default-provider-invalidation-flow.id
 }
 
 resource "authentik_application" "sonarr" {
