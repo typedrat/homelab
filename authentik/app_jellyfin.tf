@@ -1,8 +1,8 @@
 resource "authentik_provider_ldap" "jellyfin" {
   name            = "Jellyfin (LDAP)"
   base_dn         = "OU=jellyfin,DC=ldap,DC=goauthentik,DC=io"
-  bind_flow       = data.authentik_flow.default-authentication-flow
-  unbind_flow     = data.authentik_flow.default-invalidation-flow
+  bind_flow       = data.authentik_flow.default-authentication-flow.id
+  unbind_flow     = data.authentik_flow.default-invalidation-flow.id
   tls_server_name = "auth.thisratis.gay"
 }
 
