@@ -7,3 +7,4 @@ resources:
     - media/radarr.yaml
     - media/sonarr.yaml
     - media/jellyfin.yaml
+    - media/prowlarr.yaml
