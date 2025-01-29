@@ -13,7 +13,9 @@ spec:
             localeCollate: "en_US"
             localeCType: "en_US"
             postInitSQL:
-                - CREATE DATABASE sonarr_log OWNER sonarr
+                - CREATE DATABASE sonarr_log        OWNER sonarr
+                - CREATE DATABASE sonarr_anime_main OWNER sonarr
+                - CREATE DATABASE sonarr_anime_log  OWNER sonarr
     storage:
-        size: 1Gi
+        size: 5Gi
         storageClass: host-zfs-postgres

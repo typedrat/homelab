@@ -13,7 +13,9 @@ spec:
             localeCollate: "en_US"
             localeCType: "en_US"
             postInitSQL:
-                - CREATE DATABASE radarr_log OWNER radarr
+                - CREATE DATABASE radarr_log        OWNER radarr
+                - CREATE DATABASE radarr_anime_main OWNER radarr
+                - CREATE DATABASE radarr_anime_log  OWNER radarr
     storage:
         size: 1Gi
         storageClass: host-zfs-postgres
