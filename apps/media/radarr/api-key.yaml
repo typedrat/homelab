@@ -5,7 +5,7 @@ metadata:
     namespace: media
 type: Opaque
 stringData:
-    apiKey: ENC[AES256_GCM,data:w3fR951NZfoLggVFeKONKV5CuwBd6B6F5+0btAKK8Kk=,iv:sCmrdb+I4+sYkNp5dCpbie+i7TK1IPco+BW3W9ZVqw0=,tag:RQBW5l37CdThUhJS7Ee/ww==,type:str]
+    api-key: ENC[AES256_GCM,data:VL14X9sbmF1xMQpSHZJyxYFbn7MbmN7a7sscOBErStg=,iv:MnLrbzRIrT+U4lhu/WO3BnaljTsxKqhxeayfctPe4i8=,tag:q27C3fKyAdIs7stP+Y2NvQ==,type:str]
 sops:
     kms: []
     gcp_kms: []
@@ -30,8 +30,8 @@ sops:
             YXNkc2lmTnF3TkpZblpEamZpa1FHYmcKz2T8BHx4SKPO0WqkQC2OCJqT1/7BuIBc
             WcXP011GRj9tVGcGZweozRmnz4+Vvahf5HVYowm1BMRulkFlVjcDAA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-01-29T03:24:20Z"
-    mac: ENC[AES256_GCM,data:MH+0WzJCloUCFZOTMSa558IdoVSbOC4gHUJdeeAE0GrzQdA5Rj+hyFuNT5S002JFWNqXA7/7RC5+xNSr67IfKuE98ax+sr2+mKF1GyN+HwR5qo5Zo2Cg0FU0ow2XMJQXZMyMcEeCch7xVMG4tBwup5Zb3U30DtuqKj3cWSGAkhc=,iv:sGV+2ALMbb1sYvvA/fnwXW/v8eTm4sJjTwQeI8uubYw=,tag:1WXcBQBvXfGRA96D5BT7yw==,type:str]
+    lastmodified: "2025-01-29T03:32:22Z"
+    mac: ENC[AES256_GCM,data:J3F2ISSB5VEidGf3URnTo4NkJp6ik0ZhRNKE7Vb73fNV//OCaRAeoXyqm8IDGUer/y+jqCmkyJAvm73Azu7vJwDL9IztuiT9ECmS9AgIAuK4NHJsDdKDdG17XN4mz4+/WA+7ge4jKG/eG4FGOakzkqCHdOD8HCX95RJcPYPdd6E=,iv:b4GlhJ8VOcCofA31mndp0Ico5MI8nWDf6K6l2tHqYBI=,tag:T0R9s32S/fwrw14/v4jCRw==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData)$
     version: 3.9.3
