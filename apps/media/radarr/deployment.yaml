@@ -21,8 +21,8 @@ spec:
                       - name: API_KEY
                         valueFrom:
                             secretKeyRef:
-                            name: radarr-api-key
-                            key: api-key
+                                name: radarr-api-key
+                                key: api-key
             containers:
                 - name: radarr
                   image: lscr.io/linuxserver/radarr:latest

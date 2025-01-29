@@ -21,8 +21,8 @@ spec:
                       - name: API_KEY
                         valueFrom:
                             secretKeyRef:
-                            name: sonarr-api-key
-                            key: api-key
+                                name: sonarr-api-key
+                                key: api-key
             containers:
                 - name: sonarr
                   image: lscr.io/linuxserver/sonarr:latest
