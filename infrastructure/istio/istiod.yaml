@@ -25,7 +25,7 @@ spec:
             extensionProviders:
                 - name: "authentik"
                   envoyExtAuthzHttp:
-                      service: "ak-outpost-authentik-embedded-outpost.authentik.svc.cluster.local"
+                      service: "ak-outpost-proxy-outpost.authentik.svc.cluster.local"
                       port: "9000"
                       pathPrefix: "/outpost.goauthentik.io/auth/envoy"
                       headersToDownstreamOnAllow:
