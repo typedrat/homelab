@@ -23,6 +23,11 @@ spec:
                             secretKeyRef:
                                 name: radarr-api-key
                                 key: api-key
+                  volumeMounts:
+                      - name: config
+                        mountPath: /config
+                      - name: template
+                        mountPath: /template
             containers:
                 - name: radarr
                   image: lscr.io/linuxserver/radarr:latest
