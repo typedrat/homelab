@@ -28,5 +28,11 @@ data:
         if [ ! -f /config/config.xml ]; then
             cp /template/config.xml /config/config.xml
         fi
+        if [ ! -d /data/tv-shows ]; then
+            mkdir /data/tv-shows
+        fi
+        if [ ! -d /data/torrents ] || [ ! -d /data/torrents/sonarr ]
+            mkdir -p /data/torrents/sonarr
+        fi
         dasel put -f /config/config.xml -t string -v "External" "Config.AuthenticationMethod"
         dasel put -f /config/config.xml -t string -v "${API_KEY}" "Config.ApiKey"

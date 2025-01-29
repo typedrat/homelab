@@ -31,6 +31,8 @@ spec:
                         mountPath: /config
                       - name: template
                         mountPath: /template
+                      - name: data
+                        mountPath: /data
             containers:
                 - name: radarr
                   image: lscr.io/linuxserver/radarr:latest
