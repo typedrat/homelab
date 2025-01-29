@@ -31,8 +31,6 @@ spec:
                         mountPath: /config
                       - name: template
                         mountPath: /template
-                      - name: data
-                        mountPath: /data
             containers:
                 - name: prowlarr
                   image: lscr.io/linuxserver/prowlarr:latest
@@ -49,8 +47,6 @@ spec:
                         mountPath: /run
                       - name: config
                         mountPath: /config
-                      - name: data
-                        mountPath: /data
             securityContext:
                 runAsUser: 911
                 runAsGroup: 911
@@ -65,6 +61,3 @@ spec:
                 - name: template
                   configMap:
                       name: prowlarr-config-template
-                - name: data
-                  persistentVolumeClaim:
-                      claimName: media-volume
