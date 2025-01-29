@@ -19,6 +19,7 @@ spec:
                 storageClass: host-zfs-standard
             media:
                 enabled: false
+        runtimeClassName: nvidia
         volumes:
             - name: data
               persistentVolumeClaim:
