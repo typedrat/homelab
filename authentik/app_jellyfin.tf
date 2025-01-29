@@ -18,6 +18,15 @@ resource "authentik_provider_oauth2" "jellyfin" {
       url           = "https://jellyfin.thisratis.gay/sso/OID/redirect/authentik"
     }
   ]
+  property_mappings = data.authentik_property_mapping_provider_scope.oauth_scopes
+}
+
+data "authentik_property_mapping_provider_scope" "oauth_scopes" {
+  managed_list = [
+    "goauthentik.io/providers/oauth2/scope-email",
+    "goauthentik.io/providers/oauth2/scope-openid",
+    "goauthentik.io/providers/oauth2/scope-profile"
+  ]
 }
 
 resource "authentik_application" "jellyfin" {
