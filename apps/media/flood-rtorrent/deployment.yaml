@@ -107,7 +107,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-    name: flood-service
+    name: flood
     namespace: media
 spec:
     selector:
@@ -118,12 +118,11 @@ spec:
           targetPort: 3000
           name: http
     type: ClusterIP
-
 ---
 apiVersion: v1
 kind: Service
 metadata:
-    name: rtorrent-service
+    name: rtorrent
     namespace: media
 spec:
     selector:

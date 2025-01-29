@@ -10,6 +10,9 @@ metadata:
         external-dns.alpha.kubernetes.io/target: iserlohn.thisratis.gay
 spec:
     gatewayClassName: istio
+    addresses:
+        - type: IPAddress
+          value: 10.0.1.0
     listeners:
         - name: http
           protocol: HTTP
@@ -39,11 +42,3 @@ spec:
               mode: Terminate
               certificateRefs:
                   - name: thisratis-gay-tls
-        - name: bittorrent
-          protocol: TCP
-          port: 42069
-          allowedRoutes:
-              kinds:
-                  - kind: TCPRoute
-              namespaces:
-                  from: All

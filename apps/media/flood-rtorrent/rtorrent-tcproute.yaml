@@ -5,10 +5,9 @@ metadata:
     namespace: media
 spec:
     parentRefs:
-        - name: gateway
-          namespace: istio-ingress
+        - name: rtorrent-gateway
           sectionName: bittorrent
     rules:
         - backendRefs:
-              - name: rtorrent-service
+              - name: rtorrent
                 port: 42069
