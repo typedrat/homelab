@@ -10,6 +10,7 @@ spec:
     dependsOn:
         - name: istio-ingress
         - name: authentik
+        - name: media-shared
     sourceRef:
         kind: GitRepository
         name: flux-system

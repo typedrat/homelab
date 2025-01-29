@@ -46,6 +46,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
     name: volume-initializer-script
+    namespace: media
 data:
     setup.sh: |
         directories=(
