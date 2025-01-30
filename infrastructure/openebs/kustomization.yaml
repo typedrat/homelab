@@ -10,5 +10,4 @@ resources:
     - namespace.yaml
     - repository.yaml
     - release.yaml
-    - zfs-shell.yaml
     - storageclasses.yaml
