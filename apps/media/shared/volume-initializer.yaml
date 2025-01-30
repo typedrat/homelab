@@ -22,8 +22,8 @@ spec:
                           app: volume-initializer
             initContainers:
                 - name: volume-initializer
-                  image: busybox:latest
-                  command: ["/bin/sh", "/scripts/setup.sh"]
+                  image: bash:latest
+                  command: ["/usr/bin/env", "bash", "/scripts/setup.sh"]
                   volumeMounts:
                       - name: setup-script
                         mountPath: /scripts
