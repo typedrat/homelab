@@ -24,7 +24,8 @@ define newline
 endef
 
 $(TALOS_ISO): $(TALOS_SCHEMATIC)
-	curl $(TALOS_ISO_URL) -o $(TALOS_ISO)
+	@echo "Downloading $(TALOS_ISO) -- make a live USB and boot it when done"
+	@curl $(TALOS_ISO_URL) -o $(TALOS_ISO)
 
 talos-iso: $(TALOS_ISO)
 
@@ -65,9 +66,10 @@ cilium:
 		echo "Error: KUBERNETES_API_SERVER_ADDRESS and KUBERNETES_API_SERVER_PORT must be set."; \
 		exit 1; \
 	fi
-	helm install                                                    \
+	@helm install                                                   \
 		cilium                                                      \
 		cilium/cilium                                               \
+		--wait --timeout
 		--version 1.16.6                                            \
 		--namespace kube-system                                     \
 		--set ipam.mode=kubernetes                                  \
@@ -82,13 +84,21 @@ cilium:
 		--set k8sServiceHost="$(KUBERNETES_API_SERVER_ADDRESS)"     \
 		--set k8sServicePort="$(KUBERNETES_API_SERVER_PORT)"        \
 		--set bgpControlPlane.enabled=true
+	@echo -n "Waiting for Cilium to be ready..."
+	@until cilium status | grep OK | wc -l | grep 4 > /dev/null; do \
+		echo -n "."; \
+		sleep 10; \
+	done
+	@echo
 
 flux:
 	@if [ -z "$(GITHUB_TOKEN)" ]; then \
 		echo "Error: GITHUB_TOKEN must be set."; \
 		exit 1; \
 	fi
-	flux bootstrap github                                                \
+	@kubectl create ns flux-system
+	@cat age.agekey | kubectl create secret generic sops-age --namespace=flux-system --from-file=age.agekey=/dev/stdin
+	@flux bootstrap github                                               \
 		--token-auth=false                                               \
 		--owner=typedrat                                                 \
 		--repository=homelab                                             \
