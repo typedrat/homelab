@@ -8,7 +8,7 @@ data:
         sonarr:
             western:
                 base_url: http://sonarr.media.svc.cluster.local
-                api_key: SONARR_API_KEY
+                api_key: !env SONARR_API_KEY
 
                 quality_definition:
                     type: series
