@@ -10,8 +10,6 @@ spec:
             database: prowlarr_main
             owner: prowlarr
             dataChecksums: true
-            localeCollate: "en_US"
-            localeCType: "en_US"
             postInitSQL:
                 - CREATE DATABASE prowlarr_log OWNER prowlarr
     storage:

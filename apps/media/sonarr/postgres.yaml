@@ -10,8 +10,6 @@ spec:
             database: sonarr_main
             owner: sonarr
             dataChecksums: true
-            localeCollate: "en_US"
-            localeCType: "en_US"
             postInitSQL:
                 - CREATE DATABASE sonarr_log        OWNER sonarr
                 - CREATE DATABASE sonarr_anime_main OWNER sonarr
