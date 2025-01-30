@@ -13,16 +13,16 @@ spec:
     hostnames:
         - auth.thisratis.gay
     rules:
-        # - matches:
-        #       - path:
-        #             type: PathPrefix
-        #             value: /if/flow/default-authentication-flow/
-        #   filters:
-        #       - type: RequestRedirect
-        #         requestRedirect:
-        #             path:
-        #                 type: ReplacePrefixMatch
-        #                 replacePrefixMatch: /source/oauth/login/discord/
+        - matches:
+              - path:
+                    type: PathPrefix
+                    value: /if/flow/default-authentication-flow/
+          filters:
+              - type: RequestRedirect
+                requestRedirect:
+                    path:
+                        type: ReplacePrefixMatch
+                        replacePrefixMatch: /source/oauth/login/discord/
         - filters:
               - type: RequestHeaderModifier
                 requestHeaderModifier:
