@@ -7,6 +7,8 @@ spec:
     interval: 10m0s
     path: ./infrastructure/flux-webhook
     prune: true
+    dependsOn:
+        - name: istio-ingress
     sourceRef:
         kind: GitRepository
         name: flux-system

@@ -7,6 +7,9 @@ spec:
     interval: 10m0s
     path: ./apps/media/shared
     prune: true
+    dependsOn:
+        - name: openebs
+        - name: crossplane-terraform
     sourceRef:
         kind: GitRepository
         name: flux-system
