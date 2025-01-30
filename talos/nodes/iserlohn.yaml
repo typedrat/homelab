@@ -3,4 +3,3 @@ machine:
         disk: none
         diskSelector:
             model: ADATA SU800
-        image: factory.talos.dev/installer-secureboot/f7a51bdf76911a169e9576c3a10918352bfc636a0dd68579f819326c4497b81f:v1.9.1

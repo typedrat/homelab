@@ -2,6 +2,8 @@
 .decrypted~*
 /talos/talosconfig
 /talos/rendered
+/talos/*.iso
+/talos/secrets.yaml
 .vscode/*
 .terraform*
 terraform/*/providers.tf

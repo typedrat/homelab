@@ -6,3 +6,5 @@ customization:
             - siderolabs/nonfree-kmod-nvidia-production
             - siderolabs/nvidia-container-toolkit-production
             - siderolabs/zfs
+    extraKernelArgs:
+        - -talos.halt_if_installed

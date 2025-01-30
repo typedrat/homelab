@@ -5,14 +5,30 @@ ISERLOHN_NODE ?= iserlohn.lan
 ISERLOHN_PATCH = talos/nodes/iserlohn.yaml
 ISERLOHN_PORT ?= 6443
 
-.PHONY: iserlohn-apply bootstrap cilium flux
+TALOS_SCHEMATIC = talos/schematic.yaml
+TALOS_VERSION = v1.9.2
+TALOS_PLATFORM = metal
+TALOS_ARCH = amd64
+TALOS_SECUREBOOT = true
+
+SCHEMATIC_HASH := $(shell curl -sX POST --data-binary @$(TALOS_SCHEMATIC) https://factory.talos.dev/schematics | jq -r '.id')
+TALOS_ISO_URL_ROOT = https://factory.talos.dev/image/$(SCHEMATIC_HASH)/$(TALOS_VERSION)
+TALOS_ISO_URL = $(TALOS_ISO_URL_ROOT)/$(TALOS_PLATFORM)-$(TALOS_ARCH)$(if $(TALOS_SECUREBOOT),-secureboot,).iso
+TALOS_ISO = talos/talos-$(TALOS_VERSION)-$(TALOS_PLATFORM)-$(TALOS_ARCH)$(if $(TALOS_SECUREBOOT),-secureboot,).iso
+
+.PHONY: iserlohn-apply-init iserlohn-apply-patches bootstrap cilium flux
 
 define newline
 
 
 endef
 
-$(ISERLOHN_CONFIG): $(CONFIG_PATCHES) $(ISERLOHN_PATCH) $(SECRETS_YAML)
+$(TALOS_ISO): $(TALOS_SCHEMATIC)
+	curl $(TALOS_ISO_URL) -o $(TALOS_ISO)
+
+talos-iso: $(TALOS_ISO)
+
+$(ISERLOHN_CONFIG): $(CONFIG_PATCHES) $(ISERLOHN_PATCH) $(SECRETS_YAML) $(TALOS_ISO) $(TALOS_SCHEMATIC)
 	@talosctl gen config \
 		--output $(ISERLOHN_CONFIG) \
 		--output-types controlplane \
@@ -21,6 +37,7 @@ $(ISERLOHN_CONFIG): $(CONFIG_PATCHES) $(ISERLOHN_PATCH) $(SECRETS_YAML)
 		$(foreach patch,$(CONFIG_PATCHES),--config-patch @$(patch) \$(newline)) \
 		--config-patch @$(ISERLOHN_PATCH) \
 		ginga-teikoku https://$(ISERLOHN_NODE):$(ISERLOHN_PORT) \
+		--install-image "factory.talos.dev/installer$(if $(TALOS_SECUREBOOT),-secureboot,)/$(SCHEMATIC_HASH):$(TALOS_VERSION)" \
 		--force
 
 iserlohn: $(ISERLOHN_CONFIG)
