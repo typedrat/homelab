@@ -15,7 +15,6 @@ spec:
                   name: radarr-secrets
                   key: api-key
             - name: TF_VAR_radarrAnimeApiKey
-              source: Secret
               secretKeyRef:
                   namespace: media
                   name: radarr-secrets
