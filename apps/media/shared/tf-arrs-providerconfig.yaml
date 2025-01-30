@@ -1,0 +1,86 @@
+apiVersion: tf.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+    name: arrs
+spec:
+    credentials:
+        - filename: radarr-api-key
+          source: Secret
+          secretRef:
+              namespace: media
+              name: radarr-secrets
+              key: api-key
+        - filename: radarr-anime-api-key
+          source: Secret
+          secretRef:
+              namespace: media
+              name: radarr-secrets
+              key: anime-api-key
+        - filename: sonarr-api-key
+          source: Secret
+          secretRef:
+              namespace: media
+              name: sonarr-secrets
+              key: api-key
+        - filename: sonarr-anime-api-key
+          source: Secret
+          secretRef:
+              namespace: media
+              name: sonarr-secrets
+              key: anime-api-key
+        - filename: prowlarr-api-key
+          source: Secret
+          secretRef:
+              namespace: media
+              name: prowlarr-secrets
+              key: api-key
+    configuration: |
+        terraform {
+            backend "kubernetes" {
+                secret_suffix     = "providerconfig-arrs"
+                namespace         = "media"
+                in_cluster_config = true
+            }
+
+            required_providers {
+                radarr = {
+                    source  = "devopsarr/radarr"
+                    version = "2.3.2"
+                }
+                sonarr = {
+                    source  = "devopsarr/sonarr"
+                    version = "3.4.0"
+                }
+                prowlarr = {
+                    source  = "devopsarr/prowlarr"
+                    version = "3.0.2"
+                }
+            }
+        }
+
+        provider "radarr" {
+            url     = "http://radarr.media.svc.cluster.local"
+            api_key = file("${path.module}/radarr-api-key")
+        }
+
+        provider "radarr" {
+            alias   = "anime"
+            url     = "http://radarr-anime.media.svc.cluster.local"
+            api_key = file("${path.module}/radarr-anime-api-key")
+        }
+
+        provider "sonarr" {
+            url     = "http://sonarr.media.svc.cluster.local"
+            api_key = file("${path.module}/sonarr-api-key")
+        }
+
+        provider "sonarr" {
+            alias   = "anime"
+            url     = "http://sonarr-anime.media.svc.cluster.local"
+            api_key = file("${path.module}/sonarr-anime-api-key")
+        }
+
+        provider "prowlarr" {
+            url     = "http://prowlarr.media.svc.cluster.local"
+            api_key = file("${path.module}/prowlarr-api-key")
+        }

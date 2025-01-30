@@ -3,4 +3,6 @@ kind: Kustomization
 resources:
     - namespace.yaml
     - media-volume.yaml
+    - tf-arrs-providerconfig.yaml
+    - tf-arrs-workspace.yaml
     - volume-initializer.yaml

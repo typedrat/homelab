@@ -1,0 +1,37 @@
+apiVersion: tf.upbound.io/v1beta1
+kind: Workspace
+metadata:
+    name: arrs
+spec:
+    providerConfigRef:
+        name: arrs
+    forProvider:
+        source: Remote
+        module: "github.com/typedrat/homelab//terraform/arrs"
+        env:
+            - name: TF_VAR_radarrApiKey
+              secretKeyRef:
+                  namespace: media
+                  name: radarr-secrets
+                  key: api-key
+            - name: TF_VAR_radarrAnimeApiKey
+              source: Secret
+              secretKeyRef:
+                  namespace: media
+                  name: radarr-secrets
+                  key: anime-api-key
+            - name: TF_VAR_sonarrApiKey
+              secretKeyRef:
+                  namespace: media
+                  name: sonarr-secrets
+                  key: api-key
+            - name: TF_VAR_sonarrAnimeApiKey
+              secretKeyRef:
+                  namespace: media
+                  name: sonarr-secrets
+                  key: anime-api-key
+            - name: TF_VAR_prowlarrApiKey
+              secretKeyRef:
+                  namespace: media
+                  name: prowlarr-secrets
+                  key: api-key
