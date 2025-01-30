@@ -3,3 +3,5 @@
 /talos/talosconfig
 /talos/rendered
 .vscode/*
+.terraform*
+providers.tf
