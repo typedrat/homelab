@@ -31,7 +31,8 @@ iserlohn-apply-init: iserlohn
 		-n iserlohn.lan \
 		-f $(ISERLOHN_CONFIG)
 
-PATCHABLE_PATCHES := $(filter-out talos/patches/encrypt-fs.yaml,$(CONFIG_PATCHES))
+UNPATCHABLE := (talos/patches/encrypt-fs.yaml talos/patches/rotate-server-certificates.yaml)
+PATCHABLE_PATCHES := $(filter-out $(UNPATCHABLE),$(CONFIG_PATCHES))
 
 iserlohn-apply-patches: $(PATCHABLE_PATCHES) $(ISERLOHN_PATCH)
 	$(foreach patch,$^, \
