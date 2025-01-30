@@ -7,27 +7,40 @@ ISERLOHN_PORT ?= 6443
 
 .PHONY: iserlohn-apply bootstrap cilium flux
 
+define newline
+
+
+endef
+
 $(ISERLOHN_CONFIG): $(CONFIG_PATCHES) $(ISERLOHN_PATCH) $(SECRETS_YAML)
-	talosctl gen config \
+	@talosctl gen config \
 		--output $(ISERLOHN_CONFIG) \
 		--output-types controlplane \
 		--with-cluster-discovery=false \
 		--with-secrets=$(SECRETS_YAML) \
-		$(foreach patch,$(CONFIG_PATCHES),--config-patch @$(patch) ) \
-		--config-patch @$(ISERLOHN_CONFIG) \
+		$(foreach patch,$(CONFIG_PATCHES),--config-patch @$(patch) \$(newline)) \
+		--config-patch @$(ISERLOHN_PATCH) \
 		ginga-teikoku https://$(ISERLOHN_NODE):$(ISERLOHN_PORT) \
 		--force
 
 iserlohn: $(ISERLOHN_CONFIG)
 
-iserlohn-apply: iserlohn
-	talosctl apply-config \
+iserlohn-apply-init: iserlohn
+	@talosctl apply-config \
 		--insecure \
 		-n iserlohn.lan \
 		-f $(ISERLOHN_CONFIG)
 
+PATCHABLE_PATCHES := $(filter-out talos/patches/encrypt-fs.yaml,$(CONFIG_PATCHES))
+
+iserlohn-apply-patches: $(PATCHABLE_PATCHES) $(ISERLOHN_PATCH)
+	$(foreach patch,$^, \
+		@echo "Applying $(patch): " $(newline) \
+		@talosctl patch mc --patch-file $(patch) 2>&1 | sed 's/^/    /' $(newline) \
+	)
+
 bootstrap:
-	talosctl bootstrap
+	@talosctl bootstrap
 
 cilium:
 	@if [ -z "$(KUBERNETES_API_SERVER_ADDRESS)" ] || [ -z "$(KUBERNETES_API_SERVER_PORT)" ]; then \
