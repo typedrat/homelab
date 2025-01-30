@@ -4,4 +4,5 @@
 /talos/rendered
 .vscode/*
 .terraform*
-providers.tf
+terraform/*/providers.tf
+terraform/*/*.tfvars
