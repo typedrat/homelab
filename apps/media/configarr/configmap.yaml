@@ -24,4 +24,4 @@ data:
 
                 include:
                     - template: d1498e7d189fbe6c7110ceaabb7473e6
-                    source: TRASH
+                      source: TRASH
