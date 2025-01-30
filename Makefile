@@ -9,7 +9,7 @@ ISERLOHN_PORT ?= 6443
 
 $(ISERLOHN_CONFIG): $(CONFIG_PATCHES) $(ISERLOHN_PATCH) $(SECRETS_YAML)
 	talosctl gen config \
-		--output $(OUTPUT) \
+		--output $(ISERLOHN_CONFIG) \
 		--output-types controlplane \
 		--with-cluster-discovery=false \
 		--with-secrets=$(SECRETS_YAML) \
@@ -23,7 +23,7 @@ iserlohn: $(ISERLOHN_CONFIG)
 iserlohn-apply: iserlohn
 	talosctl apply-config \
 		--insecure \
-		--node iserlohn.lan \
+		-n iserlohn.lan \
 		-f $(ISERLOHN_CONFIG)
 
 bootstrap:
