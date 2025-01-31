@@ -43,3 +43,4 @@ spec:
             prometheusSpec:
                 secrets:
                     - etcd-client-cert
+                serviceMonitorSelectorNilUsesHelmValues: false
