@@ -86,3 +86,11 @@ spec:
                       protocol: "TCP"
                     - port: "51871"
                       protocol: "UDP"
+
+        # Expose the prometheus-node-exporter
+        - fromEntities:
+              - cluster
+          toPorts:
+              - ports:
+                    - port: "9100"
+                      protocol: TCP
