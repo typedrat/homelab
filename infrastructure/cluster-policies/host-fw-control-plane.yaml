@@ -51,7 +51,7 @@ spec:
         # Allow metrics-server to scrape
         - fromEndpoints:
               - matchLabels:
-                    k8s-app: metrics-server
+                    app.kubernetes.io/name: metrics-server
           toPorts:
               - ports:
                     - port: "10250"
