@@ -89,6 +89,7 @@ spec:
 
         # Expose Prometheus stuff interally
         - fromEntities:
+              - world
               - cluster
           toPorts:
               - ports:
