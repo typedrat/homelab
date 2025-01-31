@@ -95,7 +95,7 @@ spec:
               - ports:
                     - port: "9100"
                       protocol: TCP
-                    - port: "12500"
+                    - port: "10250"
                       protocol: TCP
                     - port: "10257"
                       protocol: TCP
