@@ -23,6 +23,7 @@ spec:
             endpoints:
                 - 10.0.0.10
             service:
+                targetPort: 31337
                 selector:
                     component: etcd
             serviceMonitor:
