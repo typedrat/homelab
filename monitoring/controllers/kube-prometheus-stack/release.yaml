@@ -23,16 +23,23 @@ spec:
             endpoints:
                 - 10.0.0.10
             service:
-                targetPort: 31337
                 selector:
                     component: etcd
             serviceMonitor:
-                scheme: http
-                serverName: localhost
-
+                scheme: https
+                insecureSkipVerify: false
+                serverName: "localhost"
+                caFile: "/etc/prometheus/secrets/etcd-client-cert/etcd-ca.crt"
+                certFile: "/etc/prometheus/secrets/etcd-client-cert/etcd-client.crt"
+                keyFile: "/etc/prometheus/secrets/etcd-client-cert/etcd-client-key.key"
         kubeProxy:
             enabled: false
 
         kubeScheduler:
             endpoints:
                 - 10.0.0.10
+
+        prometheus:
+            prometheusSpec:
+                secrets:
+                    - etcd-client-cert
