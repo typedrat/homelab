@@ -88,9 +88,9 @@ spec:
                       protocol: "UDP"
 
         # Expose Prometheus stuff interally
-        - fromEntities:
-              - world
-              - cluster
+        - fromEndpoints:
+              - matchLabels:
+                    app.kubernetes.io/name: prometheus
           toPorts:
               - ports:
                     - port: "9100"
