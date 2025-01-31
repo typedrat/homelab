@@ -14,3 +14,24 @@ spec:
                 name: prometheus-community
                 namespace: monitoring
             interval: 10m
+    values:
+        kubeControllerManager:
+            endpoints:
+                - 10.0.0.10
+
+        kubeEtcd:
+            endpoints:
+                - 10.0.0.10
+            service:
+                selector:
+                    component: etcd
+            serviceMonitor:
+                scheme: http
+                serverName: localhost
+
+        kubeProxy:
+            enabled: false
+
+        kubeScheduler:
+            endpoints:
+                - 10.0.0.10
