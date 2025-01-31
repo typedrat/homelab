@@ -69,7 +69,7 @@ cilium:
 	@helm install                                                   \
 		cilium                                                      \
 		cilium/cilium                                               \
-		--wait --timeout
+		--wait                                                      \
 		--version 1.16.6                                            \
 		--namespace kube-system                                     \
 		--set ipam.mode=kubernetes                                  \
