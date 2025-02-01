@@ -27,7 +27,7 @@ spec:
                       runAsGroup: 911
                   args:
                       - "--auth=none"
-                      - "--allowedpath=/data/"
+                      - "--allowedpath=/data"
                       - "--secret=$(SECRET_VALUE)"
                       - "--rtsocket=/sock/rtorrent.sock"
                   env:
