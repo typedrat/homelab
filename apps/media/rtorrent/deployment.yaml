@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    labels:
+        app: rtorrent
+    name: rtorrent
+    namespace: media
+spec:
+    replicas: 1
+    strategy:
+        type: Recreate
+    selector:
+        matchLabels:
+            app: rtorrent
+    template:
+        metadata:
+            labels:
+                app: rtorrent
+        spec:
+            securityContext:
+                fsGroup: 911
+            containers:
+                - image: jesec/rtorrent:0.9.8-r16
+                  name: rtorrent
+                  securityContext:
+                      runAsUser: 911
+                      runAsGroup: 911
+                  env:
+                      - name: HOME
+                        value: "/config"
+                  ports:
+                      - containerPort: 5000
+                        name: xmlrpc
+                      - containerPort: 42069
+                        name: bittorrent
+                      - containerPort: 6881
+                        protocol: UDP
+                        name: dht
+                      - containerPort: 6882
+                        protocol: UDP
+                        name: dht-alt
+                  volumeMounts:
+                      - name: rtorrent-state
+                        mountPath: /config
+                      - name: rtorrent-rc
+                        mountPath: /config/.rtorrent.rc
+                        subPath: .rtorrent.rc
+                      - name: media-volume
+                        mountPath: /data
+            volumes:
+                - name: rtorrent-state
+                  persistentVolumeClaim:
+                      claimName: rtorrent-state
+                - name: rtorrent-rc
+                  configMap:
+                      name: rtorrent-rc
+                - name: media-volume
+                  persistentVolumeClaim:
+                      claimName: media-volume

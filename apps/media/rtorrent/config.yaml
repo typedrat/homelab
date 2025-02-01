@@ -56,16 +56,16 @@ data:
         # Distributed Hash Table and Peer EXchange
         # Enable tracker-less torrents but vulnerable to passive sniffing
         # DHT and PEX are always disabled for private torrents
-        #dht.mode.set = auto
-        #dht.port.set = 6881
-        #protocol.pex.set = yes
+        dht.mode.set = auto
+        dht.port.set = 6881
+        protocol.pex.set = yes
 
         # DHT nodes for bootstrapping
         dht.add_bootstrap = dht.transmissionbt.com:6881
         dht.add_bootstrap = dht.libtorrent.org:25401
 
         # UDP tracker support
-        #trackers.use_udp.set = yes
+        trackers.use_udp.set = yes
 
         # Peer settings
         throttle.max_uploads.set = 100
@@ -165,6 +165,6 @@ data:
         ### END of rtorrent.rc ###
 
         network.port_range.set = 42069-42069
-        network.scgi.open_local = /sock/rtorrent.sock
-        directory.default.set = /data
+        network.scgi.open_port = 0.0.0.0:5000
+        directory.default.set = /data/
         system.daemon.set = true

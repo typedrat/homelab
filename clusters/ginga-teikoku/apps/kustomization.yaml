@@ -3,7 +3,8 @@ kind: Kustomization
 resources:
     - authentik.yaml
     - media/shared.yaml
-    - media/flood-rtorrent.yaml
+    - media/flood.yaml
+    - media/rtorrent.yaml
     - media/radarr.yaml
     - media/sonarr.yaml
     - media/jellyfin.yaml

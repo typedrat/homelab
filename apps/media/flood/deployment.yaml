@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    labels:
+        app: flood
+        rtorrent-rpc: "true"
+    name: flood
+    namespace: media
+spec:
+    replicas: 1
+    strategy:
+        type: Recreate
+    selector:
+        matchLabels:
+            app: flood
+    template:
+        metadata:
+            labels:
+                app: flood
+        spec:
+            securityContext:
+                fsGroup: 911
+            containers:
+                - image: jesec/flood:4.9.0
+                  name: flood
+                  securityContext:
+                      runAsUser: 911
+                      runAsGroup: 911
+                  args:
+                      - "--auth=none"
+                      - "--allowedpath=/data/"
+                      - "--secret=$(SECRET_VALUE)"
+                      - "--rthost=rtorrent-rpc.media.svc.cluster.local"
+                      - "--rtport=80"
+                  env:
+                      - name: HOME
+                        value: "/config"
+                      - name: SECRET_VALUE
+                        valueFrom:
+                            secretKeyRef:
+                                name: flood-secret
+                                key: secret-key
+                  ports:
+                      - containerPort: 3000
+                        name: http
+                  volumeMounts:
+                      - name: flood-state
+                        mountPath: /config
+                      - name: media-volume
+                        mountPath: /data
+            volumes:
+                - name: flood-state
+                  persistentVolumeClaim:
+                      claimName: flood-state
+                - name: media-volume
+                  persistentVolumeClaim:
+                      claimName: media-volume

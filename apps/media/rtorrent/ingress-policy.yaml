@@ -1,0 +1,28 @@
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+    name: rtorrent-ingress-policy
+    namespace: media
+spec:
+    endpointSelector:
+        matchLabels:
+            app: rtorrent
+    ingress:
+        - fromEntities:
+              - world
+          toPorts:
+              - ports:
+                    - port: "42069"
+                      protocol: TCP
+              - ports:
+                    - port: "6881"
+                      protocol: UDP
+                    - port: "6882"
+                      protocol: UDP
+        - fromEndpoints:
+              - matchLabels:
+                    rtorrent-rpc: "true"
+          toPorts:
+              - ports:
+                    - port: "5000"
+                      protocol: TCP
