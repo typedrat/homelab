@@ -37,3 +37,13 @@ variable "jellyfinSecret" {
   description = "The Authentik OAuth2 client secret for the application used by Jellyfin"
   type        = string
 }
+
+variable "grafanaKey" {
+  description = "The Authentik OAuth2 client key for the application used by Grafana"
+  type        = string
+}
+
+variable "grafanaSecret" {
+  description = "The Authentik OAuth2 client secret for the application used by Grafana"
+  type        = string
+}

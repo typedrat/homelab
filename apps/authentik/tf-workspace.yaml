@@ -49,3 +49,13 @@ spec:
                   name: authentik-jellyfin
                   namespace: authentik
                   key: client-secret
+            - name: TF_VAR_grafanaKey
+              secretKeyRef:
+                  name: authentik-grafana
+                  namespace: authentik
+                  key: client-id
+            - name: TF_VAR_grafanaSecret
+              secretKeyRef:
+                  name: authentik-grafana
+                  namespace: authentik
+                  key: client-secret

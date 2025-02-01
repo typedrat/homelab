@@ -12,3 +12,7 @@ resource "authentik_group" "discord-sysop" {
   })
   is_superuser = true
 }
+
+resource "authentik_group" "grafana-admins" {
+  name = "Grafana Admins"
+}
