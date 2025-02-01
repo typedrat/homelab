@@ -51,11 +51,11 @@ spec:
                   key: client-secret
             - name: TF_VAR_grafanaKey
               secretKeyRef:
-                  name: authentik-grafana
-                  namespace: authentik
+                  name: grafana-oauth
+                  namespace: monitoring
                   key: client-id
             - name: TF_VAR_grafanaSecret
               secretKeyRef:
-                  name: authentik-grafana
-                  namespace: authentik
+                  name: grafana-oauth
+                  namespace: monitoring
                   key: client-secret

@@ -8,7 +8,7 @@ spec:
     path: ./monitoring/controllers
     prune: true
     dependsOn:
-        - name: authentik
+        - name: istio-ingress
     sourceRef:
         kind: GitRepository
         name: flux-system

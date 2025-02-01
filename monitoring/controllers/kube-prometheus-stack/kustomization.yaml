@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
     - etcd-client-cert.yaml
     - grafana-httproute.yaml
+    - grafana-oauth.yaml
     - namespace.yaml
     - repository.yaml
     - release.yaml

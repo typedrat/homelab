@@ -64,9 +64,8 @@ spec:
                     role_attribute_path: contains(groups, 'Grafana Admins') && 'Admin' || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'
 
             extraSecretMounts:
-                - name: authentik-grafana-secret-mount
-                  secretName: authentik-grafana
-                  namespace: authentik
+                - name: grafana-oauth-secret-mount
+                  secretName: grafana-oauth
                   defaultMode: 0440
                   mountPath: /etc/secrets/auth_generic_oauth
                   readOnly: true
