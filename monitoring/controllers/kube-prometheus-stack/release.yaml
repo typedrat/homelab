@@ -44,6 +44,7 @@ spec:
                 secrets:
                     - etcd-client-cert
                 serviceMonitorSelectorNilUsesHelmValues: false
+                podMonitorSelectorNilUsesHelmValues: false
 
         prometheus-node-exporter:
             prometheus:
