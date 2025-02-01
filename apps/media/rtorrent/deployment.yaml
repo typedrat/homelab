@@ -62,6 +62,9 @@ spec:
                         subPath: rtorrent_exporter.yaml
                 - image: nginxinc/nginx-unprivileged:stable-alpine-slim
                   name: nginx
+                  securityContext:
+                      runAsUser: 911
+                      runAsGroup: 911
                   ports:
                       - containerPort: 5000
                         name: xmlrpc
