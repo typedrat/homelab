@@ -16,7 +16,6 @@ spec:
         metadata:
             labels:
                 app: flood
-                rtorrent-rpc: "true"
         spec:
             securityContext:
                 fsGroup: 911

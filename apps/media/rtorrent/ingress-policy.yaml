@@ -21,7 +21,7 @@ spec:
                       protocol: UDP
         - fromEndpoints:
               - matchLabels:
-                    rtorrent-rpc: "true"
+                    app: flood
           toPorts:
               - ports:
                     - port: "80"
