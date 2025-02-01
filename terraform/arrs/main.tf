@@ -59,7 +59,7 @@ locals {
 }
 
 resource "prowlarr_indexer" "indexers" {
-  for_each = { for idx, indexer in local.indexers : indexer.name => indexer }
+  for_each = { for idx, indexer in local.indexers.indexers : indexer.name => indexer }
 
   name            = each.value.name
   app_profile_id  = each.value.app_profile_id
