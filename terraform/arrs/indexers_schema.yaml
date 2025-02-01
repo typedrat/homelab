@@ -59,9 +59,35 @@ properties:
                     enum: [western, anime]
                     description: The type of content for tag assignment
                 fields:
-                    type: object
+                    type: array
                     description: Configuration fields specific to the indexer
-                    additionalProperties: true
+                    items:
+                        type: object
+                        required: [name]
+                        properties:
+                            name:
+                                type: string
+                                description: Name of the field
+                            bool_value:
+                                type: boolean
+                                description: Boolean value for the field
+
+                            sensitive_value:
+                                type: string
+                                description: Sensitive text value for the field
+
+                            number_value:
+                                type: number
+                                description: Numeric value for the field
+
+                            set_value:
+                                type: array
+                                description: Array value for the field
+
+                            text_value:
+                                type: string
+                                description: Text value for the field
+                        additionalProperties: false
             additionalProperties: false
         minItems: 1
         uniqueItems: true
