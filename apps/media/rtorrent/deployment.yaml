@@ -29,8 +29,6 @@ spec:
                       - name: HOME
                         value: "/config"
                   ports:
-                      - containerPort: 5000
-                        name: xmlrpc
                       - containerPort: 42069
                         name: bittorrent
                       - containerPort: 6881
@@ -45,6 +43,8 @@ spec:
                       - name: rtorrent-rc
                         mountPath: /config/.rtorrent.rc
                         subPath: .rtorrent.rc
+                      - name: scgi-sock
+                        mountPath: /sock
                       - name: media-volume
                         mountPath: /data
                 - image: aauren/rtorrent-exporter:latest
@@ -60,6 +60,17 @@ spec:
                       - name: rtorrent-exporter-config
                         mountPath: /rtorrent-exporter.yaml
                         subPath: rtorrent_exporter.yaml
+                - image: nginxinc/nginx-unprivileged:stable-alpine-slim
+                  name: nginx
+                  ports:
+                      - containerPort: 5000
+                        name: xmlrpc
+                  volumeMounts:
+                      - name: scgi-sock
+                        mountPath: /sock
+                      - name: nginx-config
+                        mountPath: /etc/nginx/conf.d/default.conf
+                        subPath: default.conf
             volumes:
                 - name: rtorrent-state
                   persistentVolumeClaim:
@@ -67,9 +78,9 @@ spec:
                 - name: rtorrent-rc
                   configMap:
                       name: rtorrent-rc
-                - name: rtorrent-exporter-config
-                  secret:
-                      secretName: rtorrent-exporter-config
+                - name: scgi-sock
+                  emptyDir:
+                      medium: Memory
                   readOnly: true
                 - name: media-volume
                   persistentVolumeClaim:

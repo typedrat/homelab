@@ -65,7 +65,7 @@ data:
         dht.add_bootstrap = dht.libtorrent.org:25401
 
         # UDP tracker support
-        trackers.use_udp.set = yes
+        #trackers.use_udp.set = yes
 
         # Peer settings
         throttle.max_uploads.set = 100
@@ -165,6 +165,6 @@ data:
         ### END of rtorrent.rc ###
 
         network.port_range.set = 42069-42069
-        scgi_port = :5000
-        directory.default.set = /data/
+        network.scgi.open_local = /sock/rtorrent.sock
+        directory.default.set = /data
         system.daemon.set = true

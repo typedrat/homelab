@@ -6,5 +6,6 @@ resources:
     - exporter-config.yaml
     - ingress-policy.yaml
     - monitoring.yaml
+    - nginx-config.yaml
     - service.yaml
     - state.yaml
