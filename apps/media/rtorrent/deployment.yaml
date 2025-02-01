@@ -47,6 +47,16 @@ spec:
                         subPath: .rtorrent.rc
                       - name: media-volume
                         mountPath: /data
+                - image: aauren/rtorrent-exporter:latest
+                  name: rtorrent-exporter
+                  args:
+                      - --config /config/rtorrent_exporter.yaml
+                  ports:
+                      - containerPort: 9135
+                        name: metrics
+                  volumeMounts:
+                      - name: rtorrent-exporter-config
+                        mountPath: /config
             volumes:
                 - name: rtorrent-state
                   persistentVolumeClaim:
@@ -54,6 +64,9 @@ spec:
                 - name: rtorrent-rc
                   configMap:
                       name: rtorrent-rc
+                - name: rtorrent-exporter-config
+                  secret:
+                      secretName: rtorrent-exporter-config
                 - name: media-volume
                   persistentVolumeClaim:
                       claimName: media-volume
