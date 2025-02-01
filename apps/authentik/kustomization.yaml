@@ -3,7 +3,6 @@ kind: Kustomization
 resources:
     - authentik-discord.yaml
     - authentik-env.yaml
-    - authentik-grafana.yaml
     - authentik-jellyfin.yaml
     - authentik-postgres.yaml
     - dragonfly.yaml
