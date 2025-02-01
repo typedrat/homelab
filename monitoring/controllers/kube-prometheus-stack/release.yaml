@@ -47,11 +47,17 @@ spec:
 
         grafana:
             grafana.ini:
+                server:
+                    root_url: https://grafana.thisratis.gay
+                    enable_gzip: true
+
                 auth:
                     signout_redirect_url: "https://auth.thisratis.gay/application/o/grafana/end-session/"
                     oauth_auto_login: true
+
                 auth.basic:
                     enabled: false
+
                 auth.generic_oauth:
                     name: authentik
                     enabled: true
@@ -62,6 +68,9 @@ spec:
                     token_url: "https://auth.thisratis.gay/application/o/token/"
                     api_url: "https://auth.thisratis.gay/application/o/userinfo/"
                     role_attribute_path: contains(groups, 'Grafana Admins') && 'Admin' || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'
+
+                security:
+                    disable_initial_admin_creation: true
 
             extraSecretMounts:
                 - name: grafana-oauth-secret-mount
