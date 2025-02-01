@@ -82,6 +82,13 @@ spec:
                   emptyDir:
                       medium: Memory
                   readOnly: true
+                - name: rtorrent-exporter-config
+                  secret:
+                      secretName: rtorrent-exporter-config
+                  readOnly: true
+                - name: nginx-config
+                  configMap:
+                      name: rtorrent-nginx-config
                 - name: media-volume
                   persistentVolumeClaim:
                       claimName: media-volume
