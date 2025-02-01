@@ -3,7 +3,6 @@ kind: Deployment
 metadata:
     labels:
         app: flood
-        rtorrent-rpc: "true"
     name: flood
     namespace: media
 spec:
@@ -17,6 +16,7 @@ spec:
         metadata:
             labels:
                 app: flood
+                rtorrent-rpc: "true"
         spec:
             securityContext:
                 fsGroup: 911
