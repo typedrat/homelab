@@ -5,7 +5,7 @@ metadata:
     namespace: media
 spec:
     selector:
-        app: flood
+        app: flood-rtorrent
     ports:
         - protocol: TCP
           port: 80
