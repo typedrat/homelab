@@ -49,12 +49,18 @@ spec:
                         mountPath: /data
                 - image: aauren/rtorrent-exporter:latest
                   name: rtorrent-exporter
+                  command:
+                      - /rtorrent_exporter
+                      - -rtorrent.addr
+                      - http://rtorrent:5000/RPC2
+                      - -config
+                      - /rtorrent_exporter.yaml
                   ports:
                       - containerPort: 9135
                         name: metrics
                   volumeMounts:
                       - name: rtorrent-exporter-config
-                        mountPath: /.rtorrent_exporter.yaml
+                        mountPath: /rtorrent_exporter.yaml
                         subPath: rtorrent_exporter.yaml
             volumes:
                 - name: rtorrent-state
