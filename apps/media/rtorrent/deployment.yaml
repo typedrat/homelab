@@ -50,7 +50,8 @@ spec:
                 - image: aauren/rtorrent-exporter:latest
                   name: rtorrent-exporter
                   command:
-                      - sleep infinity
+                      - sleep
+                      - infinity
                   ports:
                       - containerPort: 9135
                         name: metrics
