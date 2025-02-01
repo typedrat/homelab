@@ -29,3 +29,21 @@ resource "prowlarr_application_sonarr" "sonarr" {
   sync_level   = "fullSync"
   tags         = [var.tagId]
 }
+
+resource "sonarr_root_folder" "root_folder" {
+  path = var.libraryPath
+}
+
+resource "sonarr_naming" "naming" {
+  rename_episodes            = true
+  replace_illegal_characters = true
+  colon_replacement_format   = 4 # smart
+  multi_episode_style        = 5 # prefixed range
+  series_folder_format       = "{Series Title}"
+  season_folder_format       = "Season {season:00}"
+  specials_folder_format     = "Specials"
+
+  standard_episode_format = "{Series TitleYear} - S{season:00}E{episode:00} - {Episode CleanTitle} [{Custom Formats }{Quality Full}]{[MediaInfo VideoDynamicRangeType]}{[Mediainfo AudioCodec}{ Mediainfo AudioChannels]}{[MediaInfo VideoCodec]}{-Release Group}"
+  daily_episode_format    = "{Series TitleYear} - {Air-Date} - {Episode CleanTitle} [{Custom Formats }{Quality Full}]{[MediaInfo VideoDynamicRangeType]}{[Mediainfo AudioCodec}{ Mediainfo AudioChannels]}{[MediaInfo VideoCodec]}{-Release Group}"
+  anime_episode_format    = "{Series TitleYear} - S{season:00}E{episode:00} - {absolute:000} - {Episode CleanTitle} [{Custom Formats }{Quality Full}]{[MediaInfo VideoDynamicRangeType]}[{MediaInfo VideoBitDepth}bit]{[MediaInfo VideoCodec]}[{Mediainfo AudioCodec} { Mediainfo AudioChannels}]{MediaInfo AudioLanguages}{-Release Group}"
+}

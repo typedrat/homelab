@@ -42,3 +42,15 @@ resource "prowlarr_application_radarr" "radarr" {
   sync_level = "fullSync"
   tags       = [var.tagId]
 }
+
+resource "radarr_root_folder" "root_folder" {
+  path = var.libraryPath
+}
+
+resource "radarr_naming" "radarr" {
+  rename_movies              = true
+  replace_illegal_characters = true
+  colon_replacement_format   = "smart"
+  movie_folder_format        = "{Movie CleanTitle} ({Release Year})"
+  standard_movie_format      = "{Movie CleanTitle} {(Release Year)} [imdbid-{ImdbId}] - {Edition Tags }{[Custom Formats]}{[Quality Full]}{[MediaInfo 3D]}{[MediaInfo VideoDynamicRangeType]}{[Mediainfo AudioCodec}{ Mediainfo AudioChannels]}{[Mediainfo VideoCodec]}{-Release Group}"
+}

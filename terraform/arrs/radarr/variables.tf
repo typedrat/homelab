@@ -4,6 +4,10 @@ variable "serviceName" {
   default     = "radarr"
 }
 
+variable "libraryPath" {
+  type = string
+}
+
 variable "downloadPath" {
   type = string
 }

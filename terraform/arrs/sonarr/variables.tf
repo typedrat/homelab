@@ -4,6 +4,10 @@ variable "serviceName" {
   default     = "sonarr"
 }
 
+variable "libraryPath" {
+  type = string
+}
+
 variable "downloadPath" {
   type = string
 }
