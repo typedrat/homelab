@@ -62,14 +62,12 @@ resource "prowlarr_indexer" "indexers" {
   for_each = { for idx, indexer in local.indexers : indexer.name => indexer }
 
   name            = each.value.name
-  id              = each.value.id
   app_profile_id  = each.value.app_profile_id
   enable          = each.value.enable
   priority        = each.value.priority
   implementation  = each.value.implementation
   config_contract = each.value.config_contract
   protocol        = each.value.protocol
-  privacy         = each.value.privacy
   fields          = each.value.fields
   tags            = local.tag_mapping[each.value.content_type]
 }
