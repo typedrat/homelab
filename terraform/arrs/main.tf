@@ -68,6 +68,18 @@ resource "prowlarr_indexer" "indexers" {
   implementation  = each.value.implementation
   config_contract = each.value.config_contract
   protocol        = "torrent"
-  fields          = each.value.fields
   tags            = local.tag_mapping[each.value.content_type]
+
+  dynamic "fields" {
+    for_each = each.value.fields
+    content {
+      name            = fields.value.name
+      bool_value      = try(fields.value.bool_value, null)
+      number_value    = try(fields.value.number_value, null)
+      set_value       = try(fields.value.set_value, null)
+      text_value      = try(fields.value.text_value, null)
+      sensitive_value = try(fields.value.sensitive_value, null)
+    }
+  }
+
 }
