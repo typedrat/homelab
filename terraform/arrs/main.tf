@@ -14,7 +14,7 @@ module "radarr-anime" {
   }
 
   serviceName         = "radarr-anime"
-  downloadPath        = "/data/torrents/anime_movies"
+  downloadPath        = "/data/torrents/anime-movies"
   apiKey              = var.radarrAnimeApiKey
   extraSyncCategories = [5070]
   tagId               = module.prowlarr.anime_tag_id
@@ -23,7 +23,7 @@ module "radarr-anime" {
 module "sonarr" {
   source = "./sonarr"
 
-  downloadPath = "/data/torrents/tv_shows"
+  downloadPath = "/data/torrents/tv-shows"
   apiKey       = var.sonarrApiKey
   tagId        = module.prowlarr.western_tag_id
 }
