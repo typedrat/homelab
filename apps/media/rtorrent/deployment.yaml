@@ -51,8 +51,6 @@ spec:
                   name: rtorrent-exporter
                   command:
                       - /rtorrent-exporter
-                      - --rtorrent.addr
-                      - http://rtorrent:5000/RPC2
                       - --config
                       - /rtorrent-exporter.yaml
                   ports:
