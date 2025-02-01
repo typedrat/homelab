@@ -17,3 +17,8 @@ variable "sonarrAnimeApiKey" {
   type        = string
   description = "Sonarr API key for the anime instance"
 }
+
+variable "indexersYaml" {
+  type        = string
+  description = "The `indexers.yaml` file as a string."
+}

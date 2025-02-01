@@ -8,3 +8,4 @@
 .terraform*
 terraform/*/providers.tf
 terraform/*/*.tfvars
+apps/media/prowlarr/indexers.yaml

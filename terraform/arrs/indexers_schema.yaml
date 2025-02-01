@@ -1,0 +1,67 @@
+---
+$schema: http://json-schema.org/draft-07/schema#
+title: Prowlarr Indexers Configuration
+type: object
+required:
+    - indexers
+properties:
+    indexers:
+        type: array
+        items:
+            type: object
+            required:
+                - name
+                - id
+                - app_profile_id
+                - enable
+                - priority
+                - implementation
+                - config_contract
+                - protocol
+                - privacy
+                - content_type
+                - fields
+            properties:
+                name:
+                    type: string
+                    description: Display name of the indexer
+                id:
+                    type: integer
+                    minimum: 1
+                    description: Unique identifier for the indexer
+                app_profile_id:
+                    type: integer
+                    minimum: 1
+                    description: ID of the application profile to use
+                enable:
+                    type: boolean
+                    description: Whether the indexer is enabled
+                priority:
+                    type: integer
+                    minimum: 1
+                    description: Priority of the indexer
+                implementation:
+                    type: string
+                    description: The implementation type of the indexer
+                config_contract:
+                    type: string
+                    description: The configuration contract type
+                protocol:
+                    type: string
+                    enum: [torrent, usenet]
+                    description: The protocol used by the indexer
+                privacy:
+                    type: string
+                    enum: [private, public]
+                    description: The privacy type of the indexer
+                content_type:
+                    type: string
+                    enum: [western, anime]
+                    description: The type of content for tag assignment
+                fields:
+                    type: object
+                    description: Configuration fields specific to the indexer
+                    additionalProperties: true
+            additionalProperties: false
+        minItems: 1
+        uniqueItems: true

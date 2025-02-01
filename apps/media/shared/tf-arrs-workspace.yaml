@@ -34,3 +34,8 @@ spec:
                   namespace: media
                   name: prowlarr-secrets
                   key: api-key
+            - name: TF_VAR_indexersYaml
+              secretKeyRef:
+                  namespace: media
+                  name: prowlarr-secrets
+                  key: indexers-yaml
