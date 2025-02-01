@@ -47,6 +47,8 @@ spec:
                         subPath: .rtorrent.rc
                       - name: media-volume
                         mountPath: /data
+                      - name: rtorrent-exporter-config
+                        mountPath: /exporterconfig
                 - image: aauren/rtorrent-exporter:latest
                   name: rtorrent-exporter
                   args:
@@ -67,6 +69,7 @@ spec:
                 - name: rtorrent-exporter-config
                   secret:
                       secretName: rtorrent-exporter-config
+                  readOnly: true
                 - name: media-volume
                   persistentVolumeClaim:
                       claimName: media-volume
