@@ -49,6 +49,8 @@ spec:
                         mountPath: /data
                 - image: aauren/rtorrent-exporter:latest
                   name: rtorrent-exporter
+                  command:
+                      - sleep infinity
                   ports:
                       - containerPort: 9135
                         name: metrics
