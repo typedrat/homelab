@@ -5,12 +5,17 @@ metadata:
     namespace: flux-system
 spec:
     interval: 10m0s
-    path: ./apps/media/flood
+    path: ./apps/media/flood-rtorrent
     prune: true
     dependsOn:
+        - name: cilium
         - name: istio-ingress
         - name: authentik
         - name: media-shared
     sourceRef:
         kind: GitRepository
         name: flux-system
+    decryption:
+        provider: sops
+        secretRef:
+            name: sops-age

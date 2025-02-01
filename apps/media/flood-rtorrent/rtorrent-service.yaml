@@ -1,39 +1,32 @@
 apiVersion: v1
 kind: Service
 metadata:
-    name: rtorrent-rpc
-    namespace: media
-spec:
-    selector:
-        app: rtorrent
-    ports:
-        - protocol: TCP
-          port: 80
-          targetPort: 5000
-          name: xmlrpc
-    type: ClusterIP
----
-apiVersion: v1
-kind: Service
-metadata:
     name: rtorrent-bittorrent
     namespace: media
     annotations:
         lbipam.cilium.io/ips: 10.0.1.1
 spec:
     selector:
-        app: rtorrent
+        app: flood-rtorrent
     ports:
         - protocol: TCP
           port: 42069
           targetPort: 42069
           name: bittorrent
-        - protocol: UDP
+        - protocol: TCP
           port: 6881
           targetPort: 6881
           name: dht
         - protocol: UDP
+          port: 6881
+          targetPort: 6881
+          name: dht-udp
+        - protocol: TCP
           port: 6882
           targetPort: 6882
           name: dht-alt
+        - protocol: UDP
+          port: 6882
+          targetPort: 6882
+          name: dht-alt-udp
     type: LoadBalancer

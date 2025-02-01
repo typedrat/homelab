@@ -2,8 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
     labels:
-        app: rtorrent
-    name: rtorrent
+        app: flood-rtorrent
+    name: flood-rtorrent
     namespace: media
 spec:
     replicas: 1
@@ -11,15 +11,43 @@ spec:
         type: Recreate
     selector:
         matchLabels:
-            app: rtorrent
+            app: flood-rtorrent
     template:
         metadata:
             labels:
-                app: rtorrent
+                app: flood-rtorrent
         spec:
             securityContext:
                 fsGroup: 911
             containers:
+                - image: jesec/flood:4.9.0
+                  name: flood
+                  securityContext:
+                      runAsUser: 911
+                      runAsGroup: 911
+                  args:
+                      - "--auth=none"
+                      - "--allowedpath=/data/"
+                      - "--secret=$(SECRET_VALUE)"
+                      - "--rtsocket=/sock/rtorrent.sock"
+                  env:
+                      - name: HOME
+                        value: "/config"
+                      - name: SECRET_VALUE
+                        valueFrom:
+                            secretKeyRef:
+                                name: flood-secret
+                                key: secret-key
+                  ports:
+                      - containerPort: 3000
+                        name: http
+                  volumeMounts:
+                      - name: flood-state
+                        mountPath: /config
+                      - name: scgi-sock
+                        mountPath: /sock
+                      - name: media-volume
+                        mountPath: /data
                 - image: jesec/rtorrent:0.9.8-r16
                   name: rtorrent
                   securityContext:
@@ -71,10 +99,13 @@ spec:
                   volumeMounts:
                       - name: scgi-sock
                         mountPath: /sock
-                      - name: nginx-config
+                      - name: rtorrent-nginx-config
                         mountPath: /etc/nginx/conf.d/default.conf
                         subPath: default.conf
             volumes:
+                - name: flood-state
+                  persistentVolumeClaim:
+                      claimName: flood-state
                 - name: rtorrent-state
                   persistentVolumeClaim:
                       claimName: rtorrent-state
@@ -89,7 +120,7 @@ spec:
                   secret:
                       secretName: rtorrent-exporter-config
                   readOnly: true
-                - name: nginx-config
+                - name: rtorrent-nginx-config
                   configMap:
                       name: rtorrent-nginx-config
                 - name: media-volume

@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+    - deployment.yaml
+    - flood-authentik-policy.yaml
+    - flood-httproute.yaml
+    - flood-secret.yaml
+    - flood-service.yaml
+    - flood-state.yaml
+    - ingress-policy.yaml
+    - rtorrent-config.yaml
+    - rtorrent-exporter-config.yaml
+    - rtorrent-nginx-config.yaml
+    - rtorrent-service.yaml
+    - rtorrent-state.yaml
