@@ -45,6 +45,35 @@ spec:
                     - etcd-client-cert
                 serviceMonitorSelectorNilUsesHelmValues: false
 
+        prometheus-node-exporter:
+            prometheus:
+                monitor:
+                    attachMetadata:
+                        node: true
+                    relabelings:
+                        - action: replace
+                          sourceLabels:
+                              - __meta_kubernetes_node_name
+                          targetLabel: node
+                        - action: replace
+                          sourceLabels:
+                              - __meta_kubernetes_node_label_beta_kubernetes_io_instance_type
+                          targetLabel: vm_type
+                        - action: replace
+                          sourceLabels:
+                              - __meta_kubernetes_node_label_failure_domain_beta_kubernetes_io_region
+                          targetLabel: vm_region
+                        - action: replace
+                          sourceLabels:
+                              - __meta_kubernetes_node_label_failure_domain_beta_kubernetes_io_zone
+                          targetLabel: vm_zone
+                        - action: replace
+                          sourceLabels:
+                              - __meta_kubernetes_node_label_kubernetes_azure_com_agentpool
+                          targetLabel: vm_pool
+                        - regex: "container|service|endpoint"
+                          action: labeldrop
+
         grafana:
             grafana.ini:
                 server:
