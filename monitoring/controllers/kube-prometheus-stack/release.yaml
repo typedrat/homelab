@@ -55,8 +55,8 @@ spec:
                 auth.generic_oauth:
                     name: authentik
                     enabled: true
-                    client_id: $__file{/etc/secrets/auth_generic_oauth/client_id}
-                    client_secret: $__file{/etc/secrets/auth_generic_oauth/client_secret}
+                    client_id: $__file{/etc/secrets/auth_generic_oauth/client-id}
+                    client_secret: $__file{/etc/secrets/auth_generic_oauth/client-secret}
                     scopes: "openid profile email"
                     auth_url: "https://auth.thisratis.gay/application/o/authorize/"
                     token_url: "https://auth.thisratis.gay/application/o/token/"
