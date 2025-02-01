@@ -33,6 +33,10 @@ spec:
                 - name: sleep
                   image: busybox:latest
                   command: ["sleep", "infinity"]
+                  volumeMounts:
+                      - name: rtorrent-exporter-config
+                        mountPath: /.rtorrent_exporter.yaml
+                        subPath: rtorrent_exporter.yaml
             volumes:
                 - name: setup-script
                   configMap:
@@ -41,6 +45,10 @@ spec:
                 - name: data
                   persistentVolumeClaim:
                       claimName: media-volume
+                - name: rtorrent-exporter-config
+                  secret:
+                      secretName: rtorrent-exporter-config
+
 ---
 apiVersion: v1
 kind: ConfigMap
