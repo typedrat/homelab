@@ -14,5 +14,5 @@ spec:
         - shoko.thisratis.gay
     rules:
         - backendRefs:
-              - name: shoko
+              - name: shoko-server
                 port: 80
