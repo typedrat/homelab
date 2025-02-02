@@ -2,6 +2,7 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
     name: shoko-anime-http-updater
+    namespace: media
 spec:
     schedule: "0 0 * * *" # Run at midnight every day
     successfulJobsHistoryLimit: 3
@@ -27,9 +28,7 @@ spec:
                                   apk update
                                   apk add --no-cache wget unzip
 
-                                  # Make script executable and run it
-                                  chmod +x /scripts/update-anime-http.sh
-                                  /scripts/update-anime-http.sh
+                                  sh /scripts/update-anime-http.sh
                     restartPolicy: OnFailure
                     volumes:
                         - name: shoko-config
@@ -44,9 +43,10 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
     name: anime-http-update-script
+    namespace: media
 data:
     update-anime-http.sh: |
-        #!/bin/bash
+        #!/bin/sh
 
         # Function to check if directory exists
         wait_for_directory() {
