@@ -33,4 +33,4 @@ spec:
               mountPath: /data
 
         deploymentStrategy:
-            type: Restart
+            type: Recreate
