@@ -28,6 +28,16 @@ variable "sysopRoleId" {
   type        = string
 }
 
+variable "ldapUsername" {
+  description = "The username for the LDAP search user"
+  type        = string
+}
+
+variable "ldapPassword" {
+  description = "The password for the LDAP search user"
+  type        = string
+}
+
 variable "jellyfinKey" {
   description = "The Authentik OAuth2 client key for the application used by Jellyfin"
   type        = string

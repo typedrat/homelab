@@ -39,6 +39,16 @@ spec:
                   name: authentik-discord
                   namespace: authentik
                   key: sysop-role-id
+            - name: TF_VAR_ldapUsername
+              secretKeyRef:
+                  name: authentik-ldap
+                  namespace: authentik
+                  key: username
+            - name: TF_VAR_ldapPassword
+              secretKeyRef:
+                  name: authentik-ldap
+                  namespace: authentik
+                  key: password
             - name: TF_VAR_jellyfinKey
               secretKeyRef:
                   name: authentik-jellyfin
