@@ -12,25 +12,25 @@ spec:
             - name: TF_VAR_radarrApiKey
               secretKeyRef:
                   namespace: media
-                  name: radarr-secrets
-                  key: api-key
+                  name: arr-api-keys
+                  key: SONARR_API_KEY
             - name: TF_VAR_radarrAnimeApiKey
               secretKeyRef:
                   namespace: media
-                  name: radarr-secrets
-                  key: anime-api-key
+                  name: arr-api-keys
+                  key: SONARR_API_KEY
             - name: TF_VAR_sonarrApiKey
               secretKeyRef:
                   namespace: media
-                  name: sonarr-secrets
-                  key: api-key
+                  name: arr-api-keys
+                  key: SONARR_API_KEY
             - name: TF_VAR_sonarrAnimeApiKey
               secretKeyRef:
                   namespace: media
-                  name: sonarr-secrets
-                  key: anime-api-key
+                  name: arr-api-keys
+                  key: SONARR_ANIME_API_KEY
             - name: TF_VAR_prowlarrApiKey
               secretKeyRef:
                   namespace: media
-                  name: prowlarr-secrets
-                  key: api-key
+                  name: arr-api-keys
+                  key: PROWLARR_API_KEY

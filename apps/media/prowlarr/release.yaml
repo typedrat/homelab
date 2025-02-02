@@ -19,15 +19,15 @@ spec:
         extraEnv:
             - name: PROWLARR__APP__INSTANCENAME
               valueFrom:
-                  secretKeyRef:
-                      name: prowlarr-secrets
+                  configMapKeyRef:
+                      name: prowlarr-config
                       key: instance-name
 
             - name: PROWLARR__AUTH__APIKEY
               valueFrom:
                   secretKeyRef:
-                      name: prowlarr-secrets
-                      key: api-key
+                      name: arr-api-keys
+                      key: PROWLARR_API_KEY
             - name: PROWLARR__AUTH__METHOD
               value: External
 

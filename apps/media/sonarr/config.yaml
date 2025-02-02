@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: sonarr-config
+    namespace: media
+data:
+    instance-name: thisratis.gay Sonarr
+    anime-instance-name: thisratis.gay Sonarr (Anime)

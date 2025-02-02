@@ -8,32 +8,32 @@ spec:
           source: Secret
           secretRef:
               namespace: media
-              name: radarr-secrets
-              key: api-key
+              name: arr-api-keys
+              key: RADARR_API_KEY
         - filename: radarr-anime-api-key
           source: Secret
           secretRef:
               namespace: media
-              name: radarr-secrets
-              key: anime-api-key
+              name: arr-api-keys
+              key: RADARR_ANIME_API_KEY
         - filename: sonarr-api-key
           source: Secret
           secretRef:
               namespace: media
-              name: sonarr-secrets
-              key: api-key
+              name: arr-api-keys
+              key: SONARR_API_KEY
         - filename: sonarr-anime-api-key
           source: Secret
           secretRef:
               namespace: media
-              name: sonarr-secrets
-              key: anime-api-key
+              name: arr-api-keys
+              key: SONARR_ANIME_API_KEY
         - filename: prowlarr-api-key
           source: Secret
           secretRef:
               namespace: media
-              name: prowlarr-secrets
-              key: api-key
+              name: arr-api-keys
+              key: PROWLARR_API_KEY
     configuration: |
         terraform {
             backend "kubernetes" {

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: prowlarr-config
+    namespace: media
+data:
+    instance-name: thisratis.gay Prowlarr
