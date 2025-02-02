@@ -31,3 +31,6 @@ spec:
         volumeMounts:
             - name: data
               mountPath: /data
+
+        deploymentStrategy:
+            type: Restart
