@@ -11,13 +11,10 @@ properties:
             type: object
             required:
                 - name
-                - id
-                - app_profile_id
                 - enable
                 - priority
                 - implementation
                 - config_contract
-                - protocol
                 - privacy
                 - content_type
                 - fields
@@ -25,14 +22,6 @@ properties:
                 name:
                     type: string
                     description: Display name of the indexer
-                id:
-                    type: integer
-                    minimum: 1
-                    description: Unique identifier for the indexer
-                app_profile_id:
-                    type: integer
-                    minimum: 1
-                    description: ID of the application profile to use
                 enable:
                     type: boolean
                     description: Whether the indexer is enabled
@@ -46,10 +35,6 @@ properties:
                 config_contract:
                     type: string
                     description: The configuration contract type
-                protocol:
-                    type: string
-                    enum: [torrent, usenet]
-                    description: The protocol used by the indexer
                 privacy:
                     type: string
                     enum: [private, public]
