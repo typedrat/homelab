@@ -70,16 +70,15 @@ resource "prowlarr_indexer" "indexers" {
   protocol        = "torrent"
   tags            = local.tag_mapping[each.value.content_type]
 
-  dynamic "fields" {
-    for_each = each.value.fields
-    content {
-      name            = fields.value.name
-      bool_value      = try(fields.value.bool_value, null)
-      number_value    = try(fields.value.number_value, null)
-      set_value       = try(fields.value.set_value, null)
-      text_value      = try(fields.value.text_value, null)
-      sensitive_value = try(fields.value.sensitive_value, null)
+  fields = [for value in each.value.fields :
+    {
+      name            = value.name
+      bool_value      = try(value.bool_value, null)
+      number_value    = try(value.number_value, null)
+      set_value       = try(value.set_value, null)
+      text_value      = try(value.text_value, null)
+      sensitive_value = try(value.sensitive_value, null)
     }
-  }
-
+  ]
 }
+
