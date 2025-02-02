@@ -48,37 +48,3 @@ module "sonarr-anime" {
 module "prowlarr" {
   source = "./prowlarr"
 }
-
-locals {
-  indexers = yamldecode(var.indexersYaml)
-
-  tag_mapping = {
-    "western" = [module.prowlarr.western_tag_id]
-    "anime"   = [module.prowlarr.anime_tag_id]
-  }
-}
-
-resource "prowlarr_indexer" "indexers" {
-  for_each = { for idx, indexer in local.indexers.indexers : indexer.name => indexer }
-
-  name            = each.value.name
-  app_profile_id  = 1
-  enable          = each.value.enable
-  priority        = each.value.priority
-  implementation  = each.value.implementation
-  config_contract = each.value.config_contract
-  protocol        = "torrent"
-  tags            = local.tag_mapping[each.value.content_type]
-
-  fields = [for value in each.value.fields :
-    {
-      name            = value.name
-      bool_value      = try(value.bool_value, null)
-      number_value    = try(value.number_value, null)
-      set_value       = try(value.set_value, null)
-      text_value      = try(value.text_value, null)
-      sensitive_value = try(value.sensitive_value, null)
-    }
-  ]
-}
-
