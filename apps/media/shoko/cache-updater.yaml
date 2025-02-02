@@ -1,0 +1,94 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+    name: shoko-anime-http-updater
+spec:
+    schedule: "0 0 * * *" # Run at midnight every day
+    successfulJobsHistoryLimit: 3
+    failedJobsHistoryLimit: 3
+    concurrencyPolicy: Forbid
+    jobTemplate:
+        spec:
+            template:
+                spec:
+                    containers:
+                        - name: updater
+                          image: alpine:3.18
+                          volumeMounts:
+                              - name: shoko-config
+                                mountPath: /config
+                              - name: script-volume
+                                mountPath: /scripts
+                          command:
+                              - /bin/sh
+                              - -c
+                              - |
+                                  # Update package index and install required packages
+                                  apk update
+                                  apk add --no-cache wget unzip
+
+                                  # Make script executable and run it
+                                  chmod +x /scripts/update-anime-http.sh
+                                  /scripts/update-anime-http.sh
+                    restartPolicy: OnFailure
+                    volumes:
+                        - name: shoko-config
+                          persistentVolumeClaim:
+                              claimName: shoko-config
+                        - name: script-volume
+                          configMap:
+                              name: anime-http-update-script
+                              defaultMode: 0777
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: anime-http-update-script
+data:
+    update-anime-http.sh: |
+        #!/bin/bash
+
+        # Function to check if directory exists
+        wait_for_directory() {
+            while [ ! -d "/config/Shoko.CLI" ]; do
+                echo "Waiting for /config/Shoko.CLI directory to be created..."
+                sleep 5
+            done
+            echo "Directory /config/Shoko.CLI found!"
+        }
+
+        # Function to download and extract the ZIP file
+        download_and_extract() {
+            local zip_url="https://files.shokoanime.com/files/shoko-server/other/Anime_HTTP.zip"
+            local temp_zip="/tmp/Anime_HTTP.zip"
+
+            echo "Downloading Anime_HTTP.zip..."
+            if ! wget -q "$zip_url" -O "$temp_zip"; then
+                echo "Failed to download ZIP file"
+                return 1
+            fi
+
+            echo "Extracting Anime_HTTP folder..."
+            if ! unzip -o "$temp_zip" "Anime_HTTP/*" -d "/config/Shoko.CLI/"; then
+                echo "Failed to extract ZIP file"
+                rm -f "$temp_zip"
+                return 1
+            fi
+
+            # Clean up
+            rm -f "$temp_zip"
+            echo "Successfully downloaded and extracted Anime_HTTP"
+        }
+
+        # Main execution
+        echo "Starting script..."
+        wait_for_directory
+        download_and_extract
+
+        if [ $? -eq 0 ]; then
+            echo "Script completed successfully"
+            exit 0
+        else
+            echo "Script failed"
+            exit 1
+        fi

@@ -8,3 +8,4 @@ resources:
     - media/sonarr.yaml
     - media/jellyfin.yaml
     - media/prowlarr.yaml
+    - media/shoko.yaml
