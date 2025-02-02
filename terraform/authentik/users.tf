@@ -6,5 +6,5 @@ resource "authentik_user" "ldap-search" {
 
 resource "authentik_rbac_permission_user" "ldap-search-users" {
   user       = authentik_user.ldap-search.id
-  permission = "authentik_core.view_user"
+  permission = "authentik_provider_ldap.search_full_directory"
 }
