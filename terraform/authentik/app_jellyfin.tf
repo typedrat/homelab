@@ -45,3 +45,9 @@ resource "authentik_policy_binding" "jellyfin_user" {
   group  = authentik_group.discord-user.id
   order  = 0
 }
+
+resource "authentik_policy_binding" "jellyfin_allow_ldap" {
+  target = authentik_application.jellyfin.uuid
+  user   = authentik_user.ldap-search.id
+  order  = 0
+}
