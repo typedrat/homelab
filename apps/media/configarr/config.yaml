@@ -201,5 +201,7 @@ data:
                 base_url: http://sonarr-anime.media.svc.cluster.local
                 api_key: !env SONARR_ANIME_API_KEY
 
-                quality_definition:
-                    type: anime
+                include:
+                    - template: sonarr-quality-definition-series
+                    - template: sonarr-v4-quality-profile-anime
+                    - template: sonarr-v4-custom-formats-anime
