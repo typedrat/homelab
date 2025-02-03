@@ -9,3 +9,4 @@ resources:
     - media/jellyfin.yaml
     - media/prowlarr.yaml
     - media/shoko.yaml
+    - media/configarr.yaml
