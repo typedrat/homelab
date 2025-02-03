@@ -13,12 +13,12 @@ spec:
               secretKeyRef:
                   namespace: media
                   name: arr-api-keys
-                  key: SONARR_API_KEY
+                  key: RADARR_API_KEY
             - name: TF_VAR_radarrAnimeApiKey
               secretKeyRef:
                   namespace: media
                   name: arr-api-keys
-                  key: SONARR_API_KEY
+                  key: RADARR_ANIME_API_KEY
             - name: TF_VAR_sonarrApiKey
               secretKeyRef:
                   namespace: media
