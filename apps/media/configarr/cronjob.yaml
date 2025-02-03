@@ -17,15 +17,37 @@ spec:
                           image: ghcr.io/raydak-labs/configarr:latest
                           imagePullPolicy: Always
                           tty: true
+                          env:
+                              - name: RADARR_API_KEY
+                                valueFrom:
+                                    secretKeyRef:
+                                        namespace: media
+                                        name: arr-api-keys
+                                        key: RADARR_API_KEY
+                              - name: RADARR_ANIME_API_KEY
+                                valueFrom:
+                                    secretKeyRef:
+                                        namespace: media
+                                        name: arr-api-keys
+                                        key: RADARR_ANIME_API_KEY
+                              - name: SONARR_API_KEY
+                                valueFrom:
+                                    secretKeyRef:
+                                        namespace: media
+                                        name: arr-api-keys
+                                        key: SONARR_API_KEY
+                              - name: SONARR_ANIME_API_KEY
+                                valueFrom:
+                                    secretKeyRef:
+                                        namespace: media
+                                        name: arr-api-keys
+                                        key: SONARR_ANIME_API_KEY
                           volumeMounts:
                               - name: configarr-cache
                                 mountPath: /app/repos
                               - name: config-volume
                                 mountPath: /app/config/config.yml
                                 subPath: config.yml
-                              - name: secret-volume
-                                mountPath: /app/config/secrets.yml
-                                subPath: secrets.yml
                     volumes:
                         - name: configarr-cache
                           persistentVolumeClaim:
@@ -33,7 +55,4 @@ spec:
                         - name: config-volume
                           configMap:
                               name: configarr
-                        - name: secret-volume
-                          secret:
-                              secretName: arr-api-keys
                     restartPolicy: Never

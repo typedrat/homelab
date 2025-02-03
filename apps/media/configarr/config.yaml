@@ -11,7 +11,14 @@ data:
         sonarr:
             western:
                 base_url: http://sonarr.media.svc.cluster.local
-                api_key: !secret SONARR_API_KEY
+                api_key: !env SONARR_API_KEY
 
                 quality_definition:
                     type: series
+
+            anime:
+                base_url: http://sonarr-anime.media.svc.cluster.local
+                api_key: !env SONARR_ANIME_API_KEY
+
+                quality_definition:
+                    type: anime
