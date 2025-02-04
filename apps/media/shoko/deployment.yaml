@@ -5,6 +5,8 @@ metadata:
     namespace: media
 spec:
     replicas: 1
+    strategy:
+        type: Recreate
     selector:
         matchLabels:
             app: shoko-server
@@ -15,7 +17,7 @@ spec:
         spec:
             containers:
                 - name: shoko-server
-                  image: ghcr.io/shokoanime/server:latest
+                  image: ghcr.io/shokoanime/server:daily
                   ports:
                       - containerPort: 8111
                         protocol: TCP
