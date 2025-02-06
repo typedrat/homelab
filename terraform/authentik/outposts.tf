@@ -24,6 +24,6 @@ resource "authentik_outpost" "proxy" {
     authentik_provider_proxy.radarr.id,
     authentik_provider_proxy.radarr-anime.id,
     authentik_provider_proxy.sonarr.id,
-    authentik_application.sonarr-anime.id,
+    authentik_provider_proxy.sonarr-anime.id,
   ]
 }
