@@ -16,3 +16,4 @@ spec:
               - operation:
                     hosts:
                         - "radarr.thisratis.gay"
+                        - "radarr-anime.thisratis.gay"

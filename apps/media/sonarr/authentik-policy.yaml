@@ -16,3 +16,4 @@ spec:
               - operation:
                     hosts:
                         - "sonarr.thisratis.gay"
+                        - "sonarr-anime.thisratis.gay"
