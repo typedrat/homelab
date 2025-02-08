@@ -47,6 +47,10 @@ spec:
                                 namespace: media
                                 key: client-secret
 
+                      - name: SFTPGO_PLUGINS__0__TYPE
+                        value: "auth"
+                      - name: SFTPGO_PLUGINS__0__AUTH_OPTIONS__SCOPE
+                        value: "1"
                       - name: SFTPGO_PLUGINS__0__CMD
                         value: "/usr/local/bin/sftpgo-plugin-auth"
                       - name: SFTPGO_PLUGINS__0__ARGS
