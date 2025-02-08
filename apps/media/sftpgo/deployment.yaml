@@ -19,13 +19,57 @@ spec:
                 fsGroup: 911
             containers:
                 - name: sftpgo
-                  image: drakkan/sftpgo:v2.6-alpine
+                  image: drakkan/sftpgo:v2.6-plugins
                   securityContext:
                       runAsUser: 911
                       runAsGroup: 911
                       fsGroup: 911
-                  env: []
+                  env:
+                      - name: SFTPGO_HTTPD__ENABLE_WEB_ADMIN
+                        value: "false"
+                      - name: SFTPGO_HTTPD__HIDE_LOGIN_URL
+                        value: "3" # don't link login URLs
 
+                      - name: SFTPGO_HTTPD__OIDC__CONFIG_URL
+                        value: https://auth.thisratis.gay/application/o/sftpgo/
+                      - name: SFTPGO_HTTPD__OIDC__REDIRECT_BASE_URL
+                        value: https://sftpgo.thisratis.gay/
+                      - name: SFTPGO_HTTPD__OIDC__CLIENT_ID
+                        valueFrom:
+                            secretKeyRef:
+                                name: authentik-sftpgo
+                                namespace: authentik
+                                key: client-id
+                      - name: SFTPGO_HTTPD__OIDC__CLIENT_SECRET
+                        valueFrom:
+                            secretKeyRef:
+                                name: authentik-sftpgo
+                                namespace: authentik
+                                key: client-secret
+
+                      - name: SFTPGO_PLUGINS__0__CMD
+                        value: "/usr/local/bin/sftpgo-plugin-auth"
+                      - name: SFTPGO_PLUGINS__0__ARGS
+                        value: "serve"
+                      - name: SFTPGO_PLUGINS__0__AUTO_MTLS
+                        value: "1"
+
+                      - name: SFTPGO_PLUGIN_AUTH_LDAP_URL
+                        value: "ldaps://ak-outpost-ldap-outpost.authentik.svc.cluster.local:636"
+                      - name: SFTPGO_PLUGIN_AUTH_LDAP_BASE_DN
+                        value: "ou=users,ou=sftpgo,dc=ldap,dc=goauthentik,dc=io"
+                      - name: SFTPGO_PLUGIN_AUTH_LDAP_BIND_DN
+                        value: "cn=ldap-search,ou=users,ou=sftpgo,dc=ldap,dc=goauthentik,dc=io"
+                      - name: SFTPGO_PLUGIN_AUTH_LDAP_PASSWORD
+                        valueFrom:
+                            secretKeyRef:
+                                name: authentik-ldap
+                                namespace: authentik
+                                key: password
+                      - name: SFTPGO_PLUGIN_AUTH_LDAP_SEARCH_QUERY
+                        value: "(&(memberOf=CN=Discord Users,OU=groups,OU=sftpgo,DC=ldap,DC=goauthentik,DC=io)(cn=%username%))"
+                      - name: SFTPGO_PLUGIN_AUTH_LDAP_USERS_BASE_DIR
+                        value: /data
                   ports:
                       - containerPort: 8080
                         protocol: TCP
@@ -38,7 +82,7 @@ spec:
                       - name: sftpgo-config
                         mountPath: /var/lib/sftpgo
                       - name: media-shared
-                        mountPath: /srv/sftpgo/data
+                        mountPath: /data
             volumes:
                 - name: sftpgo-config
                   persistentVolumeClaim:

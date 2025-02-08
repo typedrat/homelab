@@ -69,3 +69,13 @@ spec:
                   name: grafana-oauth
                   namespace: monitoring
                   key: client-secret
+            - name: TF_VAR_sftpgoKey
+              secretKeyRef:
+                  name: authentik-sftpgo
+                  namespace: authentik
+                  key: client-id
+            - name: TF_VAR_sftpgoSecret
+              secretKeyRef:
+                  name: authentik-sftpgo
+                  namespace: authentik
+                  key: client-secret
