@@ -21,14 +21,6 @@ resource "authentik_provider_oauth2" "sftpgo" {
   property_mappings = data.authentik_property_mapping_provider_scope.oauth_scopes.ids
 }
 
-data "authentik_property_mapping_provider_scope" "oauth_scopes" {
-  managed_list = [
-    "goauthentik.io/providers/oauth2/scope-email",
-    "goauthentik.io/providers/oauth2/scope-openid",
-    "goauthentik.io/providers/oauth2/scope-profile"
-  ]
-}
-
 resource "authentik_application" "sftpgo" {
   name                  = "SFTPgo"
   group                 = "System"
