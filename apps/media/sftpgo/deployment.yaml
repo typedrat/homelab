@@ -17,7 +17,7 @@ spec:
         spec:
             containers:
                 - name: sftpgo
-                  image: drakkan/sftpgo:v2.6-distroless
+                  image: drakkan/sftpgo:v2.6-alpine
                   securityContext:
                       runAsUser: 911
                       runAsGroup: 911
