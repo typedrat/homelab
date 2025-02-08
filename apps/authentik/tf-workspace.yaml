@@ -71,11 +71,11 @@ spec:
                   key: client-secret
             - name: TF_VAR_sftpgoKey
               secretKeyRef:
-                  name: authentik-sftpgo
-                  namespace: authentik
+                  name: sftpgo-oauth
+                  namespace: media
                   key: client-id
             - name: TF_VAR_sftpgoSecret
               secretKeyRef:
-                  name: authentik-sftpgo
-                  namespace: authentik
+                  name: sftpgo-oauth
+                  namespace: media
                   key: client-secret

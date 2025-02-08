@@ -6,7 +6,6 @@ resources:
     - authentik-jellyfin.yaml
     - authentik-ldap.yaml
     - authentik-postgres.yaml
-    - authentik-sftpgo.yaml
     - dragonfly.yaml
     - httproute.yaml
     - monitoring.yaml
