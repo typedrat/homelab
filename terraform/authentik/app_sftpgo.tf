@@ -1,5 +1,5 @@
 resource "authentik_provider_ldap" "sftpgo" {
-  name            = "SFTPgo (LDAP)"
+  name            = "SFTPGo (LDAP)"
   base_dn         = "OU=sftpgo,DC=ldap,DC=goauthentik,DC=io"
   bind_flow       = data.authentik_flow.default-authentication-flow.id
   unbind_flow     = data.authentik_flow.default-invalidation-flow.id
@@ -7,7 +7,7 @@ resource "authentik_provider_ldap" "sftpgo" {
 }
 
 resource "authentik_provider_oauth2" "sftpgo" {
-  name               = "SFTPgo (OIDC)"
+  name               = "SFTPGo (OIDC)"
   authorization_flow = data.authentik_flow.default-authorization-flow.id
   invalidation_flow  = data.authentik_flow.default-provider-invalidation-flow.id
   client_id          = var.sftpgoKey
@@ -22,7 +22,7 @@ resource "authentik_provider_oauth2" "sftpgo" {
 }
 
 resource "authentik_application" "sftpgo" {
-  name                  = "SFTPgo"
+  name                  = "SFTPGo"
   group                 = "System"
   slug                  = "sftpgo"
   meta_icon             = "https://raw.githubusercontent.com/drakkan/sftpgo/refs/heads/main/img/logo.png"
