@@ -34,6 +34,8 @@ spec:
                         value: https://auth.thisratis.gay/application/o/sftpgo/
                       - name: SFTPGO_HTTPD__BINDINGS__0__OIDC__REDIRECT_BASE_URL
                         value: https://sftpgo.thisratis.gay/
+                      - name: SFTPGO_HTTPD__BINDINGS__0__OIDC__USERNAME_FIELD
+                        value: preferred_username
                       - name: SFTPGO_HTTPD__BINDINGS__0__OIDC__CLIENT_ID
                         valueFrom:
                             secretKeyRef:
@@ -74,8 +76,6 @@ spec:
                                 key: password
                       - name: SFTPGO_PLUGIN_AUTH_LDAP_SEARCH_QUERY
                         value: "(&(memberOf=CN=Discord Users,OU=groups,OU=sftpgo,DC=ldap,DC=goauthentik,DC=io)(cn=%username%))"
-                      - name: SFTPGO_PLUGIN_AUTH_LDAP_USERS_BASE_DIR
-                        value: /data
                   ports:
                       - containerPort: 8080
                         protocol: TCP
