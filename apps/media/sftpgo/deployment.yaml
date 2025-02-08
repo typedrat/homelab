@@ -63,8 +63,8 @@ spec:
                       - name: SFTPGO_PLUGIN_AUTH_LDAP_PASSWORD
                         valueFrom:
                             secretKeyRef:
-                                name: authentik-ldap
-                                namespace: authentik
+                                name: sftpgo-ldap
+                                namespace: media
                                 key: password
                       - name: SFTPGO_PLUGIN_AUTH_LDAP_SEARCH_QUERY
                         value: "(&(memberOf=CN=Discord Users,OU=groups,OU=sftpgo,DC=ldap,DC=goauthentik,DC=io)(cn=%username%))"

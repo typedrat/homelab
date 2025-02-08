@@ -4,4 +4,5 @@ resources:
     - config.yaml
     - deployment.yaml
     - service.yaml
+    - sftpgo-ldap.yaml
     - sftpgo-oauth.yaml
