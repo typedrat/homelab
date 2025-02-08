@@ -60,6 +60,8 @@ spec:
 
                       - name: SFTPGO_PLUGIN_AUTH_LDAP_URL
                         value: "ldaps://ak-outpost-ldap-outpost.authentik.svc.cluster.local:636"
+                      - name: SFTPGO_PLUGIN_AUTH_SKIP_TLS_VERIFY
+                        value: "1"
                       - name: SFTPGO_PLUGIN_AUTH_LDAP_BASE_DN
                         value: "ou=users,ou=sftpgo,dc=ldap,dc=goauthentik,dc=io"
                       - name: SFTPGO_PLUGIN_AUTH_LDAP_BIND_DN
