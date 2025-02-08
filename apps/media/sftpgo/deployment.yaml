@@ -25,22 +25,22 @@ spec:
                       runAsGroup: 911
                       fsGroup: 911
                   env:
-                      - name: SFTPGO_HTTPD__ENABLE_WEB_ADMIN
+                      - name: SFTPGO_HTTPD__BINDINGS__0__ENABLE_WEB_ADMIN
                         value: "false"
-                      - name: SFTPGO_HTTPD__HIDE_LOGIN_URL
+                      - name: SFTPGO_HTTPD__BINDINGS__0__HIDE_LOGIN_URL
                         value: "3" # don't link login URLs
 
-                      - name: SFTPGO_HTTPD__OIDC__CONFIG_URL
+                      - name: SFTPGO_HTTPD__BINDINGS__0__OIDC__CONFIG_URL
                         value: https://auth.thisratis.gay/application/o/sftpgo/
-                      - name: SFTPGO_HTTPD__OIDC__REDIRECT_BASE_URL
+                      - name: SFTPGO_HTTPD__BINDINGS__0__OIDC__REDIRECT_BASE_URL
                         value: https://sftpgo.thisratis.gay/
-                      - name: SFTPGO_HTTPD__OIDC__CLIENT_ID
+                      - name: SFTPGO_HTTPD__BINDINGS__0__OIDC__CLIENT_ID
                         valueFrom:
                             secretKeyRef:
                                 name: sftpgo-oauth
                                 namespace: media
                                 key: client-id
-                      - name: SFTPGO_HTTPD__OIDC__CLIENT_SECRET
+                      - name: SFTPGO_HTTPD__BINDINGS__0__OIDC__CLIENT_SECRET
                         valueFrom:
                             secretKeyRef:
                                 name: sftpgo-oauth
