@@ -5,10 +5,12 @@ metadata:
     namespace: media
 spec:
     ports:
-        - port: 80
+        - name: http
+          port: 80
           targetPort: 8080
           protocol: TCP
-        - port: 22
+        - name: ssh
+          port: 22
           targetPort: 2022
           protocol: TCP
     selector:
