@@ -11,13 +11,13 @@ resource "sftpgo_group" "sftpgo-users" {
   }
   virtual_folders = [
     {
-      name         = "homedir-users"
+      name         = "media-dir"
       quota_files  = -1
       quota_size   = -1
       virtual_path = "/"
-      mapped_path  = "/data"
     }
   ]
+  depends_on = [sftpgo_folder.media-dir]
 }
 
 resource "sftpgo_group" "sftpgo-sysops" {
@@ -33,11 +33,20 @@ resource "sftpgo_group" "sftpgo-sysops" {
   }
   virtual_folders = [
     {
-      name         = "homedir-sysops"
+      name         = "media-dir"
       quota_files  = -1
       quota_size   = -1
       virtual_path = "/"
-      mapped_path  = "/data"
     }
   ]
+  depends_on = [sftpgo_folder.media-dir]
+}
+
+resource "sftpgo_folder" "media-dir" {
+  name = "media-dir"
+
+  filesystem = {
+    provider = 0 # local filesystem
+  }
+  mapped_path = "/data/"
 }
