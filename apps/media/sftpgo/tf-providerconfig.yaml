@@ -17,7 +17,7 @@ spec:
               name: sftpgo-default-admin
               key: password
     configuration: |
-        provider "authentik" {
+        provider "sftpgo" {
             host     = "http://sftpgo.media.svc.cluster.local"
             username = file("${path.module}/sftpgo-username")
             password = file("${path.module}/sftpgo-password")
