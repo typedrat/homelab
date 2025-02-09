@@ -93,7 +93,7 @@ resource "authentik_stage_prompt_field" "user-settings-prompt-ssh-keys" {
 
   initial_value_expression = true
   initial_value            = <<-PYTHON
-  return user.attributes.get("sshPublicKeys", '')
+  return '\n'.join(user.attributes.get("sshPublicKey", []))
   PYTHON
 }
 
