@@ -6,7 +6,7 @@ metadata:
 type: kubernetes.io/basic-auth
 stringData:
     username: ENC[AES256_GCM,data:EEbXG5HJZNIVehetLw==,iv:cEGImwxwMFwTTp7oEgl93OU1h/1gexiAGMuhnU+GuYc=,tag:QU9IG3FpGddc+qsKbQVPeg==,type:str]
-    password: ENC[AES256_GCM,data:RBwLly7qZ/0Dr4O4g6K3Giy+IEi+lMyqKZFb1ZwNkc60efzPnqWIFDQU+J3yncAKb83wysezv2pCHItc75MGwEXGhpiAopRKYrCkpm0wI9GGBHtLpzxYfQ/gMXtcpwHYSqGaw95EVEnrsqFHeYDhVvWuT0/KTV/+IptVGPpnZYY=,iv:pYDd3C+WO0VR88LjfSGq9zYLSVikzQP5iCgjztQFTuU=,tag:cMZ1AtxrZXKKZAHdkrwJGA==,type:str]
+    password: ENC[AES256_GCM,data:2D6u+EWIsG8norQdkmlZsey3zsGmn8SC8aKaFeTy18OBRgxGFKUrEmDWs936/WAA8S3wJY/uOjfZXomrxhHjVrVwSLWS4kbR,iv:5GZlyFEEf9L2DOTKtza0wmQw9hKLaupO2afUQYBwumM=,tag:Aa23AQ7pZgOD6rWNn5l+dQ==,type:str]
 sops:
     kms: []
     gcp_kms: []
@@ -31,8 +31,8 @@ sops:
             UzY0ZTBGS0ZXUXE2OW81NU54VGFQcEEKPyGbMUPyHPsegqjqOYdDwbeGOqJUPd2o
             aUpy6G3BTTJJ3PHvWPKHO1/n8YStyxN7yi960cKGFbHUk+YmzfPfaw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-02-08T23:13:48Z"
-    mac: ENC[AES256_GCM,data:ScOkhG3PKAJyKQVoJygtrZSS7ihn5GdbTsS9gcJmpRZRHT6IIVAXjZ5UhgvIneR23RP0T2K3BvQ3KRE4ufkr09T9zJP4/GmvNLXdKAj+W5bAWufRmlDbjU6gyvpBUwEczfjlKOArUQSSIlSkO6dYFf3NmQO5jjKrIw6/PxyN60E=,iv:Yo5SMwRCed8BpDKLrV1AD2uV831ya/A94kVPqP2ROvU=,tag:3ARdKkXn2764DzYMNVVojQ==,type:str]
+    lastmodified: "2025-02-09T00:05:52Z"
+    mac: ENC[AES256_GCM,data:x7L9JULY5k6tETMRWWusS73pMoDl6LBwA3+SOSu1APMlmiXuXrBCkKKTnl2rUmAU6sNAOjrhgAkFDFBVSkt1BrdNRNsVomMH90qkA2kQSsOTvawstwHQif5xCSeg/I/yx0e+x8+qSqLEhxdD+JOt57ohBT3q5GAAm4EyJRTDdQo=,iv:koBuRK9X59YlQ64nq2g6U29skke/ZJGUebJh7QzDh6c=,tag:jnu6ekLxu3utpxCSaJ8BJQ==,type:str]
     pgp: []
     encrypted_regex: ^(data|stringData)$
     version: 3.9.3
