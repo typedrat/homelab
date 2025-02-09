@@ -71,10 +71,11 @@ resource "authentik_stage_user_write" "user-settings-write" {
 }
 
 resource "authentik_flow_stage_binding" "user-settings-write-binding" {
-  target           = authentik_flow.user-settings.uuid
-  stage            = authentik_stage_user_write.user-settings-write.id
-  order            = 10
-  evaluate_on_plan = false
+  target               = authentik_flow.user-settings.uuid
+  stage                = authentik_stage_user_write.user-settings-write.id
+  order                = 10
+  evaluate_on_plan     = false
+  re_evaluate_policies = true
 }
 
 resource "authentik_policy_expression" "user-settings-ssh-key-list" {
