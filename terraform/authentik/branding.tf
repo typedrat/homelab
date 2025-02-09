@@ -5,5 +5,5 @@ resource "authentik_brand" "thisratisgay" {
   branding_favicon    = "/static/dist/assets/icons/icon.png"
   flow_authentication = data.authentik_flow.default-authentication-flow.id
   flow_invalidation   = data.authentik_flow.default-invalidation-flow.id
-  flow_user_settings  = authentik_flow.user-settings.id
+  flow_user_settings  = authentik_flow.user-settings.uuid
 }
