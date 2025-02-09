@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: sftpgo-default-admin
+    namespace: media
+type: kubernetes.io/basic-auth
+stringData:
+    username: ENC[AES256_GCM,data:EEbXG5HJZNIVehetLw==,iv:cEGImwxwMFwTTp7oEgl93OU1h/1gexiAGMuhnU+GuYc=,tag:QU9IG3FpGddc+qsKbQVPeg==,type:str]
+    password: ENC[AES256_GCM,data:RBwLly7qZ/0Dr4O4g6K3Giy+IEi+lMyqKZFb1ZwNkc60efzPnqWIFDQU+J3yncAKb83wysezv2pCHItc75MGwEXGhpiAopRKYrCkpm0wI9GGBHtLpzxYfQ/gMXtcpwHYSqGaw95EVEnrsqFHeYDhVvWuT0/KTV/+IptVGPpnZYY=,iv:pYDd3C+WO0VR88LjfSGq9zYLSVikzQP5iCgjztQFTuU=,tag:cMZ1AtxrZXKKZAHdkrwJGA==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1psufqpzvwl74c4uqmt7y9f3akavrdzkevgfrg3d0rcw2nj7fwe7sctsjpe
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAzdmRjNEVWTndMcitrVlJ1
+            L3dVcm5ZRmZLYVpOQTBtdGRjbEpDSU03aTNVCjZpeExyRFN0Q0RyTFhRYlplSGVv
+            VlRtajJzVkw1azYzM3M5a3FjdWNoMjAKLS0tIGdkSnQ2YjdLWEFJNlBvOWdxeU9i
+            c1U1SXRkWEh4bmEwTC9rQ2k4OCt0b1UKlX5EWb0Om3r9FdAYQEPfChtXFkj40qoW
+            30TLAEpchG7dpuZidypftxOut+/xBZOPlB2obltqT7hrp4yYc6wUVw==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1zjzywnjly7fm0mn22c64z5f8m45tne4ddplrrtx9q40y4kznacysvc9jxj
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBtejB3d0ZTb2JKajVnMHNI
+            SmVRb240SjJhWE5DVWRyODdTaUwvQjIwZDFnCi9LbVhyY294V0hZNi93L3ZHbWt5
+            NmRvaFprL1JTenBFTEhxQUo4MlVQNWcKLS0tIHJTVzNTbnRELys1S3VhNHVvWDZV
+            UzY0ZTBGS0ZXUXE2OW81NU54VGFQcEEKPyGbMUPyHPsegqjqOYdDwbeGOqJUPd2o
+            aUpy6G3BTTJJ3PHvWPKHO1/n8YStyxN7yi960cKGFbHUk+YmzfPfaw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-02-08T23:13:48Z"
+    mac: ENC[AES256_GCM,data:ScOkhG3PKAJyKQVoJygtrZSS7ihn5GdbTsS9gcJmpRZRHT6IIVAXjZ5UhgvIneR23RP0T2K3BvQ3KRE4ufkr09T9zJP4/GmvNLXdKAj+W5bAWufRmlDbjU6gyvpBUwEczfjlKOArUQSSIlSkO6dYFf3NmQO5jjKrIw6/PxyN60E=,iv:Yo5SMwRCed8BpDKLrV1AD2uV831ya/A94kVPqP2ROvU=,tag:3ARdKkXn2764DzYMNVVojQ==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.9.3

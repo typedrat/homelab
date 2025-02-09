@@ -39,6 +39,12 @@ discord_groups = Group.objects.filter(attributes__discord_role_id__isnull=False)
 # Filter matching roles based on guild_member_info['roles']
 user_groups_discord_updated = discord_groups.filter(attributes__discord_role_id__in=guild_member_info["roles"])
 
+# Filter out groups where the user has an excluded role
+for group in user_groups_discord_updated:
+    excluded_role_id = group.attributes.get('discord_role_id_exclude')
+    if excluded_role_id and excluded_role_id in guild_member_info["roles"]:
+        user_groups_discord_updated = user_groups_discord_updated.exclude(pk=group.pk)
+
 # Set matchin_roles in flow context
 request.context["flow_plan"].context["groups"] = user_groups_discord_updated
 

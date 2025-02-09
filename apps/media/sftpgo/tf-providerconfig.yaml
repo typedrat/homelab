@@ -1,0 +1,40 @@
+apiVersion: tf.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+    name: sftpgo
+spec:
+    credentials:
+        - filename: sftpgo-username
+          source: Secret
+          secretRef:
+              namespace: media
+              name: sftpgo-default-admin
+              key: username
+        - filename: sftpgo-password
+          source: Secret
+          secretRef:
+              namespace: media
+              name: sftpgo-default-admin
+              key: password
+    configuration: |
+        provider "authentik" {
+            host     = "http://sftpgo.media.svc.cluster.local"
+            username = file("${path.module}/sftpgo-username")
+            password = file("${path.module}/sftpgo-password")
+        }
+
+        // Modules _must_ use remote state. The provider does not persist state.
+        terraform {
+            backend "kubernetes" {
+                secret_suffix     = "providerconfig-sftpgo"
+                namespace         = "media"
+                in_cluster_config = true
+            }
+
+            required_providers {
+                sftpgo = {
+                    source  = "drakkan/sftpgo"
+                    version = "0.0.12"
+                }
+            }
+        }

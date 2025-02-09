@@ -25,6 +25,46 @@ spec:
                       runAsGroup: 911
                       fsGroup: 911
                   env:
+                      - name: SFTPGO_DATA_PROVIDER__CREATE_DEFAULT_ADMIN
+                        value: "true"
+                      - name: SFTPGO_DEFAULT_ADMIN_USERNAME
+                        valueFrom:
+                            secretKeyRef:
+                                name: sftpgo-default-admin
+                                namespace: media
+                                key: username
+                      - name: SFTPGO_DEFAULT_ADMIN_PASSWORD
+                        valueFrom:
+                            secretKeyRef:
+                                name: sftpgo-default-admin
+                                namespace: media
+                                key: password
+
+                      - name: SFTPGO_DATA_PROVIDER__DRIVER
+                        value: postgresql
+                      - name: SFTPGO_DATA_PROVIDER__NAME
+                        value: sftpgo
+                      - name: SFTPGO_DATA_PROVIDER__HOST
+                        valueFrom:
+                            secretKeyRef:
+                                name: sftpgo-postgres-app
+                                key: host
+                      - name: SFTPGO_DATA_PROVIDER__PORT
+                        valueFrom:
+                            secretKeyRef:
+                                name: sftpgo-postgres-app
+                                key: port
+                      - name: SFTPGO_DATA_PROVIDER__USERNAME
+                        valueFrom:
+                            secretKeyRef:
+                                name: sftpgo-postgres-app
+                                key: username
+                      - name: SFTPGO_DATA_PROVIDER__PASSWORD
+                        valueFrom:
+                            secretKeyRef:
+                                name: sftpgo-postgres-app
+                                key: password
+
                       - name: SFTPGO_HTTPD__BINDINGS__0__ENABLE_WEB_ADMIN
                         value: "false"
                       - name: SFTPGO_HTTPD__BINDINGS__0__HIDE_LOGIN_URL
@@ -76,6 +116,8 @@ spec:
                                 key: password
                       - name: SFTPGO_PLUGIN_AUTH_LDAP_SEARCH_QUERY
                         value: "(&(memberOf=CN=Discord Users,OU=groups,OU=sftpgo,DC=ldap,DC=goauthentik,DC=io)(cn=%username%))"
+                      - name: SFTPGO_PLUGIN_AUTH_PRIMARY_GROUP_PREFIX
+                        value: sftpgo-
                   ports:
                       - containerPort: 8080
                         protocol: TCP

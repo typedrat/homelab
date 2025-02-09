@@ -43,6 +43,12 @@ user_groups_discord = list(request.user.ak_groups.filter(pk__in=discord_groups.v
 # Filter matching roles based on guild_member_info['roles']
 user_groups_discord_updated = discord_groups.filter(attributes__discord_role_id__in=guild_member_info["roles"])
 
+# Filter out groups where the user has an excluded role
+for group in user_groups_discord_updated:
+    excluded_role_id = group.attributes.get('discord_role_id_exclude')
+    if excluded_role_id and excluded_role_id in guild_member_info["roles"]:
+        user_groups_discord_updated = user_groups_discord_updated.exclude(pk=group.pk)
+
 # Combine user_groups_non_discord and matching_roles
 user_groups_updated = user_groups_non_discord.union(user_groups_discord_updated)
 
