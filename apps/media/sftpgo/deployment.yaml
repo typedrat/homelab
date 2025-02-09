@@ -65,8 +65,6 @@ spec:
                                 name: sftpgo-postgres-app
                                 key: password
 
-                      - name: SFTPGO_HTTPD__BINDINGS__0__ENABLE_WEB_ADMIN
-                        value: "false"
                       - name: SFTPGO_HTTPD__BINDINGS__0__HIDE_LOGIN_URL
                         value: "3" # don't link login URLs
 
