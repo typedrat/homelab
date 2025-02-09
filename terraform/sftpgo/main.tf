@@ -48,5 +48,5 @@ resource "sftpgo_folder" "media-dir" {
   filesystem = {
     provider = 0 # local filesystem
   }
-  mapped_path = "/data/"
+  mapped_path = "/data"
 }
