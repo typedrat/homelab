@@ -23,6 +23,14 @@ resource "authentik_stage_prompt_field" "user-settings-prompt-username" {
   type      = "username"
   field_key = "username"
   order     = 0
+
+  initial_value_expression = true
+  initial_value            = <<-PYTHON
+  try:
+      return user.username
+  except:
+      return ''
+  PYTHON
 }
 
 resource "authentik_stage_prompt_field" "user-settings-prompt-name" {
@@ -31,6 +39,14 @@ resource "authentik_stage_prompt_field" "user-settings-prompt-name" {
   type      = "text"
   field_key = "name"
   order     = 10
+
+  initial_value_expression = true
+  initial_value            = <<-PYTHON
+  try:
+      return user.name
+  except:
+      return ''
+  PYTHON
 }
 
 resource "authentik_stage_prompt_field" "user-settings-prompt-email" {
@@ -39,6 +55,14 @@ resource "authentik_stage_prompt_field" "user-settings-prompt-email" {
   type      = "email"
   field_key = "email"
   order     = 20
+
+  initial_value_expression = true
+  initial_value            = <<-PYTHON
+  try:
+      return user.email
+  except:
+      return ''
+  PYTHON
 }
 
 resource "authentik_stage_prompt_field" "user-settings-prompt-locale" {
@@ -47,6 +71,14 @@ resource "authentik_stage_prompt_field" "user-settings-prompt-locale" {
   type      = "ak-locale"
   field_key = "attributes.settings.locale"
   order     = 30
+
+  initial_value_expression = true
+  initial_value            = <<-PYTHON
+  try:
+      return user.attributes.get("settings", {}).get("locale", "")
+  except:
+      return ''
+  PYTHON
 }
 
 resource "authentik_stage_prompt_field" "user-settings-prompt-ssh-keys" {
@@ -58,6 +90,14 @@ resource "authentik_stage_prompt_field" "user-settings-prompt-ssh-keys" {
   Enter the SSH public keys associated with your account in OpenSSH format, one per line.
   HELP
   order     = 40
+
+  initial_value_expression = true
+  initial_value            = <<-PYTHON
+  try:
+      return user.attributes.get("sshPublicKeys", {})
+  except:
+      return ''
+  PYTHON
 }
 
 resource "authentik_flow_stage_binding" "user-settings-prompt-binding" {
