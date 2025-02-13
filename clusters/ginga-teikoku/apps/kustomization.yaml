@@ -10,4 +10,3 @@ resources:
     - media/prowlarr.yaml
     - media/shoko.yaml
     - media/configarr.yaml
-    - media/sftpgo.yaml
