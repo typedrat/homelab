@@ -51,10 +51,6 @@ spec:
                         mountPath: /data
                 - image: jesec/rtorrent:0.9.8-r16
                   name: rtorrent
-                  command:
-                      - sh
-                      - -c
-                      - "'sleep infinity'"
                   securityContext:
                       runAsUser: 911
                       runAsGroup: 911
