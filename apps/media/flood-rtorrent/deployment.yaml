@@ -17,6 +17,7 @@ spec:
             labels:
                 app: flood-rtorrent
         spec:
+            hostname: flood-rtorrent
             securityContext:
                 fsGroup: 911
             containers:
@@ -50,6 +51,9 @@ spec:
                         mountPath: /data
                 - image: jesec/rtorrent:0.9.8-r16
                   name: rtorrent
+                  command:
+                      - sleep
+                      - infinity
                   securityContext:
                       runAsUser: 911
                       runAsGroup: 911
