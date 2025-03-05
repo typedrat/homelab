@@ -13,7 +13,6 @@ spec:
         - name: dragonfly-operator
         - name: crossplane-terraform
         - name: monitoring-controllers
-        - name: media-sftpgo
     sourceRef:
         kind: GitRepository
         name: flux-system
