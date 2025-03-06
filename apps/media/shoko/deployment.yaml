@@ -18,6 +18,7 @@ spec:
             containers:
                 - name: shoko-server
                   image: ghcr.io/shokoanime/server:daily
+                  imagePullPolicy: Always
                   ports:
                       - containerPort: 8111
                         protocol: TCP
