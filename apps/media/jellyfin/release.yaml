@@ -21,6 +21,8 @@ spec:
             fsGroup: 911
 
         persistence:
+            config:
+                size: 25Gi
             media:
                 enabled: false
         runtimeClassName: nvidia
