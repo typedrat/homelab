@@ -1,16 +1,16 @@
 creation_rules:
     - path_regex: (apps|clusters|infrastructure|monitoring)/.*values\.yaml
       age: >-
-          age1psufqpzvwl74c4uqmt7y9f3akavrdzkevgfrg3d0rcw2nj7fwe7sctsjpe,
+          age1pdsmvs22vq89pv0k6k9zfl3fk899cqehj2f7tx7j0tt6l66kuqssryqjlr,
           age1zjzywnjly7fm0mn22c64z5f8m45tne4ddplrrtx9q40y4kznacysvc9jxj
 
     - path_regex: (apps|clusters|infrastructure|monitoring)/.*\.yaml
       encrypted_regex: ^(data|stringData)$
       age: >-
-          age1psufqpzvwl74c4uqmt7y9f3akavrdzkevgfrg3d0rcw2nj7fwe7sctsjpe,
+          age1pdsmvs22vq89pv0k6k9zfl3fk899cqehj2f7tx7j0tt6l66kuqssryqjlr,
           age1zjzywnjly7fm0mn22c64z5f8m45tne4ddplrrtx9q40y4kznacysvc9jxj
 
     - path_regex: talos/secrets.*\.yaml
       encrypted_regex: ^(secret|bootstraptoken|secretboxencryptionsecret|token|key)$
       age: >-
-          age1psufqpzvwl74c4uqmt7y9f3akavrdzkevgfrg3d0rcw2nj7fwe7sctsjpe
+          age1pdsmvs22vq89pv0k6k9zfl3fk899cqehj2f7tx7j0tt6l66kuqssryqjlr

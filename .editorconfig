@@ -5,3 +5,6 @@ trim_trailing_whitespace = true
 charset = utf-8
 indent_stype = space
 indent_size = 4
+
+[*.nix]
+indent_size = 2
