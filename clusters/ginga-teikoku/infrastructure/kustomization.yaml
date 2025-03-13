@@ -1,15 +1,15 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-    - cert-manager.yaml
-    - cilium.yaml
-    - clustersecret.yaml
-    - cnpg.yaml
-    - crossplane.yaml
-    - dragonfly-operator.yaml
-    - external-dns.yaml
-    - istio.yaml
-    - metrics-server.yaml
-    - nvidia.yaml
-    - openebs.yaml
-    - pull-secrets.yaml
+  - cert-manager.yaml
+  - cilium.yaml
+  - clustersecret.yaml
+  - cnpg.yaml
+  - crossplane.yaml
+  - dragonfly-operator.yaml
+  - external-dns.yaml
+  - istio.yaml
+  - metrics-server.yaml
+  - nvidia.yaml
+  - openebs.yaml
+  - pull-secrets.yaml

@@ -1,19 +1,19 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-    name: sonarr-postgres
-    namespace: media
+  name: sonarr-postgres
+  namespace: media
 spec:
-    instances: 1
-    bootstrap:
-        initdb:
-            database: sonarr_main
-            owner: sonarr
-            dataChecksums: true
-            postInitSQL:
-                - CREATE DATABASE sonarr_log        OWNER sonarr
-                - CREATE DATABASE sonarr_anime_main OWNER sonarr
-                - CREATE DATABASE sonarr_anime_log  OWNER sonarr
-    storage:
-        size: 5Gi
-        storageClass: host-zfs-postgres
+  instances: 1
+  bootstrap:
+    initdb:
+      database: sonarr_main
+      owner: sonarr
+      dataChecksums: true
+      postInitSQL:
+        - CREATE DATABASE sonarr_log        OWNER sonarr
+        - CREATE DATABASE sonarr_anime_main OWNER sonarr
+        - CREATE DATABASE sonarr_anime_log  OWNER sonarr
+  storage:
+    size: 5Gi
+    storageClass: host-zfs-postgres

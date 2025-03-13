@@ -1,20 +1,16 @@
 apiVersion: cilium.io/v2alpha1
 kind: CiliumBGPAdvertisement
 metadata:
-    name: cilium-lb-bgp-advertisement
-    labels:
-        advertise: bgp
+  name: cilium-lb-bgp-advertisement
+  labels:
+    advertise: bgp
 spec:
-    advertisements:
-        - advertisementType: "PodCIDR"
-        - advertisementType: "Service"
-          service:
-              addresses:
-                  - LoadBalancerIP
-          selector:
-              matchExpressions:
-                  - {
-                        key: somekey,
-                        operator: NotIn,
-                        values: ["never-used-value"],
-                    }
+  advertisements:
+    - advertisementType: "PodCIDR"
+    - advertisementType: "Service"
+      service:
+        addresses:
+          - LoadBalancerIP
+      selector:
+        matchExpressions:
+          - { key: somekey, operator: NotIn, values: ["never-used-value"] }

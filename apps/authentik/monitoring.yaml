@@ -1,25 +1,25 @@
 apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
-    name: authentik-server
-    namespace: authentik
+  name: authentik-server
+  namespace: authentik
 spec:
-    selector:
-        matchLabels:
-            app.kubernetes.io/name: authentik
-            app.kubernetes.io/component: server
-    podMetricsEndpoints:
-        - port: metrics
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: authentik
+      app.kubernetes.io/component: server
+  podMetricsEndpoints:
+    - port: metrics
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
-    name: authentik-outposts
-    namespace: authentik
+  name: authentik-outposts
+  namespace: authentik
 spec:
-    selector:
-        matchLabels:
-            app.kubernetes.io/managed-by: goauthentik.io
-            app: authentik-outpost
-    podMetricsEndpoints:
-        - port: http-metrics
+  selector:
+    matchLabels:
+      app.kubernetes.io/managed-by: goauthentik.io
+      app: authentik-outpost
+  podMetricsEndpoints:
+    - port: http-metrics

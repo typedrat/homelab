@@ -1,37 +1,37 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-    name: radarr-httproute
-    namespace: media
-    annotations:
-        external-dns.alpha.kubernetes.io/target: iserlohn.thisratis.gay
+  name: radarr-httproute
+  namespace: media
+  annotations:
+    external-dns.alpha.kubernetes.io/target: iserlohn.thisratis.gay
 spec:
-    parentRefs:
-        - name: gateway
-          namespace: istio-ingress
-          sectionName: wildcard-https
-    hostnames:
-        - radarr.thisratis.gay
-    rules:
-        - backendRefs:
-              - name: radarr
-                port: 80
+  parentRefs:
+    - name: gateway
+      namespace: istio-ingress
+      sectionName: wildcard-https
+  hostnames:
+    - radarr.thisratis.gay
+  rules:
+    - backendRefs:
+        - name: radarr
+          port: 80
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-    name: radarr-anime-httproute
-    namespace: media
-    annotations:
-        external-dns.alpha.kubernetes.io/target: iserlohn.thisratis.gay
+  name: radarr-anime-httproute
+  namespace: media
+  annotations:
+    external-dns.alpha.kubernetes.io/target: iserlohn.thisratis.gay
 spec:
-    parentRefs:
-        - name: gateway
-          namespace: istio-ingress
-          sectionName: wildcard-https
-    hostnames:
-        - radarr-anime.thisratis.gay
-    rules:
-        - backendRefs:
-              - name: radarr-anime
-                port: 80
+  parentRefs:
+    - name: gateway
+      namespace: istio-ingress
+      sectionName: wildcard-https
+  hostnames:
+    - radarr-anime.thisratis.gay
+  rules:
+    - backendRefs:
+        - name: radarr-anime
+          port: 80

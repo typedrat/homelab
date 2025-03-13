@@ -1,4 +1,4 @@
 cluster:
-    clusterName: ginga-teikoku
-    network:
-        dnsDomain: cluster.local
+  clusterName: ginga-teikoku
+  network:
+    dnsDomain: cluster.local

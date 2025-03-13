@@ -28,6 +28,7 @@
           jq
           age
           sops
+          nodePackages.prettier
         ];
       };
     });

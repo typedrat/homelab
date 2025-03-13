@@ -2,17 +2,17 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-    name: istio-base
-    namespace: istio-system
+  name: istio-base
+  namespace: istio-system
 spec:
-    chart:
-        spec:
-            chart: base
-            reconcileStrategy: ChartVersion
-            sourceRef:
-                kind: HelmRepository
-                name: istio
-            version: ">=1.24.2 <1.25"
-    install:
-        createNamespace: true
-    interval: 1m0s
+  chart:
+    spec:
+      chart: base
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: istio
+      version: ">=1.24.2 <1.25"
+  install:
+    createNamespace: true
+  interval: 1m0s

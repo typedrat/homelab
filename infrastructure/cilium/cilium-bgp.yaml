@@ -1,14 +1,14 @@
 apiVersion: cilium.io/v2alpha1
 kind: CiliumBGPClusterConfig
 metadata:
-    name: cilium-bgp
+  name: cilium-bgp
 spec:
-    bgpInstances:
-        - name: "instance-64512"
-          localASN: 64512
-          peers:
-              - name: "OpenWRT"
-                peerASN: 64512
-                peerAddress: 10.0.0.1
-                peerConfigRef:
-                    name: "cilium-peer"
+  bgpInstances:
+    - name: "instance-64512"
+      localASN: 64512
+      peers:
+        - name: "OpenWRT"
+          peerASN: 64512
+          peerAddress: 10.0.0.1
+          peerConfigRef:
+            name: "cilium-peer"

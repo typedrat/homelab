@@ -1,4 +1,4 @@
 machine:
-    kernel:
-        modules:
-            - name: zfs
+  kernel:
+    modules:
+      - name: zfs

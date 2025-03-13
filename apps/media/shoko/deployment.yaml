@@ -1,50 +1,50 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: shoko-server
-    namespace: media
+  name: shoko-server
+  namespace: media
 spec:
-    replicas: 1
-    strategy:
-        type: Recreate
-    selector:
-        matchLabels:
-            app: shoko-server
-    template:
-        metadata:
-            labels:
-                app: shoko-server
-        spec:
-            containers:
-                - name: shoko-server
-                  image: ghcr.io/shokoanime/server:daily
-                  imagePullPolicy: Always
-                  ports:
-                      - containerPort: 8111
-                        protocol: TCP
-                        name: http
-                  env:
-                      - name: PUID
-                        value: "911"
-                      - name: PGID
-                        value: "911"
-                      - name: TZ
-                        value: "Americas/Los_Angeles"
-                  volumeMounts:
-                      - name: shoko-config
-                        mountPath: /home/shoko/.shoko
-                      - name: media-shared
-                        mountPath: /data
-                      - name: shm
-                        mountPath: /dev/shm
-            volumes:
-                - name: shoko-config
-                  persistentVolumeClaim:
-                      claimName: shoko-config
-                - name: media-shared
-                  persistentVolumeClaim:
-                      claimName: media-volume
-                - name: shm
-                  emptyDir:
-                      medium: Memory
-                      sizeLimit: 256Mi
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: shoko-server
+  template:
+    metadata:
+      labels:
+        app: shoko-server
+    spec:
+      containers:
+        - name: shoko-server
+          image: ghcr.io/shokoanime/server:daily
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8111
+              protocol: TCP
+              name: http
+          env:
+            - name: PUID
+              value: "911"
+            - name: PGID
+              value: "911"
+            - name: TZ
+              value: "Americas/Los_Angeles"
+          volumeMounts:
+            - name: shoko-config
+              mountPath: /home/shoko/.shoko
+            - name: media-shared
+              mountPath: /data
+            - name: shm
+              mountPath: /dev/shm
+      volumes:
+        - name: shoko-config
+          persistentVolumeClaim:
+            claimName: shoko-config
+        - name: media-shared
+          persistentVolumeClaim:
+            claimName: media-volume
+        - name: shm
+          emptyDir:
+            medium: Memory
+            sizeLimit: 256Mi

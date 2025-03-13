@@ -1,17 +1,17 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-    name: nvidia-device-plugin
-    namespace: nvidia-system
+  name: nvidia-device-plugin
+  namespace: nvidia-system
 spec:
-    interval: 1m0s
-    chart:
-        spec:
-            chart: nvidia-device-plugin
-            reconcileStrategy: ChartVersion
-            sourceRef:
-                kind: HelmRepository
-                name: nvdp
-            version: ">=0.17.0 <0.18"
-    values:
-        runtimeClassName: nvidia
+  interval: 1m0s
+  chart:
+    spec:
+      chart: nvidia-device-plugin
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: nvdp
+      version: ">=0.17.0 <0.18"
+  values:
+    runtimeClassName: nvidia

@@ -3,76 +3,76 @@ $schema: http://json-schema.org/draft-07/schema#
 title: Prowlarr Indexers Configuration
 type: object
 required:
-    - indexers
+  - indexers
 properties:
-    indexers:
-        type: array
-        items:
+  indexers:
+    type: array
+    items:
+      type: object
+      required:
+        - name
+        - enable
+        - priority
+        - implementation
+        - config_contract
+        - privacy
+        - content_type
+        - fields
+      properties:
+        name:
+          type: string
+          description: Display name of the indexer
+        enable:
+          type: boolean
+          description: Whether the indexer is enabled
+        priority:
+          type: integer
+          minimum: 1
+          description: Priority of the indexer
+        implementation:
+          type: string
+          description: The implementation type of the indexer
+        config_contract:
+          type: string
+          description: The configuration contract type
+        privacy:
+          type: string
+          enum: [private, public]
+          description: The privacy type of the indexer
+        content_type:
+          type: string
+          enum: [western, anime]
+          description: The type of content for tag assignment
+        fields:
+          type: array
+          description: Configuration fields specific to the indexer
+          items:
             type: object
-            required:
-                - name
-                - enable
-                - priority
-                - implementation
-                - config_contract
-                - privacy
-                - content_type
-                - fields
+            required: [name]
             properties:
-                name:
-                    type: string
-                    description: Display name of the indexer
-                enable:
-                    type: boolean
-                    description: Whether the indexer is enabled
-                priority:
-                    type: integer
-                    minimum: 1
-                    description: Priority of the indexer
-                implementation:
-                    type: string
-                    description: The implementation type of the indexer
-                config_contract:
-                    type: string
-                    description: The configuration contract type
-                privacy:
-                    type: string
-                    enum: [private, public]
-                    description: The privacy type of the indexer
-                content_type:
-                    type: string
-                    enum: [western, anime]
-                    description: The type of content for tag assignment
-                fields:
-                    type: array
-                    description: Configuration fields specific to the indexer
-                    items:
-                        type: object
-                        required: [name]
-                        properties:
-                            name:
-                                type: string
-                                description: Name of the field
-                            bool_value:
-                                type: boolean
-                                description: Boolean value for the field
+              name:
+                type: string
+                description: Name of the field
+              bool_value:
+                type: boolean
+                description: Boolean value for the field
 
-                            sensitive_value:
-                                type: string
-                                description: Sensitive text value for the field
+              sensitive_value:
+                type: string
+                description: Sensitive text value for the field
 
-                            number_value:
-                                type: number
-                                description: Numeric value for the field
+              number_value:
+                type: number
+                description: Numeric value for the field
 
-                            set_value:
-                                type: array
-                                description: Array value for the field
+              set_value:
+                type: array
+                description: Array value for the field
 
-                            text_value:
-                                type: string
-                                description: Text value for the field
-                        additionalProperties: false
+              text_value:
+                type: string
+                description: Text value for the field
             additionalProperties: false
-        minItems: 1
-        uniqueItems: true
+      additionalProperties: false
+    minItems: 1
+    uniqueItems: true

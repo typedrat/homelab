@@ -1,11 +1,11 @@
 apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
-    name: rtorrent
-    namespace: media
+  name: rtorrent
+  namespace: media
 spec:
-    selector:
-        matchLabels:
-            app: rtorrent
-    podMetricsEndpoints:
-        - port: metrics
+  selector:
+    matchLabels:
+      app: rtorrent
+  podMetricsEndpoints:
+    - port: metrics

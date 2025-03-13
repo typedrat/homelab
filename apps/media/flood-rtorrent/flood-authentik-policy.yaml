@@ -1,18 +1,18 @@
 apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
-    name: flood-authentik-policy
-    namespace: istio-ingress
+  name: flood-authentik-policy
+  namespace: istio-ingress
 spec:
-    targetRefs:
-        - name: gateway
-          kind: Gateway
-          group: gateway.networking.k8s.io
-    action: CUSTOM
-    provider:
-        name: authentik
-    rules:
-        - to:
-              - operation:
-                    hosts:
-                        - "flood.thisratis.gay"
+  targetRefs:
+    - name: gateway
+      kind: Gateway
+      group: gateway.networking.k8s.io
+  action: CUSTOM
+  provider:
+    name: authentik
+  rules:
+    - to:
+        - operation:
+            hosts:
+              - "flood.thisratis.gay"

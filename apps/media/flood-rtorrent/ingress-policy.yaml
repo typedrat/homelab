@@ -1,39 +1,39 @@
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
 metadata:
-    name: flood-rtorrent-ingress-policy
-    namespace: media
+  name: flood-rtorrent-ingress-policy
+  namespace: media
 spec:
-    endpointSelector:
-        matchLabels:
-            app: rtorrent
-    ingress:
-        - fromEntities:
-              - world
-          toPorts:
-              # Flood HTTP
-              - ports:
-                    - port: "3000"
-                      protocol: TCP
-              # rTorrent Bittorrent
-              - ports:
-                    - port: "42069"
-                      protocol: TCP
-              # rTorrent DHT
-              - ports:
-                    - port: "6881"
-                      protocol: TCP
-                    - port: "6881"
-                      protocol: UDP
-                    - port: "6882"
-                      protocol: TCP
-                    - port: "6882"
-                      protocol: UDP
-        # rTorrent Prometheus metrics
-        - fromEndpoints:
-              - matchLabels:
-                    app.kubernetes.io/name: prometheus
-          toPorts:
-              - ports:
-                    - port: "9135"
-                      protocol: TCP
+  endpointSelector:
+    matchLabels:
+      app: rtorrent
+  ingress:
+    - fromEntities:
+        - world
+      toPorts:
+        # Flood HTTP
+        - ports:
+            - port: "3000"
+              protocol: TCP
+        # rTorrent Bittorrent
+        - ports:
+            - port: "42069"
+              protocol: TCP
+        # rTorrent DHT
+        - ports:
+            - port: "6881"
+              protocol: TCP
+            - port: "6881"
+              protocol: UDP
+            - port: "6882"
+              protocol: TCP
+            - port: "6882"
+              protocol: UDP
+    # rTorrent Prometheus metrics
+    - fromEndpoints:
+        - matchLabels:
+            app.kubernetes.io/name: prometheus
+      toPorts:
+        - ports:
+            - port: "9135"
+              protocol: TCP

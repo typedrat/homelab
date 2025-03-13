@@ -1,38 +1,38 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-    name: jellyfin
-    namespace: media
+  name: jellyfin
+  namespace: media
 spec:
-    interval: 1m0s
-    chart:
-        spec:
-            chart: ./charts/jellyfin
-            reconcileStrategy: ChartVersion
-            sourceRef:
-                kind: GitRepository
-                name: jellyfin-git
-            version: ">=2.1.0 <2.2"
-    values:
-        securityContext:
-            runAsUser: 911
-            runAsGroup: 911
-        podSecurityContext:
-            fsGroup: 911
+  interval: 1m0s
+  chart:
+    spec:
+      chart: ./charts/jellyfin
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: GitRepository
+        name: jellyfin-git
+      version: ">=2.1.0 <2.2"
+  values:
+    securityContext:
+      runAsUser: 911
+      runAsGroup: 911
+    podSecurityContext:
+      fsGroup: 911
 
-        persistence:
-            config:
-                size: 25Gi
-            media:
-                enabled: false
-        runtimeClassName: nvidia
-        volumes:
-            - name: data
-              persistentVolumeClaim:
-                  claimName: media-volume
-        volumeMounts:
-            - name: data
-              mountPath: /data
+    persistence:
+      config:
+        size: 25Gi
+      media:
+        enabled: false
+    runtimeClassName: nvidia
+    volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: media-volume
+    volumeMounts:
+      - name: data
+        mountPath: /data
 
-        deploymentStrategy:
-            type: Recreate
+    deploymentStrategy:
+      type: Recreate

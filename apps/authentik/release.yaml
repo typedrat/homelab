@@ -1,38 +1,38 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-    name: authentik
-    namespace: authentik
+  name: authentik
+  namespace: authentik
 spec:
-    interval: 1m0s
-    chart:
-        spec:
-            chart: authentik
-            reconcileStrategy: ChartVersion
-            sourceRef:
-                kind: HelmRepository
-                name: authentik
-            version: ">=2025.2.0 <2025.3"
-    values:
-        authentik:
-            error_reporting:
-                enabled: true
-            postgresql:
-                host: file:///postgres-creds/host
-                user: file:///postgres-creds/username
-                password: file:///postgres-creds/password
-            redis:
-                host: dragonfly
-        global:
-            fullnameOverride: authentik
-            volumes:
-                - name: postgres-creds
-                  secret:
-                      secretName: authentik-postgres-app
-            volumeMounts:
-                - name: postgres-creds
-                  mountPath: /postgres-creds
-                  readOnly: true
-            envFrom:
-                - secretRef:
-                      name: authentik-env
+  interval: 1m0s
+  chart:
+    spec:
+      chart: authentik
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: authentik
+      version: ">=2025.2.0 <2025.3"
+  values:
+    authentik:
+      error_reporting:
+        enabled: true
+      postgresql:
+        host: file:///postgres-creds/host
+        user: file:///postgres-creds/username
+        password: file:///postgres-creds/password
+      redis:
+        host: dragonfly
+    global:
+      fullnameOverride: authentik
+      volumes:
+        - name: postgres-creds
+          secret:
+            secretName: authentik-postgres-app
+      volumeMounts:
+        - name: postgres-creds
+          mountPath: /postgres-creds
+          readOnly: true
+      envFrom:
+        - secretRef:
+            name: authentik-env

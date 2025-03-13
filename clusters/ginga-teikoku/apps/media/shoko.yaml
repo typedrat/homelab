@@ -1,15 +1,15 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-    name: media-shoko
-    namespace: flux-system
+  name: media-shoko
+  namespace: flux-system
 spec:
-    interval: 10m0s
-    path: ./apps/media/shoko
-    prune: true
-    dependsOn:
-        - name: istio-ingress
-        - name: media-shared
-    sourceRef:
-        kind: GitRepository
-        name: flux-system
+  interval: 10m0s
+  path: ./apps/media/shoko
+  prune: true
+  dependsOn:
+    - name: istio-ingress
+    - name: media-shared
+  sourceRef:
+    kind: GitRepository
+    name: flux-system

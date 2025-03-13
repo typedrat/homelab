@@ -1,16 +1,16 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-    name: media-radarr
-    namespace: flux-system
+  name: media-radarr
+  namespace: flux-system
 spec:
-    interval: 10m0s
-    path: ./apps/media/radarr
-    prune: true
-    dependsOn:
-        - name: istio-ingress
-        - name: authentik
-        - name: media-shared
-    sourceRef:
-        kind: GitRepository
-        name: flux-system
+  interval: 10m0s
+  path: ./apps/media/radarr
+  prune: true
+  dependsOn:
+    - name: istio-ingress
+    - name: authentik
+    - name: media-shared
+  sourceRef:
+    kind: GitRepository
+    name: flux-system

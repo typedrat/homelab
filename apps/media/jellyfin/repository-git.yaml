@@ -1,14 +1,14 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
-    name: jellyfin-git
-    namespace: media
+  name: jellyfin-git
+  namespace: media
 spec:
-    interval: 1m
-    url: https://github.com/jellyfin/jellyfin-helm
-    ref:
-        branch: master
-        commit: 69e761206225cb1beccc3a758bc608b223cfb771
-    ignore: |
-        /*
-        !/charts/
+  interval: 1m
+  url: https://github.com/jellyfin/jellyfin-helm
+  ref:
+    branch: master
+    commit: 69e761206225cb1beccc3a758bc608b223cfb771
+  ignore: |
+    /*
+    !/charts/

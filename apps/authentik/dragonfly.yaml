@@ -1,16 +1,16 @@
 apiVersion: dragonflydb.io/v1alpha1
 kind: Dragonfly
 metadata:
-    name: dragonfly
-    namespace: authentik
+  name: dragonfly
+  namespace: authentik
 spec:
-    replicas: 1
-    args: ["--dbfilename=authentik-snapshot"]
-    snapshot:
-        cron: "*/5 * * * *"
-        persistentVolumeClaimSpec:
-            accessModes:
-                - ReadWriteOnce
-            resources:
-                requests:
-                    storage: 2Gi
+  replicas: 1
+  args: ["--dbfilename=authentik-snapshot"]
+  snapshot:
+    cron: "*/5 * * * *"
+    persistentVolumeClaimSpec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 2Gi

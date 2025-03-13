@@ -1,5 +1,5 @@
 machine:
-    install:
-        disk: none
-        diskSelector:
-            model: ADATA SU800
+  install:
+    disk: none
+    diskSelector:
+      model: ADATA SU800

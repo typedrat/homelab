@@ -9,18 +9,18 @@ spec:
   restartPolicy: Never
   terminationGracePeriodSeconds: 0
   containers:
-  - name: zfs-toolkit
-    image: tugboat/zfs-utils:latest
-    securityContext:
-      privileged: true
-      capabilities:
-        add: ["SYS_ADMIN"]
-    volumeMounts:
-    - mountPath: /host
-      name: host-root
-      mountPropagation: Bidirectional
-    command: ["/bin/sh", "-c", "trap 'exit 0' SIGTERM; sleep 84600 & wait"]
+    - name: zfs-toolkit
+      image: tugboat/zfs-utils:latest
+      securityContext:
+        privileged: true
+        capabilities:
+          add: ["SYS_ADMIN"]
+      volumeMounts:
+        - mountPath: /host
+          name: host-root
+          mountPropagation: Bidirectional
+      command: ["/bin/sh", "-c", "trap 'exit 0' SIGTERM; sleep 84600 & wait"]
   volumes:
-  - name: host-root
-    hostPath:
-      path: /
+    - name: host-root
+      hostPath:
+        path: /

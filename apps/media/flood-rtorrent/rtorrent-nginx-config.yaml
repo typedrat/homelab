@@ -1,15 +1,15 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-    name: rtorrent-nginx-config
-    namespace: media
+  name: rtorrent-nginx-config
+  namespace: media
 data:
-    default.conf: |
-        server {
-           listen 0.0.0.0:5000;
+  default.conf: |
+    server {
+       listen 0.0.0.0:5000;
 
-           location /RPC2 {
-              include /etc/nginx/scgi_params;
-              scgi_pass unix:/sock/rtorrent.sock;
-           }
-        }
+       location /RPC2 {
+          include /etc/nginx/scgi_params;
+          scgi_pass unix:/sock/rtorrent.sock;
+       }
+    }

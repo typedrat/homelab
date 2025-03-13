@@ -1,10 +1,10 @@
 customization:
-    systemExtensions:
-        officialExtensions:
-            - siderolabs/fuse3
-            - siderolabs/intel-ucode
-            - siderolabs/nonfree-kmod-nvidia-production
-            - siderolabs/nvidia-container-toolkit-production
-            - siderolabs/zfs
-    extraKernelArgs:
-        - -talos.halt_if_installed
+  systemExtensions:
+    officialExtensions:
+      - siderolabs/fuse3
+      - siderolabs/intel-ucode
+      - siderolabs/nonfree-kmod-nvidia-production
+      - siderolabs/nvidia-container-toolkit-production
+      - siderolabs/zfs
+  extraKernelArgs:
+    - -talos.halt_if_installed

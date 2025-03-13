@@ -1,26 +1,26 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-    name: httproute
-    namespace: authentik
-    annotations:
-        external-dns.alpha.kubernetes.io/target: iserlohn.thisratis.gay
+  name: httproute
+  namespace: authentik
+  annotations:
+    external-dns.alpha.kubernetes.io/target: iserlohn.thisratis.gay
 spec:
-    parentRefs:
-        - name: gateway
-          namespace: istio-ingress
-          sectionName: wildcard-https
-    hostnames:
-        - auth.thisratis.gay
-    rules:
-        - filters:
-              - type: RequestHeaderModifier
-                requestHeaderModifier:
-                    add:
-                        - name: X-Forwarded-Proto
-                          value: https
-                        - name: Host
-                          value: auth.thisratis.gay
-          backendRefs:
-              - name: authentik-server
-                port: 80
+  parentRefs:
+    - name: gateway
+      namespace: istio-ingress
+      sectionName: wildcard-https
+  hostnames:
+    - auth.thisratis.gay
+  rules:
+    - filters:
+        - type: RequestHeaderModifier
+          requestHeaderModifier:
+            add:
+              - name: X-Forwarded-Proto
+                value: https
+              - name: Host
+                value: auth.thisratis.gay
+      backendRefs:
+        - name: authentik-server
+          port: 80

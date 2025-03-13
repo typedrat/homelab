@@ -1,26 +1,26 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-    name: openebs
-    namespace: openebs
+  name: openebs
+  namespace: openebs
 spec:
-    interval: 1m0s
-    chart:
-        spec:
-            chart: openebs
-            reconcileStrategy: ChartVersion
-            sourceRef:
-                kind: HelmRepository
-                name: openebs
-            version: ">=4.1.2 <4.2"
-    values:
-        engines:
-            local:
-                lvm:
-                    enabled: false
-            replicated:
-                mayastor:
-                    enabled: false
-        zfs-localpv:
-            zfsNode:
-                encrKeysDir: /var/openebs/keys
+  interval: 1m0s
+  chart:
+    spec:
+      chart: openebs
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: openebs
+      version: ">=4.1.2 <4.2"
+  values:
+    engines:
+      local:
+        lvm:
+          enabled: false
+      replicated:
+        mayastor:
+          enabled: false
+    zfs-localpv:
+      zfsNode:
+        encrKeysDir: /var/openebs/keys

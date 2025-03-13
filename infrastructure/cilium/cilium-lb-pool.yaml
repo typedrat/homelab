@@ -1,7 +1,7 @@
 apiVersion: "cilium.io/v2alpha1"
 kind: CiliumLoadBalancerIPPool
 metadata:
-    name: "cilium-lb-pool"
+  name: "cilium-lb-pool"
 spec:
-    blocks:
-        - cidr: "10.0.1.0/24"
+  blocks:
+    - cidr: "10.0.1.0/24"

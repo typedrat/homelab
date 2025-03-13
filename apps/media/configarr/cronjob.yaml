@@ -2,57 +2,57 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-    name: configarr
-    namespace: media
+  name: configarr
+  namespace: media
 spec:
-    schedule: "0 * * * *"
-    successfulJobsHistoryLimit: 1
-    failedJobsHistoryLimit: 1
-    jobTemplate:
+  schedule: "0 * * * *"
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
         spec:
-            template:
-                spec:
-                    containers:
-                        - name: configarr
-                          image: ghcr.io/raydak-labs/configarr:latest
-                          imagePullPolicy: Always
-                          tty: true
-                          env:
-                              - name: RADARR_API_KEY
-                                valueFrom:
-                                    secretKeyRef:
-                                        namespace: media
-                                        name: arr-api-keys
-                                        key: RADARR_API_KEY
-                              - name: RADARR_ANIME_API_KEY
-                                valueFrom:
-                                    secretKeyRef:
-                                        namespace: media
-                                        name: arr-api-keys
-                                        key: RADARR_ANIME_API_KEY
-                              - name: SONARR_API_KEY
-                                valueFrom:
-                                    secretKeyRef:
-                                        namespace: media
-                                        name: arr-api-keys
-                                        key: SONARR_API_KEY
-                              - name: SONARR_ANIME_API_KEY
-                                valueFrom:
-                                    secretKeyRef:
-                                        namespace: media
-                                        name: arr-api-keys
-                                        key: SONARR_ANIME_API_KEY
-                          volumeMounts:
-                              - name: configarr-cache
-                                mountPath: /app/repos
-                              - name: config-volume
-                                mountPath: /app/config/config.yml
-                                subPath: config.yml
-                    volumes:
-                        - name: configarr-cache
-                          persistentVolumeClaim:
-                              claimName: configarr-cache
-                        - name: config-volume
-                          configMap:
-                              name: configarr
-                    restartPolicy: Never
+          containers:
+            - name: configarr
+              image: ghcr.io/raydak-labs/configarr:latest
+              imagePullPolicy: Always
+              tty: true
+              env:
+                - name: RADARR_API_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      namespace: media
+                      name: arr-api-keys
+                      key: RADARR_API_KEY
+                - name: RADARR_ANIME_API_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      namespace: media
+                      name: arr-api-keys
+                      key: RADARR_ANIME_API_KEY
+                - name: SONARR_API_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      namespace: media
+                      name: arr-api-keys
+                      key: SONARR_API_KEY
+                - name: SONARR_ANIME_API_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      namespace: media
+                      name: arr-api-keys
+                      key: SONARR_ANIME_API_KEY
+              volumeMounts:
+                - name: configarr-cache
+                  mountPath: /app/repos
+                - name: config-volume
+                  mountPath: /app/config/config.yml
+                  subPath: config.yml
+          volumes:
+            - name: configarr-cache
+              persistentVolumeClaim:
+                claimName: configarr-cache
+            - name: config-volume
+              configMap:
+                name: configarr
+          restartPolicy: Never
