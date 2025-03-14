@@ -1,0 +1,54 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: minecraft-server
+  namespace: minecraft
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: minecraft
+      version: ">=4.24.0 <4.25"
+      sourceRef:
+        kind: HelmRepository
+        name: itzg
+        namespace: minecraft
+      interval: 1m
+  values:
+    minecraftServer:
+      eula: true
+      version: 1.20.1
+      type: FORGE
+      memory: 12G
+      jvmXXOpts: >
+        -XX:+UseG1GC
+        -XX:+ParallelRefProcEnabled
+        -XX:MaxGCPauseMillis=200
+        -XX:+UnlockExperimentalVMOptions
+        -XX:+DisableExplicitGC
+        -XX:+AlwaysPreTouch
+        -XX:G1NewSizePercent=40
+        -XX:G1MaxNewSizePercent=50
+        -XX:G1HeapRegionSize=16M
+        -XX:G1ReservePercent=15
+        -XX:G1HeapWastePercent=5
+        -XX:G1MixedGCCountTarget=4
+        -XX:InitiatingHeapOccupancyPercent=20
+        -XX:G1MixedGCLiveThresholdPercent=90
+        -XX:G1RSetUpdatingPauseTimePercent=5
+        -XX:SurvivorRatio=32
+        -XX:+PerfDisableSharedMem
+        -XX:MaxTenuringThreshold=1
+      serviceType: LoadBalancer
+
+    serviceAnnotations:
+      lbipam.cilium.io/ips: 10.0.1.10
+
+    persistence:
+      dataDir:
+        enabled: true
+        Size: 25Gi
+
+    rcon:
+      enabled: true
+      withGeneratedPassword: true
