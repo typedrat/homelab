@@ -20,8 +20,8 @@ spec:
 
     minecraftServer:
       eula: true
-      version: 1.20.1
-      type: FORGE
+      type: NEOFORGE
+      version: 1.21.1
       memory: 12G
       jvmXXOpts: >
         --add-modules=jdk.incubator.vector
