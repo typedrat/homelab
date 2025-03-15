@@ -109,7 +109,6 @@ spec:
         -Dgraal.SpeculativeGuardMovement=true
         -Dgraal.TuneInlinerExploration=1
         -Dgraal.LoopRotation=true
-        -Dgraal.OptWriteMotion=true
         -Dgraal.CompilerConfiguration=enterprise
       serviceType: LoadBalancer
 
