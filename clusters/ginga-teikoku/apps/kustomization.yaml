@@ -10,4 +10,5 @@ resources:
   - media/shoko.yaml
   - media/configarr.yaml
   - authentik.yaml
+  - librechat.yaml
   - minecraft.yaml

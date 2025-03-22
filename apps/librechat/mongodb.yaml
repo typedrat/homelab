@@ -1,0 +1,25 @@
+apiVersion: mongodbcommunity.mongodb.com/v1
+kind: MongoDBCommunity
+metadata:
+  name: mongodb
+  namespace: librechat
+spec:
+  members: 3
+  type: ReplicaSet
+  version: "8.0.6"
+  security:
+    authentication:
+      modes: ["SCRAM"]
+  users:
+    - name: librechat
+      db: librechat
+      passwordSecretRef:
+        name: mongodb-password
+      roles:
+        - name: clusterAdmin
+          db: librechat
+        - name: userAdminAnyDatabase
+          db: librechat
+      scramCredentialsSecretName: mongodb-scram
+  additionalMongodConfig:
+    storage.wiredTiger.engineConfig.journalCompressor: zlib
