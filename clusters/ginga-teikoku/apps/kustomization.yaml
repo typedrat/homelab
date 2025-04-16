@@ -11,3 +11,4 @@ resources:
   - media/configarr.yaml
   - authentik.yaml
   - minecraft.yaml
+  - open-webui.yaml
