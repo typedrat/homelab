@@ -1,0 +1,26 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: open-webui
+  namespace: open-webui
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: open-webui
+      version: ">=6.4.0 <6.5"
+      sourceRef:
+        kind: HelmRepository
+        name: open-webui
+        namespace: open-webui
+      interval: 1m
+  values:
+    ollama:
+      enabled: false
+
+    tika:
+      enabled: true
+
+    websocket:
+      enabled: true
+      url: redis://dragonfly:6379/0
