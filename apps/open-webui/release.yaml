@@ -24,3 +24,10 @@ spec:
     websocket:
       enabled: true
       url: redis://dragonfly:6379/0
+
+    extraEnvVars:
+      - name: DATABASE_URL
+        valueFrom:
+          secretKeyRef:
+            name: postgres-app
+            key: uri

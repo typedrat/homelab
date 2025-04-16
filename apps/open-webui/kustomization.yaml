@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - clustersecret.yaml
   - dragonfly.yaml
+  - httproute.yaml
   - namespace.yaml
   - postgres.yaml
   - release.yaml
