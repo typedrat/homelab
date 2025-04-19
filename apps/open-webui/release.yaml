@@ -31,11 +31,18 @@ spec:
       enable: true
       enableSignup: true
       mergeAccountsByEmail: true
+      enableRoleManagement: true
 
       oidc:
         enabled: true
         providerName: Authentik
         providerUrl: https://auth.thisratis.gay/application/o/open-webui/.well-known/openid-configuration
+        scopes: openid email profile entitlements
+
+      roleManagement:
+        rolesClaim: entitlements
+        allowedRoles: user
+        adminRoles: admin
 
     extraEnvVars:
       - name: ENABLE_PERSISTENT_CONFIG
