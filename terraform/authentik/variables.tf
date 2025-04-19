@@ -58,12 +58,12 @@ variable "grafanaSecret" {
   type        = string
 }
 
-variable "sftpgoKey" {
-  description = "The Authentik OAuth2 client key for the application used by SFTPgo"
+variable "openWebUIKey" {
+  description = "The Authentik OAuth2 client key for the application used by Open WebUI"
   type        = string
 }
 
-variable "sftpgoSecret" {
-  description = "The Authentik OAuth2 client secret for the application used by SFTPgo"
+variable "openWebUISecret" {
+  description = "The Authentik OAuth2 client secret for the application used by Open WebUI"
   type        = string
 }
