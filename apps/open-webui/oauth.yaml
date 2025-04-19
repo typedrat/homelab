@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: oauth
+  namespace: open-webui
+stringData:
+  clientId: d3nzOnAcNBSL9AQfB4dUQAdvOsvzJLn4VFlKisQh
+  clientSecret: hTaSZixuh7Y00rn86ochdOjtr1fyP1dyI2cJdsSXKKwe0LnIGAnkmvElVQd5EdJFZ7XaCvlzm3zSOKIkYZOq1Gmezucs1764bMRoDz9W6QfTkW8DytvqxNwImQtYX7an

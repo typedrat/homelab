@@ -23,11 +23,60 @@ spec:
 
     websocket:
       enabled: true
+      redis:
+        enabled: false
       url: redis://dragonfly:6379/0
 
+    sso:
+      enable: true
+      enableSignup: true
+      mergeAccountsByEmail: true
+
+      oidc:
+        enabled: true
+        providerName: Authentik
+        providerUrl: https://auth.thisratis.gay/application/o/open-webui/.well-known/openid-configuration
+
     extraEnvVars:
+      - name: ENABLE_PERSISTENT_CONFIG
+        value: false
       - name: DATABASE_URL
         valueFrom:
           secretKeyRef:
             name: postgres-app
             key: uri
+      - name: WEBUI_URL
+        value: https://open-webui.thisratis.gay
+      - name: ENABLE_SIGNUP
+        value: false
+      - name: ENABLE_LOGIN_FORM
+        value: false
+      - name: OAUTH_CLIENT_ID
+        valueFrom:
+          secretKeyRef:
+            name: oauth
+            key: clientId
+      - name: OAUTH_CLIENT_SECRET
+        valueFrom:
+          secretKeyRef:
+            name: oauth
+            key: clientSecret
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: pipelines
+  namespace: open-webui
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: pipelines
+      version: ">=0.5.0 <0.6"
+      sourceRef:
+        kind: HelmRepository
+        name: open-webui
+        namespace: open-webui
+      interval: 1m
+  values:
+    ingress: disabled

@@ -69,13 +69,13 @@ spec:
           name: grafana-oauth
           namespace: monitoring
           key: client-secret
-      - name: TF_VAR_sftpgoKey
+      - name: TF_VAR_openWebUIKey
         secretKeyRef:
-          name: sftpgo-oauth
-          namespace: media
-          key: client-id
-      - name: TF_VAR_sftpgoSecret
+          name: oauth
+          namespace: open-webui
+          key: clientId
+      - name: TF_VAR_openWebUISecret
         secretKeyRef:
-          name: sftpgo-oauth
-          namespace: media
-          key: client-secret
+          name: oauth
+          namespace: open-webui
+          key: clientSecret

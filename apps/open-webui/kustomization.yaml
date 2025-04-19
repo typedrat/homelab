@@ -5,6 +5,7 @@ resources:
   - dragonfly.yaml
   - httproute.yaml
   - namespace.yaml
+  - oauth.yaml
   - postgres.yaml
   - release.yaml
   - repository.yaml
