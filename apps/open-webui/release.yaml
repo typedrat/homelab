@@ -39,7 +39,7 @@ spec:
 
     extraEnvVars:
       - name: ENABLE_PERSISTENT_CONFIG
-        value: false
+        value: "False"
       - name: DATABASE_URL
         valueFrom:
           secretKeyRef:
@@ -48,9 +48,9 @@ spec:
       - name: WEBUI_URL
         value: https://open-webui.thisratis.gay
       - name: ENABLE_SIGNUP
-        value: false
+        value: "False"
       - name: ENABLE_LOGIN_FORM
-        value: false
+        value: "False"
       - name: OAUTH_CLIENT_ID
         valueFrom:
           secretKeyRef:
