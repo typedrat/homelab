@@ -9,8 +9,7 @@ resource "authentik_outpost" "ldap" {
   service_connection = authentik_service_connection_kubernetes.local.id
   config             = jsonencode(local.outpost_config)
   protocol_providers = [
-    authentik_provider_ldap.jellyfin.id,
-    authentik_provider_ldap.sftpgo.id,
+    authentik_provider_ldap.jellyfin.id
   ]
 }
 
