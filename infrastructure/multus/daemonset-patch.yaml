@@ -25,6 +25,7 @@ spec:
               mountPropagation: Bidirectional
               name: cnibin
     volumes:
-      - hostPath:
+      - $patch: replace
+        hostPath:
           path: /var/run/netns/
         name: host-run-netns
