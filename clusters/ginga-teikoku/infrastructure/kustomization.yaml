@@ -10,6 +10,7 @@ resources:
   - external-dns.yaml
   - istio.yaml
   - metrics-server.yaml
+  - multus.yaml
   - nvidia.yaml
   - openebs.yaml
   - pull-secrets.yaml
